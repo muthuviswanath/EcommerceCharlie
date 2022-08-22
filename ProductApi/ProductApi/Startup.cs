@@ -47,6 +47,9 @@ namespace ProductApi
             }
 
             app.UseRouting();
+            app.UseCors(mycor => 
+                mycor.AllowAnyHeader().AllowAnyMethod().AllowAnyOrigin()
+            );
 
             app.UseAuthorization();
 

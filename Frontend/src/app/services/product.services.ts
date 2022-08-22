@@ -1,0 +1,21 @@
+import { Injectable, OnInit } from "@angular/core";
+import { HttpClient } from "@angular/common/http";
+import { Observable } from "rxjs";
+import { IProduct } from "../interfaces/IProduct";
+
+@Injectable({
+  providedIn: 'root'
+})
+
+export class ProductServices implements OnInit {
+  constructor(private http: HttpClient) { }
+  baseUrl: string = "http://localhost:2710/"
+  ngOnInit(): void {
+
+  }
+  getAllProducts(): Observable<IProduct[]> {
+    return this
+      .http
+      .get<IProduct[]>(this.baseUrl + "api/Products");
+  }
+}
