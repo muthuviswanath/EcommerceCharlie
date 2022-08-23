@@ -16,14 +16,14 @@ export class LoginComponent implements OnInit {
   password=new FormControl('',[Validators.required,Validators.minLength(8)]);
   email=new FormControl('',[Validators.required,Validators.minLength(7)]);
 
- 
+
   constructor(private builder:FormBuilder, private service: LoginServices){
   }
 
   ngOnInit():void{
-    this.service.getLoginInfo().subscribe(
-      res=> this.employeeList=res
-    );   
+    // this.service.getLoginInfo().subscribe(
+    //   res=> this.employeeList=res
+    // );
   }
 
 
@@ -52,8 +52,8 @@ export class LoginComponent implements OnInit {
     // this.service.getLoginInfo().subscribe((users:ILogin[]) => {
 
     // });
-    
+
   }
-  
+
 
   }

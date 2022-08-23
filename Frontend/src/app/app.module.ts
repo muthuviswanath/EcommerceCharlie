@@ -18,6 +18,7 @@ import { BodyComponent } from './components/body/body.component';
 import { CardsComponent } from './components/cards/cards.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {MatFormFieldModule} from '@angular/material/form-field';
+import { TopProductsComponent } from './components/top-products/top-products.component';
 
 
 @NgModule({
@@ -32,6 +33,7 @@ import {MatFormFieldModule} from '@angular/material/form-field';
     LowernavComponent,
     BodyComponent,
     CardsComponent,
+    TopProductsComponent,
   ],
   imports: [
     BrowserModule,
