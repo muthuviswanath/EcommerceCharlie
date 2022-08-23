@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { LoginServices } from 'src/app/services/login.services';
+import { ILogin } from "../../interfaces/ILogin";
+
 
 @Component({
   selector: 'app-login',
@@ -7,54 +10,50 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-
-  loginForm: FormGroup | any;
   public formData:any={};
+  public showMessage:boolean=false;
+  username=new FormControl('',[Validators.required,Validators.minLength(7)]);
+  password=new FormControl('',[Validators.required,Validators.minLength(8)]);
+  email=new FormControl('',[Validators.required,Validators.minLength(7)]);
+
  
-  constructor(
-   
-  ) {
-    this.loginForm = new FormGroup({
-      
-      username:new FormControl('', [Validators.required, Validators.email,Validators.pattern(
-        '[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+.[a-zA-Z]{2,63}$',
-      ),]), 
-
-      email: new FormControl('', [Validators.required, Validators.email,Validators.pattern(
-        '[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+.[a-zA-Z]{2,63}$',
-      ),]),
-
-      password: new FormControl('', [Validators.required,Validators.pattern(
-        '^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*_=+-]).{8,12}$'
-      )])
-
-    });
-   }
-  ngOnInit(): void {
+  constructor(private builder:FormBuilder, private service: LoginServices){
   }
-  onSubmit(){
-    if(!this.loginForm.valid){
-      return;
-    }
-    else{
-    alert('login success');
-        // localStorage.setItem('user',this.loginForm.value)
-    }
+
+  ngOnInit():void{
+    this.service.getLoginInfo().subscribe(
+      res=> this.employeeList=res
+    );   
+  }
+
+
+  loginForm:FormGroup=this.builder.group({
+    username:this.username,
+    password:this.password,
+    email:this.email
+  })
+
+
+  userTest: ILogin = null;
+  login() {
+    this.formData=this.loginForm.value;
+
+
+    // this.userTest = this.service.getUserByUsername(this.formData.username)
+    // if(this.userTest == null){
+    //   return
+    // }
+    // // else if(this.formData.password == this.userTest.password && this.formData.email == this.userTest.email){
+    // //   this.showMessage=true;
+    // // }
+    // // else{
+    // //   return
+    // // }
+    // this.service.getLoginInfo().subscribe((users:ILogin[]) => {
+
+    // });
+    
   }
   
 
-
-
-
-
-
-
-
-
-
-  // constructor() { }
-
-  // ngOnInit(): void {
-  // }
-
-}
+  }

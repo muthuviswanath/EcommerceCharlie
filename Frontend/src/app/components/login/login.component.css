@@ -1,22 +1,9 @@
-.text-center{
-    text-align: center;
-}
-.example-container{
-    height: 50%;
-    width: 20%;
-    text-align: left;
-}
-.d-flex-center{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-.mat-form-field{
-    width: 100%;
-}
-.mt-top{
-    margin-top: 30px;
-}
-.mt-top-2{
-    margin-top: 10px;
-}
+.login-form {
+    /* text-align: center; */
+    margin-top: 4%;
+    padding: 60px;
+  }
+  .card {
+    padding: 20px;
+    border: 1px solid #125266;
+  }
