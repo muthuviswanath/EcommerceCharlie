@@ -12,6 +12,8 @@ import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { ProductsComponent } from './components/products/products.component';
 import { LoginComponent } from './components/login/login.component';
+import { UppernavComponent } from './components/header/uppernav/uppernav.component';
+import { LowernavComponent } from './components/header/lowernav/lowernav.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +22,9 @@ import { LoginComponent } from './components/login/login.component';
     HeaderComponent,
     FooterComponent,
     ProductsComponent,
-    LoginComponent
+    LoginComponent,
+    UppernavComponent,
+    LowernavComponent
   ],
   imports: [
     BrowserModule,
