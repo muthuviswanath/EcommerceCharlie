@@ -14,6 +14,7 @@ import { ProductsComponent } from './components/products/products.component';
 import { LoginComponent } from './components/login/login.component';
 import { UppernavComponent } from './components/header/uppernav/uppernav.component';
 import { LowernavComponent } from './components/header/lowernav/lowernav.component';
+import { BodyComponent } from './components/body/body.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { LowernavComponent } from './components/header/lowernav/lowernav.compone
     ProductsComponent,
     LoginComponent,
     UppernavComponent,
-    LowernavComponent
+    LowernavComponent,
+    BodyComponent
   ],
   imports: [
     BrowserModule,
