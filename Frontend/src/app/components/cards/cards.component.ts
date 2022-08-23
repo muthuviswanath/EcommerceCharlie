@@ -1,6 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { IProduct } from "../../interfaces/IProduct";
-import { ProductServices } from '../../services/product.services';
+import { Component, OnInit ,Input} from '@angular/core';
+
 
 @Component({
   selector: 'app-cards',
@@ -9,15 +8,12 @@ import { ProductServices } from '../../services/product.services';
 })
 export class CardsComponent implements OnInit {
 
-  IProduct: Array<any> = [];
-  productsList: IProduct[];
-  constructor(private _productServices: ProductServices) {
+  @Input() items:any={};
+  constructor() {
 
   }
   ngOnInit(): void {
-    this._productServices.getAllProducts().subscribe(
-      res => this.productsList = res
-    );        // without subscribe will not be able to access.
+           // without subscribe will not be able to access.
   }
 
 }

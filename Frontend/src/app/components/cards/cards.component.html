@@ -1,21 +1,20 @@
-<h3 class="title">Products List</h3>
-<hr />
+
 <div>
   <div class="container-fluid bg-trasparent my-4 p-3 div1">
     <div class="row row-cols-1 row-cols-xs-2 row-cols-sm-2 row-cols-lg-4 g-3">
-      <div class="col" *ngFor="let item of productsList">
+      <div class="col">
         <div class="card h-100 shadow-sm">
-          <img src={{item.imagePath}} class="card-img-top" alt="..."/>
+          <img src={{items.imagePath}} class="card-img-top" alt="..."/>
           <div class="card-body">
             <div class="clearfix mb-3">
-              <span class="float-start badge rounded-pill bg-primary">{{item.productName}}</span>
-              <span class="float-end price-hp">{{item.price}} INR</span>
+              <span class="float-start badge rounded-pill bg-primary">{{items.productName}}</span>
+              <span class="float-end price-hp">{{items.price}} INR</span>
             </div>
-            <p><strong>{{item.quantity}}</strong></p>
-            <p><strong>{{item.productOfferPrice}} INR</strong></p>
-            <h5 class="card-title">{{item.productDescription}}</h5>
+            <p><strong>{{items.quantity}}</strong></p>
+            <p><strong>{{items.productOfferPrice}} INR</strong></p>
+            <h5 class="card-title">{{items.productDescription}}</h5>
             <div class="text-center my-4">
-              <a href="/" class="btn btn-warning">{{item.productRating}}</a>
+              <a href="/" class="btn btn-warning">{{items.productRating}}</a>
             </div>
           </div>
         </div>

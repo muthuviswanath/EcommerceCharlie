@@ -1,0 +1,54 @@
+.heading{
+    font-family: 'DM Serif Display';
+font-style: normal;
+font-weight: 400;
+font-size: 30px;
+line-height: 49px;
+
+color: #2A2A2E;
+
+}
+
+.content{
+    
+
+font-family: 'Raleway';
+font-style: normal;
+font-weight: 400;
+font-size: 15px;
+line-height: 29px;
+
+
+
+color: #767679;
+
+}
+
+.addcart{
+    width: 115px;
+height: 35px;
+
+background: #27BEB9;
+border-radius: 3px;
+
+font-family: 'Lato';
+font-style: normal;
+font-weight: 600;
+font-size: 18px;
+line-height: 26px;
+
+
+
+color: #FFFFFF;
+
+}
+
+.dsc{
+    padding-left:25px;
+    padding-right:25px;
+    
+}
+.bigimg{
+    width:100%;
+    height:90%;
+}
