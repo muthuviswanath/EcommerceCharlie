@@ -9,7 +9,7 @@ import { IProduct } from "../interfaces/IProduct";
 
 export class ProductServices implements OnInit {
   constructor(private http: HttpClient) { }
-  baseUrl: string = "http://localhost:2710/"
+  baseUrl: string = "http://localhost:4959/"
   ngOnInit(): void {
 
   }

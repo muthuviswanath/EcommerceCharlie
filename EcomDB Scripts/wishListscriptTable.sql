@@ -6,7 +6,7 @@ INSERT INTO [dbo].[WishList]
            ,[ProductId])
      VALUES
            (1,1),
- 	(4,2);
+ 	(2,2);
 
 GO
 
