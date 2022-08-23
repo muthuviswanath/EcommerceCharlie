@@ -7,7 +7,7 @@ INSERT INTO [dbo].[Cart]
            ,[CartTotal])
      VALUES
            (1,1,1500),
-	(4,3,1800);
+	(2,3,1800);
 
 GO
 
