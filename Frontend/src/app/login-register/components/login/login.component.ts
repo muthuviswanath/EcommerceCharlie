@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { LoginServices } from 'src/app/services/login.services';
+import { LoginServices } from 'src/app/login-register/services/login.services';
 import { ILogin } from "../../interfaces/ILogin";
-
 
 @Component({
   selector: 'app-login',
@@ -16,17 +15,15 @@ export class LoginComponent implements OnInit {
   password=new FormControl('',[Validators.required,Validators.minLength(8)]);
   email=new FormControl('',[Validators.required,Validators.minLength(7)]);
 
-
   constructor(private builder:FormBuilder, private service: LoginServices){
-  }
 
+  }
+  userList: ILogin[];
   ngOnInit():void{
-    // this.service.getLoginInfo().subscribe(
-    //   res=> this.employeeList=res
-    // );
+    this.service.getLoginInfo().subscribe(
+      res=> this.userList=res
+    );
   }
-
-
   loginForm:FormGroup=this.builder.group({
     username:this.username,
     password:this.password,
@@ -34,12 +31,12 @@ export class LoginComponent implements OnInit {
   })
 
 
-  userTest: ILogin = null;
+
   login() {
     this.formData=this.loginForm.value;
 
 
-    // this.userTest = this.service.getUserByUsername(this.formData.username)
+    // this.userTest = this.service.getUserByUsername(this.formData.username)b,su
     // if(this.userTest == null){
     //   return
     // }

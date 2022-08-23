@@ -8,7 +8,6 @@ import { ILogin } from "../interfaces/ILogin";
 })
 
 export class LoginServices implements OnInit {
- 
   constructor(private http: HttpClient) { }
   baseUrl: string = "http://localhost:33037/"
   getLoginInfo(): Observable<ILogin[]> {
@@ -16,10 +15,8 @@ export class LoginServices implements OnInit {
       .http
       .get<ILogin[]>(this.baseUrl + "api/Users");
   }
-
-
   ngOnInit(): void {
 
   }
- 
+
 }
