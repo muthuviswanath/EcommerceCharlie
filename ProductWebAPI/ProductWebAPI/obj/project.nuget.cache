@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "/RkkMBZvpA2MxHl1Uf6pvOsEHHgKpqicmFC96JXFYg5W2efcWcwE/zQu1iIZzAry7pE0YUE/ug4vOGy0jZZAPA==",
+  "dgSpecHash": "hPvbeCuaK7BqNlbrH8twE65bLJgnY8JGXvakMEJUFQ7isVRzuDmcS5h+r8ngnN91B7Ik/YZsTHIP7GdH7HxOPw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\ApoorvSrivastava\\OneDrive - Kongsberg Digital AS\\Documents\\Training@kongsberg 12-July\\ProductWebAPI\\ProductWebAPI\\ProductWebAPI.csproj",
+  "projectFilePath": "C:\\Users\\ApoorvSrivastava\\OneDrive - Kongsberg Digital AS\\Documents\\EcommerceCharlie\\ProductWebAPI\\ProductWebAPI\\ProductWebAPI.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\ApoorvSrivastava\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\ApoorvSrivastava\\.nuget\\packages\\microsoft.aspnetcore.html.abstractions\\2.2.0\\microsoft.aspnetcore.html.abstractions.2.2.0.nupkg.sha512",

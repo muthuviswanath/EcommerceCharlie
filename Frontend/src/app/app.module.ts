@@ -16,6 +16,8 @@ import { UppernavComponent } from './components/header/uppernav/uppernav.compone
 import { LowernavComponent } from './components/header/lowernav/lowernav.component';
 import { BodyComponent } from './components/body/body.component';
 import { CardsComponent } from './components/cards/cards.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import {MatFormFieldModule} from '@angular/material/form-field';
 
 @NgModule({
   declarations: [
@@ -35,7 +37,11 @@ import { CardsComponent } from './components/cards/cards.component';
     AppRoutingModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    MatCardModule
+    MatCardModule,
+    FormsModule,
+    ReactiveFormsModule,
+    MatFormFieldModule
+
   ],
   providers: [ProductServices],
   bootstrap: [AppComponent]

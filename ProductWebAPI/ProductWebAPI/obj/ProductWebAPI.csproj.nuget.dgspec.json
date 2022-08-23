@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\ApoorvSrivastava\\OneDrive - Kongsberg Digital AS\\Documents\\Training@kongsberg 12-July\\ProductWebAPI\\ProductWebAPI\\ProductWebAPI.csproj": {}
+    "C:\\Users\\ApoorvSrivastava\\OneDrive - Kongsberg Digital AS\\Documents\\EcommerceCharlie\\ProductWebAPI\\ProductWebAPI\\ProductWebAPI.csproj": {}
   },
   "projects": {
-    "C:\\Users\\ApoorvSrivastava\\OneDrive - Kongsberg Digital AS\\Documents\\Training@kongsberg 12-July\\ProductWebAPI\\ProductWebAPI\\ProductWebAPI.csproj": {
+    "C:\\Users\\ApoorvSrivastava\\OneDrive - Kongsberg Digital AS\\Documents\\EcommerceCharlie\\ProductWebAPI\\ProductWebAPI\\ProductWebAPI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\ApoorvSrivastava\\OneDrive - Kongsberg Digital AS\\Documents\\Training@kongsberg 12-July\\ProductWebAPI\\ProductWebAPI\\ProductWebAPI.csproj",
+        "projectUniqueName": "C:\\Users\\ApoorvSrivastava\\OneDrive - Kongsberg Digital AS\\Documents\\EcommerceCharlie\\ProductWebAPI\\ProductWebAPI\\ProductWebAPI.csproj",
         "projectName": "ProductWebAPI",
-        "projectPath": "C:\\Users\\ApoorvSrivastava\\OneDrive - Kongsberg Digital AS\\Documents\\Training@kongsberg 12-July\\ProductWebAPI\\ProductWebAPI\\ProductWebAPI.csproj",
+        "projectPath": "C:\\Users\\ApoorvSrivastava\\OneDrive - Kongsberg Digital AS\\Documents\\EcommerceCharlie\\ProductWebAPI\\ProductWebAPI\\ProductWebAPI.csproj",
         "packagesPath": "C:\\Users\\ApoorvSrivastava\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\ApoorvSrivastava\\OneDrive - Kongsberg Digital AS\\Documents\\Training@kongsberg 12-July\\ProductWebAPI\\ProductWebAPI\\obj\\",
+        "outputPath": "C:\\Users\\ApoorvSrivastava\\OneDrive - Kongsberg Digital AS\\Documents\\EcommerceCharlie\\ProductWebAPI\\ProductWebAPI\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
