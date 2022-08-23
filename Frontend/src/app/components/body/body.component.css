@@ -4,6 +4,9 @@
   font-weight: bolder;
 }
 
+.crd{
+  margin-bottom: 20px;
+}
 .products {
   display: flex;
   flex-wrap: wrap;

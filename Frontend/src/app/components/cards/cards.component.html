@@ -1,24 +1,12 @@
 
-<div>
-  <div class="container-fluid bg-trasparent my-4 p-3 div1">
-    <div class="row row-cols-1 row-cols-xs-2 row-cols-sm-2 row-cols-lg-4 g-3">
-      <div class="col">
-        <div class="card h-100 shadow-sm">
-          <img src={{items.imagePath}} class="card-img-top" alt="..."/>
-          <div class="card-body">
-            <div class="clearfix mb-3">
-              <span class="float-start badge rounded-pill bg-primary">{{items.productName}}</span>
-              <span class="float-end price-hp">{{items.price}} INR</span>
-            </div>
-            <p><strong>{{items.quantity}}</strong></p>
-            <p><strong>{{items.productOfferPrice}} INR</strong></p>
-            <h5 class="card-title">{{items.productDescription}}</h5>
-            <div class="text-center my-4">
-              <a href="/" class="btn btn-warning">{{items.productRating}}</a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+<div class="card">
+  <img src={{items.imagePath}} alt="Avatar" style="width:100%;height: 200px;">
+  <div class="container">
+    <h4><b>{{items.productName}}</b></h4> 
+    <p><strong>{{items.quantity}}</strong></p>
+    <p><strong>{{items.productOfferPrice}} INR</strong></p>
+    <p>{{items.productDescription}}</p> 
+    <p>{{items.price}}</p> 
+    <p>{{items.productRating}}</p> 
   </div>
 </div>

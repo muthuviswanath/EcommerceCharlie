@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-
+import { IProduct } from "../../interfaces/IProduct";
+import { ProductServices } from '../../services/product.services';
 @Component({
   selector: 'app-products',
   templateUrl: './products.component.html',
@@ -7,16 +8,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProductsComponent implements OnInit {
 
-  public product_list:Array<any>=[];
-  constructor() { 
-    this.product_list=[
-      {prodId:121,prodName:"Mouse",prodDesc:"Wireless",prodPrice:234.5},
-      {prodId:122,prodName:"Keybord",prodDesc:"Wired",prodPrice:4535.5},
-      {prodId:123,prodName:"Monitor",prodDesc:"LG",prodPrice:13424.5},
-    ];
-  }
+  IProduct: Array<any> = [];
+  productsList: IProduct[];
+  constructor(private _productServices: ProductServices) {
 
+  }
   ngOnInit(): void {
+    this._productServices.getAllProducts().subscribe(
+      res => this.productsList = res
+    );        // without subscribe will not be able to access.
   }
 
 }

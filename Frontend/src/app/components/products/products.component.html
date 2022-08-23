@@ -26,7 +26,7 @@
     </div>
     <div class="row">
       <h2>Related Products</h2>
-      <div class="col-sm-4"><app-cards></app-cards></div>
+      <div class="col-sm-3" *ngFor="let prod of productsList"><app-cards [items]="prod"></app-cards></div>
     </div>
     </div>
     <div class="col-sm-2"></div>
