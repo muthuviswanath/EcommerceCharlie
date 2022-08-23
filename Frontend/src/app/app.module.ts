@@ -7,10 +7,20 @@ import { AppComponent } from './app.component';
 import { ProductServices } from './services/product.services';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatCardModule } from '@angular/material/card';
+import { HomeComponent } from './components/home/home.component';
+import { HeaderComponent } from './components/header/header.component';
+import { FooterComponent } from './components/footer/footer.component';
+import { ProductsComponent } from './components/products/products.component';
+import { LoginComponent } from './components/login/login.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    HomeComponent,
+    HeaderComponent,
+    FooterComponent,
+    ProductsComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
