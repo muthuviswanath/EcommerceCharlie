@@ -15,6 +15,7 @@ import { LoginComponent } from './components/login/login.component';
 import { UppernavComponent } from './components/header/uppernav/uppernav.component';
 import { LowernavComponent } from './components/header/lowernav/lowernav.component';
 import { BodyComponent } from './components/body/body.component';
+import { CardsComponent } from './components/cards/cards.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { BodyComponent } from './components/body/body.component';
     LoginComponent,
     UppernavComponent,
     LowernavComponent,
-    BodyComponent
+    BodyComponent,
+    CardsComponent
   ],
   imports: [
     BrowserModule,
