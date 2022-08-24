@@ -1,49 +1,97 @@
-<table>
-  <tr>
-    <td>User Name</td>
-    <td>
-      <input type="text" [(ngModel)]="model.userName" placeholder="John123">
-    </td>
-  </tr>
-  <tr>S
-    <td>First Name</td>
-    <td>
-      <input type="text" [(ngModel)]="model.firstName" placeholder="Software Development">
-    </td>
-  </tr>
-  <tr>
-    <td>Last Name</td>
-    <td>
-      <input type="text" [(ngModel)]="model.lastName" placeholder="Doe">
-    </td>
-  </tr>
-  <tr>
-    <td>Address</td>
-    <td>
-      <input type="text" [(ngModel)]="model.address" placeholder="Back Street 256">
-    </td>
-  </tr>
-  <tr>
-    <td>Phone Number</td>
-    <td>
-      <input type="text" [(ngModel)]="model.phoneNumber" placeholder="94660xxxxx">
-    </td>
-  </tr>
-  <tr>
-    <td>Email</td>
-    <td>
-      <input type="text" [(ngModel)]="model.email" placeholder="john@gmail.com">
-    </td>
-  </tr>
-  <tr>
-    <td>Password</td>
-    <td>
-      <input type="text" [(ngModel)]="model.password" placeholder="ask@34">
-    </td>
-  </tr>
-  <tr>
-    <td>
-      <input type="submit" (click)="submit()">
-    </td>
-  </tr>
-</table>
+
+ 
+   
+ <div class="login-form">
+  <form>
+    <div class="avatar">
+      <img src="https://cdn2.iconfinder.com/data/icons/essenstial-ultimate-ui/64/avatar-512.png" alt="Avatar">
+    </div>
+    <h2 class="text-center">Register</h2> 
+
+    <div class="form-group">
+      <div class="input-icons">
+        <i class="fa fa-user icon">
+        </i>
+        </div>
+      <input type="text" class="form-control"  name="username" [(ngModel)]="model.userName" placeholder="Username">
+      <div [hidden]="model.username.valid || model.username.untouched" class="error">
+        <div [hidden]="!model.username.hasError('minlength')">
+          username cant be less than 7 characters
+        </div>
+        <div [hidden]="!model.username.hasError('required')">
+          username cant be empty.
+        </div>
+      </div>
+   </div>
+
+   <div class="form-group">
+    <div class="input-icons">
+      <i class="fa fa-user icon">
+      </i>
+      </div>
+      <input type="text"   class="form-control"  name="firstname" [(ngModel)]="model.firstName" placeholder="FirstName">
+   </div>
+
+   <div class="form-group">
+     <div class="input-icons">
+      <i class="fa fa-user icon">
+      </i>
+     </div>
+      <input type="text" class="form-control"  name="lastname"  [(ngModel)]="model.lastName" placeholder="LastName">
+    </div>
+
+    <div class="form-group">
+      <div class="input-icons">
+        <i class="fa fa-map-marker icon"></i>
+      </div>
+      <input type="text" class="form-control"  name="address"  [(ngModel)]="model.address" placeholder="Address">
+   </div>
+  
+   <div class="form-group">
+    <div class="input-icons">
+      <i class="fa fa-phone icon"></i>
+    </div>
+      <input type="text"  class="form-control"  name="phone"  [(ngModel)]="model.phoneNumber" placeholder="Phone">
+   </div>
+
+   <div class="form-group">
+    <div class="input-icons">
+      <i class="fa fa-envelope icon">
+      </i>
+      </div>
+      <input type="text"  class="form-control"  name="email" [(ngModel)]="model.email" placeholder="Email">
+      <div [hidden]="model.email.valid || model.email.untouched" class="error">
+        <div [hidden]="!model.email.hasError('minlength')">
+          email cant be less than 8 characters
+        </div>
+        <div [hidden]="!model.email.hasError('required')">
+          email cant be empty.
+        </div>
+      </div>
+    </div>
+
+   <div class="form-group">
+    <div class="input-icons">
+      <i class="fa fa-lock icon"></i>
+      </div>
+      <input type="text"  class="form-control"  name="password" [(ngModel)]="model.password" placeholder="Password">
+      <div [hidden]="model.password.valid || model.password.untouched" class="error">
+        <div [hidden]="!model.password.hasError('minlength')">
+          Password cant be less than 6 characters
+        </div>
+        <div [hidden]="!model.password.hasError('required')">
+          password cant be empty.
+        </div>
+        <div>
+        </div>
+      </div>
+   </div>
+
+   <div class="form-group">
+      <button type="submit"  class="btn btn-primary btn-lg btn-block" (click)="submit()">Register</button>
+    </div>
+
+  </form>
+</div>
+ 
+

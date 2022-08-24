@@ -12,7 +12,7 @@ export class LoginComponent implements OnInit {
   public formData:any={};
   public showMessage:boolean=false;
   username=new FormControl('',[Validators.required,Validators.minLength(7)]);
-  password=new FormControl('',[Validators.required,Validators.minLength(8)]);
+  password=new FormControl('',[Validators.required,Validators.minLength(6)]);
   email=new FormControl('',[Validators.required,Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$")]);
 
 

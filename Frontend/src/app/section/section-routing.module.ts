@@ -5,6 +5,7 @@ import { AllproductsComponent } from '../landing-page/components/allproducts/all
 import { ProductsComponent } from '../landing-page/components/products/products.component';
 import { TopProductsComponent } from '../landing-page/components/top-products/top-products.component';
 import { LoginComponent } from '../login-register/components/login/login.component';
+import { RegisterComponent } from '../login-register/components/register/register.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/allproducts', pathMatch: 'full' },
@@ -13,6 +14,7 @@ const routes: Routes = [
   { path: 'product', component: ProductsComponent },
   { path: 'cart', component: CartComponent },
   { path: 'allproducts', component: AllproductsComponent },
+  { path: 'register', component: RegisterComponent },
 ];
 
 @NgModule({
