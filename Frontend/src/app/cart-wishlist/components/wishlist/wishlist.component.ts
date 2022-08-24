@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { IWishList } from '../../interfaces/IWishList';
+import { WishListServices } from '../../services/wishlist.services';
 
 @Component({
   selector: 'app-wishlist',
@@ -7,9 +9,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class WishlistComponent implements OnInit {
 
-  constructor() { }
+  wishList: IWishList[];
 
+  constructor(private service: WishListServices) {
+
+  }
   ngOnInit(): void {
+    this.service.getAllWishList().subscribe(res => this.wishList = res);
   }
 
 }

@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SharedModule } from './shared/shared.module';
 import { LandingPageModule } from './landing-page/landing-page.module';
+import { CartWishlistModule } from './cart-wishlist/cart-wishlist.module';
 
 @NgModule({
   declarations: [
@@ -16,9 +17,10 @@ import { LandingPageModule } from './landing-page/landing-page.module';
     AppRoutingModule,
     BrowserAnimationsModule,
     SharedModule,
-    LandingPageModule
+    LandingPageModule,
+    CartWishlistModule
   ],
   bootstrap: [AppComponent],
-  schemas:[NO_ERRORS_SCHEMA]
+  schemas: [NO_ERRORS_SCHEMA]
 })
 export class AppModule { }

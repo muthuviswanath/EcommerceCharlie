@@ -5,7 +5,8 @@ import { CartWishlistRoutingModule } from './cart-wishlist-routing.module';
 import { CartComponent } from './components/cart/cart.component';
 import { OrderhistoryComponent } from './components/orderhistory/orderhistory.component';
 import { WishlistComponent } from './components/wishlist/wishlist.component';
-
+import { HttpClientModule } from '@angular/common/http';
+import { CartServices } from './services/cart.services';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,9 @@ import { WishlistComponent } from './components/wishlist/wishlist.component';
   ],
   imports: [
     CommonModule,
-    CartWishlistRoutingModule
-  ]
+    CartWishlistRoutingModule,
+    HttpClientModule
+  ],
+  providers: [CartServices]
 })
 export class CartWishlistModule { }

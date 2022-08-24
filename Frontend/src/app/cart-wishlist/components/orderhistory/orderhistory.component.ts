@@ -1,15 +1,20 @@
 import { Component, OnInit } from '@angular/core';
+import { IOrder } from '../../interfaces/IOrder';
+import { OrderServices } from '../../services/order.services';
 
 @Component({
-  selector: 'app-orderhistory',
+  selector: 'app-order',
   templateUrl: './orderhistory.component.html',
   styleUrls: ['./orderhistory.component.css']
 })
 export class OrderhistoryComponent implements OnInit {
 
-  constructor() { }
+  orderList: IOrder[];
 
-  ngOnInit(): void {
+  constructor(private service: OrderServices) {
+
   }
-
+  ngOnInit(): void {
+    this.service.getAllOrder().subscribe(res => this.orderList = res);
+  }
 }
