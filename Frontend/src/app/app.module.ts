@@ -6,8 +6,6 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SharedModule } from './shared/shared.module';
 import { LandingPageModule } from './landing-page/landing-page.module';
-import { CartWishlistModule } from './cart-wishlist/cart-wishlist.module';
-import { LoginRegisterModule } from './login-register/login-register.module';
 
 
 @NgModule({
@@ -20,8 +18,6 @@ import { LoginRegisterModule } from './login-register/login-register.module';
     BrowserAnimationsModule,
     SharedModule,
     LandingPageModule,
-    CartWishlistModule,
-    LoginRegisterModule
   ],
   bootstrap: [AppComponent],
   schemas: [NO_ERRORS_SCHEMA]

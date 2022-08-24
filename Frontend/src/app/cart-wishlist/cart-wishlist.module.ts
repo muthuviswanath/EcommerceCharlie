@@ -7,18 +7,18 @@ import { OrderhistoryComponent } from './components/orderhistory/orderhistory.co
 import { WishlistComponent } from './components/wishlist/wishlist.component';
 import { HttpClientModule } from '@angular/common/http';
 import { CartServices } from './services/cart.services';
+import { WishListServices } from './services/wishlist.services';
+import { OrderServices } from './services/order.services';
 
+const Components = [CartComponent, OrderhistoryComponent, WishlistComponent]
 @NgModule({
-  declarations: [
-    CartComponent,
-    OrderhistoryComponent,
-    WishlistComponent
-  ],
+  declarations: Components,
   imports: [
     CommonModule,
     CartWishlistRoutingModule,
     HttpClientModule
   ],
-  providers: [CartServices]
+  exports: Components,
+  providers: [CartServices, WishListServices, OrderServices]
 })
 export class CartWishlistModule { }

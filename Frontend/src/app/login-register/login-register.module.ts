@@ -14,7 +14,6 @@ const Components = [LoginComponent, RegisterComponent]
     CommonModule,
     FormsModule,
     LoginRegisterRoutingModule,
-
   ],
   providers: [LoginServices],
   exports: Components

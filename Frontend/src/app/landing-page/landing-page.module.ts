@@ -9,8 +9,9 @@ import { ProductServices } from './services/product.services';
 import { HttpClientModule } from '@angular/common/http';
 import { SharedModule } from '../shared/shared.module';
 import { SectionModule } from '../section/section.module';
+import { AllproductsComponent } from './components/allproducts/allproducts.component';
 
-const Components = [HomeComponent, ProductsComponent, TopProductsComponent]
+const Components = [HomeComponent, ProductsComponent, TopProductsComponent, AllproductsComponent]
 @NgModule({
   declarations: Components,
   imports: [
