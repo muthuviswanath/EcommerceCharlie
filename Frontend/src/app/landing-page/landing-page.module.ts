@@ -6,8 +6,8 @@ import { HomeComponent } from './components/home/home.component';
 import { ProductsComponent } from './components/products/products.component';
 import { TopProductsComponent } from './components/top-products/top-products.component';
 import { ProductServices } from './services/product.services';
-import { SharedModule } from '../shared/shared.module';
 import { HttpClientModule } from '@angular/common/http';
+import { SharedModule } from '../shared/shared.module';
 import { SectionModule } from '../section/section.module';
 
 const Components = [HomeComponent, ProductsComponent, TopProductsComponent]
@@ -16,9 +16,9 @@ const Components = [HomeComponent, ProductsComponent, TopProductsComponent]
   imports: [
     CommonModule,
     LandingPageRoutingModule,
-    SharedModule,
     HttpClientModule,
-    SectionModule
+    SectionModule,
+    SharedModule
   ],
   providers: [ProductServices],
   exports: Components,

@@ -1,91 +1,63 @@
 <p>Login Works</p>
-<!--
-<form [FormGroup]="loginForm" (ngsubmit)="(login)">
-<table>
-<tr>
-    <td>
-       <label for="username">UserName</label>
-    </td>
 
-    <td>
-      <input type="text" name="username" placeholder="username..." [formControl] = "username"/>
-      <div [hidden]="username.valid || username.untouched" class="error">
-        <div [hidden]="!username.hasError('minlength')">
-          username cant be less than 7 characters
+<!-- <form [FormGroup]="loginForm" (ngsubmit)="(login)">
+  <table>
+    <tr>
+      <td>
+        <label for="username">UserName</label>
+      </td>
+      <td>
+        <input type="text" name="username" placeholder="username..." [formControl]="username" />
+        <div [hidden]="username.valid || username.untouched" class="error">
+          <div [hidden]="!username.hasError('minlength')">
+            username cant be less than 7 characters
+          </div>
+          <div [hidden]="!username.hasError('required')">
+
+            username cant be empty.
+          </div>
         </div>
-        <div [hidden]="!username.hasError('required')">
-
-           username cant be empty.
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <label for="email">Email</label>
+      </td>
+      <td>
+        <input type="text" name="email" placeholder="email..." [formControl]="email" />
+        <div [hidden]="email.valid || email.untouched" class="error">
+          <div [hidden]="!email.hasError('minlength')">
+            email cant be less than 7 characters
+          </div>
+          <div [hidden]="!email.hasError('required')">
+            email cant be empty.
+          </div>
         </div>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <label for="password">Password</label>
+      </td>
+      <td>
+        <input type="password" name="password" placeholder="password..." [formControl]="password" />
+        <div [hidden]="username.valid || username.untouched" class="error">
+          <div [hidden]="!username.hasError('minlength')">
+            Password cant be less than 8 characters
+          </div>
+          <div [hidden]="!password.hasError('required')">
+            password cant be empty.
+          </div>
         </div>
-    </td>
-</tr>
-
-<tr>
-  <td>
-     <label for="email">Email</label>
-  </td>
-
-  <td>
-    <input type="text" name="email" placeholder="email..." [formControl] = "email"/>
-    <div [hidden]="email.valid || email.untouched" class="error">
-      <div [hidden]="!email.hasError('minlength')">
-        email cant be less than 7 characters
-      </div>
-      <div [hidden]="!email.hasError('required')">
-
-         email cant be empty.
-      </div>
-      </div>
-  </td>
-</tr>
-
-
-
-
-<tr>
-    <td>
-       <label for="password">Password</label>
-    </td>
-    <td>
-      <input type="password" name="password" placeholder="password..." [formControl] = "password"/>
-      <div [hidden]="username.valid || username.untouched" class="error">
-      <div [hidden]="!username.hasError('minlength')">
-        Password cant be less than 8 characters
-      </div>
-      <div [hidden]="!password.hasError('required')">
-        password cant be empty.
-      </div>
-      </div>
-    </td>
-
-</tr>
-
-
-<tr>
-<td>
-  <button  type="submit" [disabled]="!loginForm.valid" (click)="login()">Login</button>
-</td>
-</tr>
-</table>
-
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <button type="submit" [disabled]="!loginForm.valid" (click)="login()">Login</button>
+      </td>
+    </tr>
+  </table>
 </form>
-
 <div *ngIf="showMessage">
   <h3>login suceesfull</h3>
-</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
- -->
+</div> -->

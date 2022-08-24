@@ -9,7 +9,7 @@ const Components = [BodyComponent];
   declarations: Components,
   imports: [
     CommonModule,
-    SectionRoutingModule
+    SectionRoutingModule,
   ],
   exports: Components
 })

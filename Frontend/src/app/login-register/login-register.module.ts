@@ -4,7 +4,6 @@ import { CommonModule } from '@angular/common';
 import { LoginRegisterRoutingModule } from './login-register-routing.module';
 import { LoginComponent } from './components/login/login.component';
 import { LoginServices } from './services/login.services';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 const Components = [LoginComponent]
 @NgModule({
@@ -12,8 +11,6 @@ const Components = [LoginComponent]
   imports: [
     CommonModule,
     LoginRegisterRoutingModule,
-    // FormsModule,
-    // ReactiveFormsModule
   ],
   providers: [LoginServices],
   exports: Components
