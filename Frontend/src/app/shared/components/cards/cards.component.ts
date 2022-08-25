@@ -1,4 +1,5 @@
 import { Component, OnInit ,Input} from '@angular/core';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -9,11 +10,15 @@ import { Component, OnInit ,Input} from '@angular/core';
 export class CardsComponent implements OnInit {
 
   @Input() items:any={};
-  constructor() {
+  constructor(private router : Router) {
 
   }
   ngOnInit(): void {
            // without subscribe will not be able to access.
   }
+  onRequest():void{
+
+  }
+ 
 
 }

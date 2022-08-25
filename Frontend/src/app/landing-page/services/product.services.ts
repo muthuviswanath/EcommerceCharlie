@@ -18,4 +18,7 @@ export class ProductServices implements OnInit {
       .http
       .get<IProduct[]>(this.baseUrl + "api/Products");
   }
+  public getProductById(prodid:any){
+    return this.http.get(`${this.baseUrl}api/Products/${prodid}`);
+  }
 }

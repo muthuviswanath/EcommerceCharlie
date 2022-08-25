@@ -11,7 +11,7 @@ const routes: Routes = [
   { path: '', redirectTo: '/allproducts', pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
   { path: 'topproducts', component: TopProductsComponent },
-  { path: 'product', component: ProductsComponent },
+  { path: 'product/:id', component: ProductsComponent },
   { path: 'cart', component: CartComponent },
   { path: 'allproducts', component: AllproductsComponent },
   { path: 'register', component: RegisterComponent },

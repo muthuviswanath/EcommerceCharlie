@@ -2,31 +2,21 @@
   <div class="row">
     <div class="col-sm-2"></div>
     <div class="col-sm-8">
-      <h2>Product Details</h2>
+      <h2>{{prodData.productName}}</h2>
       <div class="row">
-        <!-- <div class="col-sm-2">
-          <div class="row"><img src="https://m.media-amazon.com/images/I/51T9CRiHupL._AC_UL480_FMwebp_QL65_.jpg"
-              alt="Girl in a jacket"></div>
-          <div class="row"><img src="https://m.media-amazon.com/images/I/51T9CRiHupL._AC_UL480_FMwebp_QL65_.jpg"
-              alt="Girl in a jacket"></div>
-          <div class="row"><img src="https://m.media-amazon.com/images/I/51T9CRiHupL._AC_UL480_FMwebp_QL65_.jpg"
-              alt="Girl in a jacket"></div>
-        </div> -->
+        
         <div class="col-sm-5"><img class="bigimg"
-            src="https://m.media-amazon.com/images/I/51T9CRiHupL._AC_UL480_FMwebp_QL65_.jpg" alt="Girl in a jacket">
+            src={{prodData.imagePath}} alt="Girl in a jacket">
         </div>
         <div class="col-sm-7 dsc">
           <div class="row heading">
-            <p>Grey checks blue orange borders
-              handwoven cotton patteda anchu
-              saree</p>
+            <p>{{prodData.productName}}</p>
           </div>
           <div class="row content">
-            <p>
-              Blue and Red ganga with two pallus. Length 5.70 meters and width 45 inches with two distinctive pallus can
-              be worn on both the sides no need of fall and beading. Incase you want to make a blouse one of the pallus
-              can be used (since the legnth of saree is made accordingly). Dyed with ecofriendly dyes no need of ironing
-              or starching, wash (hand wash) and wear saree (Zero Maintenance). Delivery: Ready to ship.</p>
+            <p> MRP {{prodData.price}}</p>
+            <p> Discount MRP ={{prodData.productOfferPrice}}</p>
+            <p>  Discription {{prodData.productDescription}}</p>
+            <p> Product Rating {{prodData.productRating}}</p>
           </div>
           <form>
             <input class="addcart" type="button" onclick="window.location.href='https://www.w3docs.com';"

@@ -1,1 +1,35 @@
 <p>allproducts works!</p>
+
+<div class="custome-head-cnt">
+    <div class="row" style="background-color:#FFF4E4 ;">
+      <div class="col-sm-5 big-imgcont">
+        <div>
+      <img class="big-img" src="../Pictures/one.jpg">
+      </div> 
+    </div>
+    <div class="col-sm-5 big-textcont" >
+      <p class="big-text">
+      Age old Saree is now 
+    </p>
+      <p class="big-text">Yours...</p>
+      <p class="big-text">Best part,it's your WAY!!
+    </p>
+    <p class="small-text">250 year old legacy is now in your hands..</p>
+    </div>
+  </div>
+    </div>
+
+<div class="container-fluid">
+    <div class="row">
+      <div class="col-sm-2"></div>
+      <div class="col-sm-8">
+        <h2>Product</h2>
+        <div class="row">
+          <div class="col-sm-3 crd" *ngFor="let prod of productsList">
+            <app-cards [items]="prod"></app-cards>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-2"></div>
+    </div>
+  </div>
