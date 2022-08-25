@@ -18,6 +18,7 @@ export class RegisterComponent implements OnInit {
 
   public submit():void{
     this._loginService.registerUser(this.model).subscribe();
+    alert('Registration Successful')
   }
 
 }
