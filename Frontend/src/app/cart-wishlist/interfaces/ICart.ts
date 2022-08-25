@@ -1,6 +1,6 @@
 export interface ICart {
-  CartId: number;
-  UserId: number;
-  ProductId: number;
-  CartTotal: number;
+  cartId: number;
+  userId: number;
+  productId: number;
+  cartTotal: number;
 }

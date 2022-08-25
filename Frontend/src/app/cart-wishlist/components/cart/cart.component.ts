@@ -8,13 +8,19 @@ import { CartServices } from '../../services/cart.services';
   styleUrls: ['./cart.component.css']
 })
 export class CartComponent implements OnInit {
-
   cartList: ICart[];
+  model:any={}
 
-  constructor(private service: CartServices) {
+  constructor(private _cartService: CartServices) {
 
   }
   ngOnInit(): void {
-    this.service.getAllCart().subscribe(res => this.cartList = res);
+    this._cartService.getAllCart().subscribe(
+      res => this.cartList = res
+    );
+  }
+  public submitToCart():void{
+    this._cartService.addToCart(this.model).subscribe();
+    alert("Added To Cart Successfully")
   }
 }

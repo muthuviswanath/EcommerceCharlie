@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { CartWishlistRoutingModule } from './cart-wishlist-routing.module';
@@ -19,6 +19,7 @@ const Components = [CartComponent, OrderhistoryComponent, WishlistComponent]
     HttpClientModule
   ],
   exports: Components,
-  providers: [CartServices, WishListServices, OrderServices]
+  providers: [CartServices, WishListServices, OrderServices],
+  schemas: [NO_ERRORS_SCHEMA]
 })
 export class CartWishlistModule { }

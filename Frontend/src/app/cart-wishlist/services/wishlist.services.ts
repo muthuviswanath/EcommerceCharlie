@@ -9,7 +9,7 @@ import { IWishList } from "../interfaces/IWishList";
 
 export class WishListServices implements OnInit {
   constructor(private http: HttpClient) { }
-  baseurl: string = "https://localhost:33037/"
+  baseurl: string = "http://localhost:33037/"
   ngOnInit(): void {
 
   }
