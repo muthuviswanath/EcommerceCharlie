@@ -8,13 +8,14 @@ import { LowernavComponent } from './components/header/lowernav/lowernav.compone
 import { FooterComponent } from './components/footer/footer.component';
 import { CardsComponent } from './components/cards/cards.component';
 
+
 const Components = [HeaderComponent, FooterComponent, UppernavComponent, LowernavComponent, CardsComponent];
 
 @NgModule({
   declarations: Components,
   imports: [
     CommonModule,
-    SharedRoutingModule
+    SharedRoutingModule,
   ],
   exports: Components
 })

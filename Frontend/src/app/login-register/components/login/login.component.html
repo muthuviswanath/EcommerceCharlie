@@ -1,7 +1,6 @@
 
-
 <div class="login-form">
-<form>
+<form  [formGroup]="loginForm" (ngSubmit)="login()">
   <div class="avatar">
     <img src="https://cdn2.iconfinder.com/data/icons/essenstial-ultimate-ui/64/avatar-512.png" alt="Avatar">
   </div>
@@ -13,14 +12,14 @@
       </i>
       </div>
     <input type="text" name="username" class="form-control" placeholder="Username" [formControl]="username" />
-        <div [hidden]="username.valid || username.untouched" class="error">
+        <!-- <div [hidden]="username.valid || username.untouched" class="error">
           <div [hidden]="!username.hasError('minlength')">
             username cant be less than 7 characters
           </div>
           <div [hidden]="!username.hasError('required')">
             username cant be empty.
           </div>
-        </div>
+        </div> -->
   </div>
 
 
@@ -32,14 +31,14 @@
       </div>
     
         <input type="email" name="email"  class="form-control" placeholder="Email" [formControl]="email" />
-        <div [hidden]="email.valid || email.untouched" class="error">
+        <!-- <div [hidden]="email.valid || email.untouched" class="error">
           <div [hidden]="!email.hasError('minlength')">
             email cant be less than 8 characters
           </div>
           <div [hidden]="!email.hasError('required')">
             email cant be empty.
           </div>
-        </div>
+        </div> -->
   </div>
      
 
@@ -48,7 +47,7 @@
       <i class="fa fa-lock icon"></i>
       </div>
         <input type="password" name="password" class="form-control" placeholder="Password" [formControl]="password" />
-        <div [hidden]="password.valid || password.untouched" class="error">
+        <!-- <div [hidden]="password.valid || password.untouched" class="error">
           <div [hidden]="!password.hasError('minlength')">
             Password cant be less than 6 characters
           </div>
@@ -58,7 +57,7 @@
           <div>
 
           </div>
-        </div>
+        </div> -->
   </div>
 
   <div class="form-group">

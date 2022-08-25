@@ -18,8 +18,9 @@ export class LoginComponent implements OnInit {
 
   constructor(private _loginService: LoginServices,private builder:FormBuilder) { }
 
-  ngOnInit(): void {
 
+  ngOnInit():void {
+this.loginForm;
   }
 
   loginForm:FormGroup=this.builder.group({
@@ -34,8 +35,15 @@ export class LoginComponent implements OnInit {
     this.formData=this.loginForm.value;
     this.showMessage=true;
     alert('Login Success!!')
-    //this._loginService.loginUser(this.model).subscribe();
+    console.log(this.formData);
 
-}
+  //changes for api logic
+  if(this.loginForm.valid){
+  this._loginService.loginUser(this.loginForm.value).subscribe( res=>{
+    console.log(res)
+  });
+      }
+ 
+  }
 
 }

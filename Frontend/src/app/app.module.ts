@@ -19,7 +19,8 @@ import { CartWishlistModule } from './cart-wishlist/cart-wishlist.module';
     BrowserAnimationsModule,
     SharedModule,
     LandingPageModule,
-    LoginRegisterModule
+    LoginRegisterModule,
+    CartWishlistModule
   ],
   bootstrap: [AppComponent],
   schemas: [NO_ERRORS_SCHEMA]

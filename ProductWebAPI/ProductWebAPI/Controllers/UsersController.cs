@@ -41,6 +41,15 @@ namespace ProductWebAPI.Controllers
             return user;
         }
 
+        [HttpPost("login")]
+        public async Task<ActionResult<User>> LoginUser(User user)
+        {
+            //_context.Users.Add(user);
+            var currentUser = _context.Users.Where(u => u.UserName == user.UserName &&
+            u.Password == user.Password);
+            var dbUser = await currentUser.FirstOrDefaultAsync();
+            return dbUser;
+        }
         // PUT: api/Users/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
