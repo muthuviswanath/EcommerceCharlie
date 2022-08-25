@@ -10,6 +10,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { SharedModule } from '../shared/shared.module';
 import { SectionModule } from '../section/section.module';
 import { AllproductsComponent } from './components/allproducts/allproducts.component';
+import { CartWishlistModule } from '../cart-wishlist/cart-wishlist.module';
 
 const Components = [HomeComponent, ProductsComponent, TopProductsComponent, AllproductsComponent]
 @NgModule({

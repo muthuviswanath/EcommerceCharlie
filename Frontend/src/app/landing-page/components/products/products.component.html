@@ -4,23 +4,21 @@
     <div class="col-sm-8">
       <h2>{{prodData.productName}}</h2>
       <div class="row">
-        
-        <div class="col-sm-5"><img class="bigimg"
-            src={{prodData.imagePath}} alt="Girl in a jacket">
+        <div class="col-sm-5">
+          <img class="bigimg" src={{prodData.imagePath}} alt="Girl in a jacket">
         </div>
         <div class="col-sm-7 dsc">
           <div class="row heading">
             <p>{{prodData.productName}}</p>
           </div>
           <div class="row content">
-            <p> MRP {{prodData.price}}</p>
-            <p> Discount MRP ={{prodData.productOfferPrice}}</p>
-            <p>  Discription {{prodData.productDescription}}</p>
-            <p> Product Rating {{prodData.productRating}}</p>
+            <p> MRP: {{prodData.price}}</p>
+            <p> Discount MRP: {{prodData.productOfferPrice}} INR</p>
+            <p> Description: {{prodData.productDescription}} INR</p>
+            <p> Product Rating: {{prodData.productRating}}</p>
           </div>
           <form>
-            <input class="addcart" type="button" onclick="window.location.href='https://www.w3docs.com';"
-              value="add to Cart" />
+            <input class="addcart" type="button" value="Add To Cart" (click)="submitToCart()" />
           </form>
         </div>
       </div>
