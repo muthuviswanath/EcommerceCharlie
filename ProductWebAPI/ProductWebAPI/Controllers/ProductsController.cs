@@ -40,6 +40,12 @@ namespace ProductWebAPI.Controllers
 
             return product;
         }
+        [HttpPost("search")]
+        public async Task<ActionResult<IEnumerable<Product>>> searchProducts(string searchString)
+        {
+            var products = _context.Products.Where(p => p.ProductName.Contains(searchString));
+            return await products.ToListAsync();
+        }
 
         // PUT: api/Products/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754

@@ -37,6 +37,12 @@
                           <p class="lead fw-normal mb-0">{{item.cartTotal}}</p>
                         </div>
                       </div>
+                      <div class="col-md-2 d-flex justify-content-center">
+                        <div>
+                          <input type="button" value="+" (click)="addItem(item.cartId)">
+                          <input type="button" value="--" (click)="removeItem(item.cartId)">
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
