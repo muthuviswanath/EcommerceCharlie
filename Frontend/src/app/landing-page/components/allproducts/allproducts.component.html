@@ -1,35 +1,84 @@
-<p>allproducts works!</p>
-
+<div class="container-fluid mt-3 container-fullscreen-cont">
 <div class="custome-head-cnt">
     <div class="row" style="background-color:#FFF4E4 ;">
       <div class="col-sm-5 big-imgcont">
         <div>
-      <img class="big-img" src="../Pictures/one.jpg">
+      <img class="big-img" src="./assets/Pictures/one.jpg">
       </div> 
     </div>
     <div class="col-sm-5 big-textcont" >
-      <p class="big-text">
-      Age old Saree is now 
+      <p class="big-text big-textspc">
+      Local indian
     </p>
-      <p class="big-text">Yours...</p>
-      <p class="big-text">Best part,it's your WAY!!
+    <p class="big-text ">Products Now</p>
+      <p class="big-text "> Yours...</p>
+      <p class="big-text ">Best part,</p>
+      <p class="big-text">it's your WAY!!
     </p>
-    <p class="small-text">250 year old legacy is now in your hands..</p>
+    <p class="small-text">Years old legacy products are now in your hands..</p>
     </div>
   </div>
     </div>
+  
+
 
 <div class="container-fluid">
     <div class="row">
       <div class="col-sm-2"></div>
       <div class="col-sm-8">
-        <h2>Product</h2>
+        <div class="projecthead h4">Best Sellers</div>
         <div class="row">
-          <div class="col-sm-3 crd" *ngFor="let prod of productsList">
-            <app-cards [items]="prod"></app-cards>
+          <div class="col-sm-4 crd" *ngFor="let prod of productsList;let i=index">
+            <app-cards *ngIf="i<3" [items]="prod"></app-cards>
           </div>
         </div>
       </div>
       <div class="col-sm-2"></div>
     </div>
   </div>
+
+
+  <div class="pink-cont">
+    <div class="custome-head-cnt">
+        
+        
+      </div>
+      <div class="row">
+        <div class="col-sm-2"></div>
+      <div class="col-sm-8">
+        <div class="projecthead h4" style="color:white !important">Top Products</div>
+        </div>
+        <div class="col-sm-2"></div>
+      <app-top-products></app-top-products>
+      </div>
+      
+      </div>
+
+
+      <div class="custome-head-cnt">
+        <div class="projecthead h4">Go Vocal for Local</div>
+        <div class="row" style="background-color:white ;">
+            <div class="col-sm-5 big-imgcont">
+              <div>
+            <img class="big-img" src="./assets/Pictures/one.jpg">
+            </div> 
+          </div>
+          <div class="col-sm-5 big-textcont" style="background-color:#FFEDB8;">
+            <p class="big-text">Support Handloom</p>
+            <p class="big-text">-Go vocal for local</p>
+          <p style="font-family: 'Raleway';">Support Handloom 
+        - Go vocal for local
+        
+        We invite individuals to collaborate with us 
+        and proliferate handloom crafts far and wide 
+        by being social responsible comrade. 
+        We also share revenues for referral.</p>
+          </div>
+        </div>
+        </div>
+
+
+    </div>
+
+
+ 

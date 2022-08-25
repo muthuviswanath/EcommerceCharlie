@@ -1,77 +1,77 @@
 
 <div class="login-form">
-<form  [formGroup]="loginForm" (ngSubmit)="login()">
-  <div class="avatar">
-    <img src="https://cdn2.iconfinder.com/data/icons/essenstial-ultimate-ui/64/avatar-512.png" alt="Avatar">
-  </div>
-  <h2 class="text-center">Member Login</h2> 
-       
-  <div class="form-group">
-    <div class="input-icons">
-      <i class="fa fa-user icon">
-      </i>
-      </div>
-    <input type="text" name="username" class="form-control" placeholder="Username" [formControl]="username" />
-        <!-- <div [hidden]="username.valid || username.untouched" class="error">
-          <div [hidden]="!username.hasError('minlength')">
-            username cant be less than 7 characters
-          </div>
-          <div [hidden]="!username.hasError('required')">
-            username cant be empty.
-          </div>
-        </div> -->
-  </div>
-
-
-  <div class="form-group">
-    <div class="input-icons">
-      <i class="fa fa-envelope icon">
-      </i>
+  <form  [formGroup]="loginForm" (ngSubmit)="login()">
+    <div class="avatar">
+      <img src="https://cdn2.iconfinder.com/data/icons/essenstial-ultimate-ui/64/avatar-512.png" alt="Avatar">
+    </div>
+    <h2 class="text-center">Member Login</h2> 
+         
+    <div class="form-group">
+      <div class="input-icons">
+        <i class="fa fa-user icon">
+        </i>
+        </div>
+      <input type="text" name="username" class="form-control" placeholder="Username" [formControl]="username" />
+          <!-- <div [hidden]="username.valid || username.untouched" class="error">
+            <div [hidden]="!username.hasError('minlength')">
+              username cant be less than 7 characters
+            </div>
+            <div [hidden]="!username.hasError('required')">
+              username cant be empty.
+            </div>
+          </div> -->
+    </div>
+  
+  
+    <div class="form-group">
+      <div class="input-icons">
+        <i class="fa fa-envelope icon">
+        </i>
+        
+        </div>
       
-      </div>
-    
-        <input type="email" name="email"  class="form-control" placeholder="Email" [formControl]="email" />
-        <!-- <div [hidden]="email.valid || email.untouched" class="error">
-          <div [hidden]="!email.hasError('minlength')">
-            email cant be less than 8 characters
-          </div>
-          <div [hidden]="!email.hasError('required')">
-            email cant be empty.
-          </div>
-        </div> -->
+          <input type="email" name="email"  class="form-control" placeholder="Email" [formControl]="email" />
+          <!-- <div [hidden]="email.valid || email.untouched" class="error">
+            <div [hidden]="!email.hasError('minlength')">
+              email cant be less than 8 characters
+            </div>
+            <div [hidden]="!email.hasError('required')">
+              email cant be empty.
+            </div>
+          </div> -->
+    </div>
+       
+  
+    <div class="form-group">
+      <div class="input-icons">
+        <i class="fa fa-lock icon"></i>
+        </div>
+          <input type="password" name="password" class="form-control" placeholder="Password" [formControl]="password" />
+          <!-- <div [hidden]="password.valid || password.untouched" class="error">
+            <div [hidden]="!password.hasError('minlength')">
+              Password cant be less than 6 characters
+            </div>
+            <div [hidden]="!password.hasError('required')">
+              password cant be empty.
+            </div>
+            <div>
+  
+            </div>
+          </div> -->
+    </div>
+  
+    <div class="form-group">
+          <button type="submit"  class="btn btn-primary btn-lg btn-block" [disabled]="!loginForm.valid" (click)="login()">Login</button>
+    </div>
+  
+      <div class="clearfix">
+        <label class="pull-left checkbox-inline"><input type="checkbox"> Remember me</label>
+        <a href="#" class="pull-right">Forgot Password?</a>
+    </div>
+  </form>
+  
+    <p class="text-center small">Don't have an account? <a routerLink="/register">Sign up here!</a></p>
+  
   </div>
-     
-
-  <div class="form-group">
-    <div class="input-icons">
-      <i class="fa fa-lock icon"></i>
-      </div>
-        <input type="password" name="password" class="form-control" placeholder="Password" [formControl]="password" />
-        <!-- <div [hidden]="password.valid || password.untouched" class="error">
-          <div [hidden]="!password.hasError('minlength')">
-            Password cant be less than 6 characters
-          </div>
-          <div [hidden]="!password.hasError('required')">
-            password cant be empty.
-          </div>
-          <div>
-
-          </div>
-        </div> -->
-  </div>
-
-  <div class="form-group">
-        <button type="submit"  class="btn btn-primary btn-lg btn-block" [disabled]="!loginForm.valid" (click)="login()">Login</button>
-  </div>
-
-    <div class="clearfix">
-      <label class="pull-left checkbox-inline"><input type="checkbox"> Remember me</label>
-      <a href="#" class="pull-right">Forgot Password?</a>
-  </div>
-</form>
-
-  <p class="text-center small">Don't have an account? <a routerLink="/register">Sign up here!</a></p>
-
-</div>
 
   
