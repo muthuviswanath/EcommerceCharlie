@@ -28,9 +28,6 @@ export class LoginServices implements OnInit {
     return this.http.post(this.baseURl+"api/Users",data,httpOptions);
   }
 
-
-
-
   public registerUser(data:any){
     const httpOptions = {
       headers: new HttpHeaders({
