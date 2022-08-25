@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, NgForm, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { LoginServices } from 'src/app/login-register/services/login.services';
 import { ILogin } from "../../interfaces/ILogin";
 
@@ -16,7 +17,7 @@ export class LoginComponent implements OnInit {
   email=new FormControl('',[Validators.required,Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$")]);
 
 
-  constructor(private _loginService: LoginServices,private builder:FormBuilder) { }
+  constructor(private _loginService: LoginServices,private builder:FormBuilder, private route: Router) { }
 
 
   ngOnInit():void {
@@ -40,7 +41,14 @@ this.loginForm;
   //changes for api logic
   if(this.loginForm.valid){
   this._loginService.loginUser(this.loginForm.value).subscribe( res=>{
-    console.log(res)
+         console.log(res)
+    if(res==null){
+      this.route.navigateByUrl('/register')
+    }
+    else{
+      this.route.navigateByUrl('/topproducts')
+    }
+    
   });
       }
  
