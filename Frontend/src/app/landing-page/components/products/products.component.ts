@@ -17,7 +17,7 @@ export class ProductsComponent implements OnInit {
   model: any = {};
   sub: any;
   id: any;
-
+  fakeArray= new Array(5);
   isBigEnough(element, index, array): any {
     return (element >= 10);
   }
@@ -32,13 +32,19 @@ export class ProductsComponent implements OnInit {
     });
     this.prodData = this._productServices.getProductById(this.id).subscribe(
       res => {
-        this.prodData = res
+        this.prodData = res;
+        
       }
+      
     )
+    console.log(this.fakeArray);
     this._productServices.getAllProducts().subscribe(res => {
       this.productsList = res.filter(element => element.productDescription == this.prodData.productDescription);
     }
     );
+
+    
+  
   }
 
   public submitToCart():void{
