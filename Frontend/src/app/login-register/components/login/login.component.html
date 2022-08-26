@@ -60,13 +60,16 @@
         </div>
   </div>
 
-  <div class="form-group">
-        <button type="submit"  class="btn btn-primary btn-lg btn-block" [disabled]="!loginForm.valid" (click)="login()">Login</button>
+  <div class="form-group btnspc">
+        <button type="submit"  class="btn btn-primary btn-lg btn-block btnlong" [disabled]="!loginForm.valid" (click)="login()">Login</button>
   </div>
 
     <div class="clearfix">
       <label class="pull-left checkbox-inline"><input type="checkbox"> Remember me</label>
       <a href="#" class="pull-right">Forgot Password?</a>
   </div>
+  <div class="form-group btnspc">
+    <a  class="btn btn-primary btn-lg btn-block spc" routerLink="/register">Sign Up</a>
+</div>
 
   
