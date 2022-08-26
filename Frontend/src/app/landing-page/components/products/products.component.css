@@ -25,7 +25,7 @@ color: #767679;
 }
 
 .addcart{
-    width: 115px;
+    width: 145px;
 height: 35px;
 
 background: #27BEB9;
@@ -36,6 +36,8 @@ font-style: normal;
 font-weight: 600;
 font-size: 18px;
 line-height: 26px;
+
+margin-top:10px;
 
 
 
