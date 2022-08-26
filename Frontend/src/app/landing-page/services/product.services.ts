@@ -36,4 +36,13 @@ export class ProductServices implements OnInit {
     return this.http.post(`${this.baseURL}api/Products/search`, JSON.stringify(prodData), httpOptions);
   }
 
+  public addProduct(productData: any) {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json; charset=utf-8'
+      })
+    };
+    return this.http.post(`${this.baseURL}api/Products`, productData, httpOptions);
+  }
+
 }

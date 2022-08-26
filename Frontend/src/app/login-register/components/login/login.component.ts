@@ -12,9 +12,9 @@ export class LoginComponent implements OnInit {
 
   public formData: any = {};
   public showMessage: boolean = false;
-  username = new FormControl('', [Validators.required, Validators.minLength(7)]);
-  password = new FormControl('', [Validators.required, Validators.minLength(6)]);
-  email = new FormControl('', [Validators.required, Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$")]);
+  username = new FormControl('', [Validators.required, Validators.minLength(3)]);
+  password = new FormControl('', [Validators.required, Validators.minLength(3)]);
+  // email = new FormControl('', [Validators.required, Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$")]);
 
   constructor(private _loginService: LoginServices, private builder: FormBuilder, private route: Router) {
 
@@ -27,27 +27,33 @@ export class LoginComponent implements OnInit {
   loginForm: FormGroup = this.builder.group({
     username: this.username,
     password: this.password,
-    email: this.email,
+    // email: this.email,
   })
 
 
   public login() {
     this.formData = this.loginForm.value;
     this.showMessage = true;
-    alert('Login Success!!')
     console.log(this.formData);
 
     // Changes For API Logic
     if (this.loginForm.valid) {
-      this._loginService.loginUser(this.loginForm.value).subscribe(res => {
-        console.log(res)
-        if (res == null) {
-          this.route.navigateByUrl('/register')
-        }
-        else {
-          this.route.navigateByUrl('/topproducts')
-        }
-      });
+      if (this.formData.username == "admin" && this.formData.password == "admin") {
+        this.route.navigateByUrl('/admin')
+      }
+      else {
+        this._loginService.loginUser(this.loginForm.value).subscribe(
+          (response) => {
+            console.log(response)
+            if (response == null) {
+              this.route.navigateByUrl('/register')
+            }
+            else {
+              this.route.navigateByUrl('/topproducts')
+            }
+          }
+        );
+      }
     }
   }
 
