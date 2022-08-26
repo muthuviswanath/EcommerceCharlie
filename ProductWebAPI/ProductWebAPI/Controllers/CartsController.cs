@@ -24,7 +24,7 @@ namespace ProductWebAPI.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Cart>>> GetCarts()
         {
-            return await _context.Carts.ToListAsync();
+            return await _context.Carts.Include(u => u.User).Include(p => p.Product).ToListAsync();
         }
 
         // GET: api/Carts/5

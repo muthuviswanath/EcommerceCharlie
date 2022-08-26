@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ProductServices } from 'src/app/landing-page/services/product.services';
+import { Observable } from 'rxjs';
 import { ICart } from '../../interfaces/ICart';
 import { CartServices } from '../../services/cart.services';
 
@@ -9,15 +9,22 @@ import { CartServices } from '../../services/cart.services';
   styleUrls: ['./cart.component.css']
 })
 export class CartComponent implements OnInit {
-  cartList: ICart[];
+
+  tempList: any;
+  cartList: Array<any> = []
   cartData: any = {};
-  pid: number = 0;
-  constructor(private _cartService: CartServices, private _productService: ProductServices) {
+
+  constructor(private _cartService: CartServices) {
   }
 
   ngOnInit(): void {
     this._cartService.getAllCart().subscribe(
-      res => this.cartList = res
+      res => {
+        this.tempList = res;
+        this.cartList = this.tempList.$values;
+        console.log(this.cartList);
+
+      }
     );
   }
 

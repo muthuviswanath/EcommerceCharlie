@@ -24,8 +24,8 @@ export class CartServices implements OnInit {
     return this.data;
   }
 
-  getAllCart(): Observable<ICart[]> {
-    return this.http.get<ICart[]>(this.baseURl + "api/Carts")
+  getAllCart(){
+    return this.http.get(this.baseURl + "api/Carts")
   }
 
   public addToCart(data: any) {
