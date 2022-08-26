@@ -37,7 +37,6 @@ export class ProductsComponent implements OnInit {
       }
       
     )
-    console.log(this.fakeArray);
     this._productServices.getAllProducts().subscribe(res => {
       this.productsList = res.filter(element => element.productDescription == this.prodData.productDescription);
     }

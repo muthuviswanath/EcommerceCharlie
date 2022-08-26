@@ -11,8 +11,9 @@ import { SharedModule } from '../shared/shared.module';
 import { SectionModule } from '../section/section.module';
 import { AllproductsComponent } from './components/allproducts/allproducts.component';
 import { CartWishlistModule } from '../cart-wishlist/cart-wishlist.module';
+import { SearchResultComponent } from './components/search-result/search-result.component';
 
-const Components = [HomeComponent, ProductsComponent, TopProductsComponent, AllproductsComponent]
+const Components = [HomeComponent, ProductsComponent, TopProductsComponent, AllproductsComponent, SearchResultComponent]
 @NgModule({
   declarations: Components,
   imports: [
@@ -20,7 +21,8 @@ const Components = [HomeComponent, ProductsComponent, TopProductsComponent, Allp
     LandingPageRoutingModule,
     HttpClientModule,
     SectionModule,
-    SharedModule
+    SharedModule,
+    CartWishlistModule
   ],
   providers: [ProductServices],
   exports: Components,
