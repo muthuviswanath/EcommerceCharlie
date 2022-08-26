@@ -1,8 +1,24 @@
+
+
+<div class="container-fluid mt-3 container-fullscreen-cont">
+    <div class="custome-head-cnt">
+      <div class="row" style="background-color:#FFF4E4 ;">
+      <div class="page-head h4"><div>Products Related to <span>"{{this.id}}"</span></div></div>
+    </div>
+       
+      </div>
+</div>
+
+
+
+
+
+
+
 <div class="container-fluid">
     <div class="row">
         <div class="col-sm-2"></div>
         <div class="col-sm-8">
-            <div>Products Related to <span>{{this.id}}</span></div>
             <div class="row">
                 <div class="col-sm-3 crd" *ngFor="let prod of searchList;let i=index">
                     <app-cards [items]="prod"></app-cards>
