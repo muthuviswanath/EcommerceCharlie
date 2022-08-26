@@ -303,6 +303,8 @@ text-align: center;
 }
 .search_bar{
   height:35px;
+  width:80%;
+  display: inline-block;
 }
 .crt_img{
   height: 30px !important;
