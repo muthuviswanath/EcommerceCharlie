@@ -12,11 +12,22 @@ export class WishlistComponent implements OnInit {
   wishList: IWishList[];
   wishListData: any = {};
 
-  constructor(private service: WishListServices) {
+  constructor(private _wishListService: WishListServices) {
 
   }
   ngOnInit(): void {
-    this.service.getAllWishList().subscribe(res => this.wishList = res);
+    this._wishListService.getAllWishList().subscribe(
+      (response) => {
+        this.wishList = response;
+      }
+    );
   }
 
+  public removeItem(wishListId: any) {
+    this._wishListService.deleteWishListData(wishListId).subscribe(
+      () => {
+
+      }
+    )
+  }
 }

@@ -8,17 +8,23 @@ import { LoginServices } from '../../services/login.services';
 })
 export class RegisterComponent implements OnInit {
 
-  model:any={};
+  model: any = {};
 
-  constructor(private _loginService: LoginServices) { }
+  constructor(private _loginService: LoginServices) {
+
+  }
 
   ngOnInit(): void {
 
   }
 
-  public submit():void{
-    this._loginService.registerUser(this.model).subscribe();
-    alert('Registration Successful')
+  public submit(): void {
+    this._loginService.registerUser(this.model).subscribe(
+      () => {
+
+      }
+    );
+    alert('Registration Successful');
   }
 
 }

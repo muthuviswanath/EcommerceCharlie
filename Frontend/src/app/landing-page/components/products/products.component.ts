@@ -18,13 +18,13 @@ export class ProductsComponent implements OnInit {
   model: any = {};
   sub: any;
   id: any;
-  fakeArray= new Array(5);
-  
+  fakeArray = new Array(5);
+
   isBigEnough(element, index, array): any {
     return (element >= 10);
   }
 
-  constructor(private _productServices: ProductServices, private route: ActivatedRoute, private _cartService:CartServices,private _wishListService:WishListServices) {
+  constructor(private _productServices: ProductServices, private route: ActivatedRoute, private _cartService: CartServices, private _wishListService: WishListServices) {
 
   }
 
@@ -33,36 +33,36 @@ export class ProductsComponent implements OnInit {
       this.id = params['id'];
     });
     this.prodData = this._productServices.getProductById(this.id).subscribe(
-      res => {
-        this.prodData = res;
-        
+      (response) => {
+        this.prodData = response;
       }
-      
     )
-    this._productServices.getAllProducts().subscribe(res => {
-      this.productsList = res.filter(element => element.productDescription == this.prodData.productDescription);
-    }
+    this._productServices.getAllProducts().subscribe(
+      (response) => {
+        this.productsList = response.filter(
+          (element) => {
+            element.productDescription == this.prodData.productDescription;
+          }
+        );
+      }
     );
-
-    
-  
   }
 
-  public submitToCart():void{
+  public submitToCart(): void {
     this.model.productId = this.prodData.productId;
     this.model.cartTotal = this.prodData.productOfferPrice;
     this.model.userId = 5;
     this._cartService.addToCart(this.model).subscribe();
-    alert("Added To Cart Successfully")
-  }
-  
-//code added by apoorv
-  public submitToWishList():void{
-    this.model.productId = this.prodData.productId;
-    this.model.userId=5;
-    this._wishListService.addToWishList(this.model).subscribe();
-    alert("Added To WishList Successfully")
+    alert("Added To Cart Successfully");
   }
 
- 
+  // Code Added By Apoorv
+  public submitToWishList(): void {
+    this.model.productId = this.prodData.productId;
+    this.model.userId = 5;
+    this._wishListService.addToWishList(this.model).subscribe();
+    alert("Added To WishList Successfully");
+  }
+
+
 }

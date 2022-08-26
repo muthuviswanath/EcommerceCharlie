@@ -20,7 +20,7 @@ const routes: Routes = [
   { path: 'register', component: RegisterComponent },
   { path: 'wishlist', component: WishlistComponent },
   { path: 'search/:id', component: SearchResultComponent },
-  { path: 'order', component: OrderhistoryComponent}
+  { path: 'order', component: OrderhistoryComponent }
 ];
 
 @NgModule({

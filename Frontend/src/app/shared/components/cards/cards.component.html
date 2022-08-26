@@ -1,12 +1,8 @@
 <div class="card">
   <img src={{items.imagePath}} alt="Avatar">
   <div class="container">
-   <!-- <h4><b>{{items.productName}}</b></h4>
-    <p><strong>{{items.quantity}}</strong></p>
-    <p><strong>{{items.productOfferPrice}} INR</strong></p>
-    <p>{{items.productDescription}}</p>
-    <p>{{items.price}}</p>
-    <p>{{items.productRating}}</p>-->
-    <a class="btn btn-white-view" [routerLink]="[ '/product',items.productId]"><h4><b>{{items.productName}}</b></h4></a>
+    <a class="btn btn-white-view" [routerLink]="[ '/product',items.productId]">
+      <h4><b>{{items.productName}}</b></h4>
+    </a>
   </div>
 </div>

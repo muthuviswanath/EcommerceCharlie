@@ -14,6 +14,7 @@ export class SearchResultComponent implements OnInit {
   id: any;
   productsList: IProduct[];
   searchList: any = [];
+
   constructor(private route: ActivatedRoute, private _productService: ProductServices) {
 
   }
@@ -23,12 +24,10 @@ export class SearchResultComponent implements OnInit {
       this.id = params['id'];
     });
     this._productService.searchProducts(this.id).subscribe(
-      response => {
+      (response) => {
         this.searchList = response
         console.log(this.searchList);
       }
     );
-
   }
-
 }

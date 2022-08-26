@@ -9,6 +9,7 @@ import { Component, Input, OnInit } from '@angular/core';
 export class UppernavComponent implements OnInit {
 
   public searchString: string = "";
+
   constructor(private http: HttpClient) {
 
   }
@@ -18,7 +19,7 @@ export class UppernavComponent implements OnInit {
   }
 
   submitSearch() {
-    const payload = { searchString: this.searchString };
+    const payLoad = { searchString: this.searchString };
   }
 
 

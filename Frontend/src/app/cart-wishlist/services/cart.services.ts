@@ -8,49 +8,54 @@ import { ICart } from "../interfaces/ICart";
 })
 
 export class CartServices implements OnInit {
-  constructor(private http: HttpClient) { }
-  baseURl: string = "http://localhost:33037/"
+
+  baseURL: string = "http://localhost:33037/";
+
+  constructor(private http: HttpClient) {
+
+  }
+
   ngOnInit(): void {
 
   }
 
-  public data: any = {}
+  public data: any = {};
 
-  setOptions(option, value) {
+  public setOptions(option, value) {
     this.data[option] = value;
   }
 
-  getOptions() {
+  public getOptions() {
     return this.data;
   }
 
-  getAllCart(){
-    return this.http.get(this.baseURl + "api/Carts")
+  public getAllCart(): Observable<ICart[]> {
+    return this.http.get<ICart[]>(`${this.baseURL}api/Carts`);
   }
 
-  public addToCart(data: any) {
+  public addToCart(cartData: any) {
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json; charset=utf-8'
       })
     };
-    return this.http.post(this.baseURl + "api/Carts", data, httpOptions);
+    return this.http.post(`${this.baseURL}api/Carts`, cartData, httpOptions);
   }
 
-  public getCartById(cartid: any) {
-    return this.http.get(`${this.baseURl}api/Carts/${cartid}`);
+  public getCartById(cartId: any) {
+    return this.http.get(`${this.baseURL}api/Carts/${cartId}`);
   }
 
-  public updateCartData(cartid: any, data: any) {
+  public updateCartData(cartId: any, data: any) {
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json; charset=utf-8'
       })
     };
-    return this.http.put(this.baseURl + "api/Carts/" + cartid, data, httpOptions);
+    return this.http.put(`${this.baseURL}api/Carts/${cartId}`, data, httpOptions);
   }
 
-  public deleteCartData(cartid: any) {
-    return this.http.delete(`${this.baseURl}api/Carts/${cartid}`, cartid);
+  public deleteCartData(cartId: any) {
+    return this.http.delete(`${this.baseURL}api/Carts/${cartId}`, cartId);
   }
 }

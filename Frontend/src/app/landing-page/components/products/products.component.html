@@ -14,20 +14,20 @@
             <p> Discount MRP: {{prodData.productOfferPrice}} INR</p>
             <p> MRP: {{prodData.price}} INR</p>
             <p> Description: {{prodData.productDescription}} INR</p>
-            <p> Product Rating:<span *ngFor = "let n of fakeArray ;let i=index">
-
-              <i *ngIf="i<prodData.productRating" class='fa fa-star yellow-color'></i>
-            </span></p>
+            <p> Product Rating:<span *ngFor="let n of fakeArray ;let i=index">
+                <i *ngIf="i<prodData.productRating" class='fa fa-star yellow-color'></i>
+              </span></p>
           </div>
           <form>
             <input class="addcart" type="button" value="Add To Cart" (click)="submitToCart()" />
           </form>
-          
+
           <form>
-            <input class="addcart" type="button" value="Add To wishlist" (click)="submitToWishList()"  routerLink="/wishlist"/>
+            <input class="addcart" type="button" value="Add To wishlist" (click)="submitToWishList()"
+              routerLink="/wishlist" />
           </form>
-        
-    
+
+
         </div>
       </div>
       <div class="row">

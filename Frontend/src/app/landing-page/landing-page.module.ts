@@ -26,6 +26,6 @@ const Components = [HomeComponent, ProductsComponent, TopProductsComponent, Allp
   ],
   providers: [ProductServices],
   exports: Components,
-  schemas:[NO_ERRORS_SCHEMA]
+  schemas: [NO_ERRORS_SCHEMA]
 })
 export class LandingPageModule { }

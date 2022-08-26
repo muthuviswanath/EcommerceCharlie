@@ -24,7 +24,8 @@ namespace ProductWebAPI.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<WishList>>> GetWishLists()
         {
-            return await _context.WishLists.Include(u => u.User).Include(p => p.Product).ToListAsync();
+            //return await _context.WishLists.Include(u => u.User).Include(p => p.Product).ToListAsync();
+            return await _context.WishLists.ToListAsync();
         }
 
         // GET: api/WishLists/5

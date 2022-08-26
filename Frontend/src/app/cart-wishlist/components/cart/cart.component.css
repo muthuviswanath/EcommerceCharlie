@@ -2,7 +2,6 @@ about {
   text-align: center;
   width: 60%;
   margin: auto;
-
 }
 
 .c1 {
@@ -89,15 +88,12 @@ about {
 }
 
 .mainhead {
-
   text-align: center;
   font-family: 'DM Serif Display';
   color: #44334F;
   font-size: 34px;
   font-weight: 400;
   padding: 0px 15px;
-
-
 }
 
 .lnkfoot {
@@ -198,8 +194,6 @@ about {
   color: #1A0B5B !important;
   line-height: 1.4;
   margin: 40px 0px 20px 0px;
-
-
 }
 
 .line-cnt {
@@ -209,7 +203,6 @@ about {
   margin: auto;
   line-height: 1.5;
   max-width: 700px !important;
-
 }
 
 .big-imgcont {
@@ -222,7 +215,6 @@ about {
   height: 80%;
   width: 70%;
   object-fit: cover;
-
 }
 
 .big-text {
@@ -325,7 +317,6 @@ about {
     justify-content: center;
     padding-left: 0px;
   }
-
 }
 
 .ct {

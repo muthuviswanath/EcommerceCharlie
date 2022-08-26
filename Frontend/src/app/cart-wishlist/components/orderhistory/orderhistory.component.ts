@@ -11,10 +11,14 @@ export class OrderhistoryComponent implements OnInit {
 
   orderList: IOrder[];
 
-  constructor(private service: OrderServices) {
+  constructor(private _orderService: OrderServices) {
 
   }
   ngOnInit(): void {
-    this.service.getAllOrder().subscribe(res => this.orderList = res);
+    this._orderService.getAllOrder().subscribe(
+      (response) => {
+        this.orderList = response;
+      }
+    );
   }
 }

@@ -8,22 +8,25 @@ import { CartServices } from '../../services/cart.services';
   templateUrl: './cart.component.html',
   styleUrls: ['./cart.component.css']
 })
+
 export class CartComponent implements OnInit {
 
-  tempList: any;
-  cartList: Array<any> = []
+  // tempList: any;
+  // cartList: Array<any> = [];
+  cartList: ICart[];
   cartData: any = {};
 
   constructor(private _cartService: CartServices) {
+
   }
 
   ngOnInit(): void {
     this._cartService.getAllCart().subscribe(
-      res => {
-        this.tempList = res;
-        this.cartList = this.tempList.$values;
+      (response) => {
+        this.cartList = response
+        // this.tempList = response;
+        // this.cartList = this.tempList.$values;
         console.log(this.cartList);
-
       }
     );
   }

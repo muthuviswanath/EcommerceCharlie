@@ -8,24 +8,32 @@ import { IWishList } from "../interfaces/IWishList";
 })
 
 export class WishListServices implements OnInit {
-  constructor(private http: HttpClient) { }
-  baseurl: string = "http://localhost:33037/"
+
+  baseURL: string = "http://localhost:33037/";
+
+  constructor(private http: HttpClient) {
+
+  }
+
   ngOnInit(): void {
 
   }
 
-  getAllWishList(): Observable<IWishList[]> {
-    return this.http.get<IWishList[]>(this.baseurl + "api/WishLists")
+  public getAllWishList(): Observable<IWishList[]> {
+    return this.http.get<IWishList[]>(`${this.baseURL}api/WishLists`);
   }
 
-//code added by apoorv
+  // Code Added By Apoorv
   public addToWishList(data: any) {
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json; charset=utf-8'
       })
     };
-    return this.http.post(this.baseurl + "api/Wishlists", data, httpOptions);
+    return this.http.post(`${this.baseURL}api/WishLists`, data, httpOptions);
   }
- 
+
+  public deleteWishListData(wishListId: any){
+    return this.http.delete(`${this.baseURL}api/WishLists/${wishListId}`, wishListId);
+  }
 }

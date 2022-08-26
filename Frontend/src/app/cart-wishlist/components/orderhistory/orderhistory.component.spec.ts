@@ -8,9 +8,9 @@ describe('OrderhistoryComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ OrderhistoryComponent ]
+      declarations: [OrderhistoryComponent]
     })
-    .compileComponents();
+      .compileComponents();
 
     fixture = TestBed.createComponent(OrderhistoryComponent);
     component = fixture.componentInstance;

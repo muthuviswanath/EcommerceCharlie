@@ -8,27 +8,32 @@ import { HttpHeaders } from "@angular/common/http";
 })
 
 export class ProductServices implements OnInit {
-  constructor(private http: HttpClient) { }
-  baseUrl: string = "http://localhost:33037/"
+
+  baseURL: string = "http://localhost:33037/";
+
+  constructor(private http: HttpClient) {
+
+  }
+
   ngOnInit(): void {
 
   }
-  getAllProducts(): Observable<IProduct[]> {
-    return this
-      .http
-      .get<IProduct[]>(this.baseUrl + "api/Products");
-  }
-  public getProductById(prodid: any) {
-    return this.http.get(`${this.baseUrl}api/Products/${prodid}`);
+
+  public getAllProducts(): Observable<IProduct[]> {
+    return this.http.get<IProduct[]>(`${this.baseURL}api/Products`);
   }
 
-  public searchProducts(data: any) {
+  public getProductById(prodId: any) {
+    return this.http.get(`${this.baseURL}api/Products/${prodId}`);
+  }
+
+  public searchProducts(prodData: any) {
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json; charset=utf-8'
       })
     };
-    return this.http.post(this.baseUrl + "api/Products/search", JSON.stringify(data), httpOptions);
+    return this.http.post(`${this.baseURL}api/Products/search`, JSON.stringify(prodData), httpOptions);
   }
 
 }

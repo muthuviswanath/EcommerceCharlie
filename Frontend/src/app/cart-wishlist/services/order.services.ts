@@ -8,12 +8,18 @@ import { IOrder } from "../interfaces/IOrder";
 })
 
 export class OrderServices implements OnInit {
-  constructor(private http: HttpClient) { }
-  baseurl: string = "http://localhost:33037/"
+
+  baseURL: string = "http://localhost:33037/";
+
+  constructor(private http: HttpClient) {
+
+  }
+
   ngOnInit(): void {
 
   }
-  getAllOrder(): Observable<IOrder[]> {
-    return this.http.get<IOrder[]>(this.baseurl + "api/Orders")
+
+  public getAllOrder(): Observable<IOrder[]> {
+    return this.http.get<IOrder[]>(`${this.baseURL}api/Orders`);
   }
 }
