@@ -49,4 +49,8 @@ export class CartServices implements OnInit {
     };
     return this.http.put(this.baseURl + "api/Carts/" + cartid, data, httpOptions);
   }
+
+  public deleteCartData(cartid: any) {
+    return this.http.delete(`${this.baseURl}api/Carts/${cartid}`, cartid);
+  }
 }

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ProductServices } from 'src/app/landing-page/services/product.services';
 import { ICart } from '../../interfaces/ICart';
 import { CartServices } from '../../services/cart.services';
 
@@ -10,7 +11,8 @@ import { CartServices } from '../../services/cart.services';
 export class CartComponent implements OnInit {
   cartList: ICart[];
   cartData: any = {};
-  constructor(private _cartService: CartServices) {
+  pid: number = 0;
+  constructor(private _cartService: CartServices, private _productService: ProductServices) {
   }
 
   ngOnInit(): void {
@@ -20,8 +22,11 @@ export class CartComponent implements OnInit {
   }
 
   public updateCart() {
-    this._cartService.updateCartData(this.cartData.cartId, this.cartData).subscribe(() => {
-    });
+    this._cartService.updateCartData(this.cartData.cartId, this.cartData).subscribe(
+      () => {
+
+      }
+    );
   }
 
   public incrementItem(cartid: any) {
@@ -42,5 +47,13 @@ export class CartComponent implements OnInit {
         this.updateCart();
       }
     );
+  }
+
+  public removeItem(cartId: any) {
+    this._cartService.deleteCartData(cartId).subscribe(
+      () => {
+
+      }
+    )
   }
 }
