@@ -41,7 +41,7 @@ namespace ProductWebAPI.Controllers
             return product;
         }
         [HttpPost("search")]
-        public async Task<ActionResult<IEnumerable<Product>>> searchProducts(string searchString)
+        public async Task<ActionResult<IEnumerable<Product>>> searchProducts([FromBody]string searchString)
         {
             var products = _context.Products.Where(p => p.ProductName.Contains(searchString));
             return await products.ToListAsync();

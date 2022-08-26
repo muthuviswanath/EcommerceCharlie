@@ -1,6 +1,6 @@
 import { Injectable, OnInit } from "@angular/core";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
-import { Observable, tap } from "rxjs";
+import { Observable } from "rxjs";
 import { ILogin } from "../interfaces/ILogin";
 
 @Injectable({
@@ -18,27 +18,23 @@ export class LoginServices implements OnInit {
   ngOnInit(): void {
 
   }
-        /***Login user service  */
-  public loginUser(data:any){
+
+  public registerUser(data: any) {
     const httpOptions = {
       headers: new HttpHeaders({
-        'Content-Type':'application/json; charset=utf-8'
+        'Content-Type': 'application/json; charset=utf-8'
       })
     };
-    return this.http.post(this.baseURl+"api/Users/login",data,httpOptions);
+    return this.http.post(this.baseURl + "api/Users", data, httpOptions);
   }
 
-
-
-
-
-
-  public registerUser(data:any){
+  /***Login user service  */
+  public loginUser(data: any) {
     const httpOptions = {
       headers: new HttpHeaders({
-        'Content-Type':'application/json; charset=utf-8'
+        'Content-Type': 'application/json; charset=utf-8'
       })
     };
-    return this.http.post(this.baseURl+"api/Users",data,httpOptions);
+    return this.http.post(this.baseURl + "api/Users/login", data, httpOptions);
   }
 }

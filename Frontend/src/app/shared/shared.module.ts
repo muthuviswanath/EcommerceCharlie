@@ -7,6 +7,8 @@ import { UppernavComponent } from './components/header/uppernav/uppernav.compone
 import { LowernavComponent } from './components/header/lowernav/lowernav.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { CardsComponent } from './components/cards/cards.component';
+import { FormsModule } from '@angular/forms';
+
 
 
 const Components = [HeaderComponent, FooterComponent, UppernavComponent, LowernavComponent, CardsComponent];
@@ -16,6 +18,8 @@ const Components = [HeaderComponent, FooterComponent, UppernavComponent, Lowerna
   imports: [
     CommonModule,
     SharedRoutingModule,
+    FormsModule,
+
   ],
   exports: Components
 })
