@@ -22,7 +22,9 @@
         </div>
       </div>
       <div class="row">
-        <h2>Related Products</h2>
+        <div class="row heading">
+          <p>Related Products</p>
+        </div>
         <div class="col-sm-3" *ngFor="let prod of productsList">
           <app-cards [items]="prod"></app-cards>
         </div>
