@@ -1,5 +1,5 @@
 export interface IWishList {
-  WishListId: number;
-  UserId: number;
-  ProductId: number;
+  wishListId: number;
+  userId: number;
+  productId: number;
 }

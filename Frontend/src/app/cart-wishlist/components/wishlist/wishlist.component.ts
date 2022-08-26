@@ -10,6 +10,7 @@ import { WishListServices } from '../../services/wishlist.services';
 export class WishlistComponent implements OnInit {
 
   wishList: IWishList[];
+  wishListData: any = {};
 
   constructor(private service: WishListServices) {
 

@@ -22,7 +22,12 @@
           <form>
             <input class="addcart" type="button" value="Add To Cart" (click)="submitToCart()" />
           </form>
-          <a routerLink="/wishlist" class="btn btn-primary explore-cnt">WishList +</a>
+          
+          <form>
+            <input class="addcart" type="button" value="Add To wishlist" (click)="submitToWishList()"  routerLink="/wishlist"/>
+          </form>
+        
+    
         </div>
       </div>
       <div class="row">

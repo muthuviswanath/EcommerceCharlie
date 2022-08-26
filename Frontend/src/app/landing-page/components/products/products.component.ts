@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { CartServices } from 'src/app/cart-wishlist/services/cart.services';
+import { WishListServices } from 'src/app/cart-wishlist/services/wishlist.services';
 import { IProduct } from "../../interfaces/IProduct";
 import { ProductServices } from '../../services/product.services';
 @Component({
@@ -18,11 +19,12 @@ export class ProductsComponent implements OnInit {
   sub: any;
   id: any;
   fakeArray= new Array(5);
+  
   isBigEnough(element, index, array): any {
     return (element >= 10);
   }
 
-  constructor(private _productServices: ProductServices, private route: ActivatedRoute, private _cartService:CartServices) {
+  constructor(private _productServices: ProductServices, private route: ActivatedRoute, private _cartService:CartServices,private _wishListService:WishListServices) {
 
   }
 
@@ -48,9 +50,19 @@ export class ProductsComponent implements OnInit {
 
   public submitToCart():void{
     this.model.productId = this.prodData.productId;
-    this.model.cartTotal = 1;
-    this.model.userId = 3;
+    this.model.cartTotal = this.prodData.productOfferPrice;
+    this.model.userId = 5;
     this._cartService.addToCart(this.model).subscribe();
     alert("Added To Cart Successfully")
   }
+  
+//code added by apoorv
+  public submitToWishList():void{
+    this.model.productId = this.prodData.productId;
+    this.model.userId=5;
+    this._wishListService.addToWishList(this.model).subscribe();
+    alert("Added To WishList Successfully")
+  }
+
+ 
 }
