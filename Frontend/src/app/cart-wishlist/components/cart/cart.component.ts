@@ -11,7 +11,6 @@ export class CartComponent implements OnInit {
   cartList: ICart[];
   cartData: any = {};
   constructor(private _cartService: CartServices) {
-
   }
 
   ngOnInit(): void {
@@ -20,13 +19,28 @@ export class CartComponent implements OnInit {
     );
   }
 
-  public addItem(cartId:any){
-    this.cartData = this._cartService.getCartById(cartId).subscribe();
-    this.cartData.cartTotal += this.cartData.cartTotal;
+  public updateCart() {
+    this._cartService.updateCartData(this.cartData.cartId, this.cartData).subscribe(() => {
+    });
   }
 
-  public removeItem(cartId:any){
-    this.cartData = this._cartService.getCartById(cartId).subscribe();
-    this.cartData.cartTotal += this.cartData.cartTotal;
+  public incrementItem(cartid: any) {
+    this._cartService.getCartById(cartid).subscribe(
+      res => {
+        this.cartData = res;
+        this.cartData.cartTotal++;
+        this.updateCart();
+      }
+    );
+  }
+
+  public decrementItem(cartId: any) {
+    this._cartService.getCartById(cartId).subscribe(
+      res => {
+        this.cartData = res;
+        this.cartData.cartTotal--;
+        this.updateCart();
+      }
+    );
   }
 }

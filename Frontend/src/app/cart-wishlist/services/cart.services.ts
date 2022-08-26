@@ -13,6 +13,17 @@ export class CartServices implements OnInit {
   ngOnInit(): void {
 
   }
+
+  public data: any = {}
+
+  setOptions(option, value) {
+    this.data[option] = value;
+  }
+
+  getOptions() {
+    return this.data;
+  }
+
   getAllCart(): Observable<ICart[]> {
     return this.http.get<ICart[]>(this.baseURl + "api/Carts")
   }
@@ -26,7 +37,16 @@ export class CartServices implements OnInit {
     return this.http.post(this.baseURl + "api/Carts", data, httpOptions);
   }
 
-  public getCartById(cartid:any){
+  public getCartById(cartid: any) {
     return this.http.get(`${this.baseURl}api/Carts/${cartid}`);
+  }
+
+  public updateCartData(cartid: any, data: any) {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json; charset=utf-8'
+      })
+    };
+    return this.http.put(this.baseURl + "api/Carts/" + cartid, data, httpOptions);
   }
 }

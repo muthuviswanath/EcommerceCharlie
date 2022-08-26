@@ -49,7 +49,7 @@ export class ProductsComponent implements OnInit {
 
   public submitToCart():void{
     this.model.productId = this.prodData.productId;
-    this.model.cartTotal = this.prodData.productOfferPrice;
+    this.model.cartTotal = 1;
     this.model.userId = 3;
     this._cartService.addToCart(this.model).subscribe();
     alert("Added To Cart Successfully")

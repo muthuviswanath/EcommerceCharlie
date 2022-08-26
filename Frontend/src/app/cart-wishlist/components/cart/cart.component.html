@@ -21,26 +21,26 @@
                       </div>
                       <div class="col-md-2 d-flex justify-content-center">
                         <div>
-                          <p class="small text-muted mb-4 pb-2">User ID</p>
+                          <p class="small text-muted mb-4 pb-2 p1">User ID</p>
                           <p class="lead fw-normal mb-0">{{item.userId}}</p>
                         </div>
                       </div>
                       <div class="col-md-2 d-flex justify-content-center">
                         <div>
-                          <p class="small text-muted mb-4 pb-2">Product ID</p>
+                          <p class="small text-muted mb-4 pb-2 p1">Product ID</p>
                           <p class="lead fw-normal mb-0">{{item.productId}}</p>
                         </div>
                       </div>
                       <div class="col-md-2 d-flex justify-content-center">
                         <div>
-                          <p class="small text-muted mb-4 pb-2">Cart Total</p>
+                          <p class="small text-muted mb-4 pb-2 p1">Cart Total</p>
                           <p class="lead fw-normal mb-0">{{item.cartTotal}}</p>
                         </div>
                       </div>
                       <div class="col-md-2 d-flex justify-content-center">
                         <div>
-                          <input type="button" value="+" (click)="addItem(item.cartId)">
-                          <input type="button" value="--" (click)="removeItem(item.cartId)">
+                          <input type="button" value="+" (click)="incrementItem(item.cartId)">
+                          <input type="button" value="--" (click)="decrementItem(item.cartId)">
                         </div>
                       </div>
                     </div>
