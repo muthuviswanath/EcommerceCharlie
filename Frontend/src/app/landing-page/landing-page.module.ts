@@ -14,8 +14,11 @@ import { CartWishlistModule } from '../cart-wishlist/cart-wishlist.module';
 import { SearchResultComponent } from './components/search-result/search-result.component';
 import { AdminComponent } from './components/admin/admin.component';
 import { AddproductComponent } from './components/addproduct/addproduct.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { EditproductComponent } from './components/editproduct/editproduct.component';
+import { ListproductsComponent } from './components/listproducts/listproducts.component';
 
-const Components = [HomeComponent, ProductsComponent, TopProductsComponent, AllproductsComponent, SearchResultComponent, AdminComponent, AddproductComponent]
+const Components = [HomeComponent, ProductsComponent, TopProductsComponent, AllproductsComponent, SearchResultComponent, AdminComponent, AddproductComponent, EditproductComponent, ListproductsComponent]
 @NgModule({
   declarations: Components,
   imports: [
@@ -24,7 +27,9 @@ const Components = [HomeComponent, ProductsComponent, TopProductsComponent, Allp
     HttpClientModule,
     SectionModule,
     SharedModule,
-    CartWishlistModule
+    CartWishlistModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [ProductServices],
   exports: Components,

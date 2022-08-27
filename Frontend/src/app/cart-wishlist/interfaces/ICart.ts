@@ -1,5 +1,3 @@
-import { IProduct } from "src/app/landing-page/interfaces/IProduct";
-
 export interface ICart {
   cartId: number;
   userId: number;
@@ -7,5 +5,4 @@ export interface ICart {
   cartTotal: number;
   productName:string;
   imgURL:string;
-  // product: IProduct;
 }

@@ -63,4 +63,8 @@ export class ProductServices implements OnInit {
     };
     return this.http.put(`${this.baseURL}api/Products/${productId}`, productData, httpOptions);
   }
+
+  public deleteProduct(productId: any) {
+    return this.http.delete(`${this.baseURL}api/Products/${productId}`, productId);
+  }
 }

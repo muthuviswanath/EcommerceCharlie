@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { ProductServices } from '../../services/product.services';
 
 @Component({
@@ -10,7 +11,7 @@ export class AddproductComponent implements OnInit {
 
   model: any = {};
 
-  constructor(private _productServices: ProductServices) {
+  constructor(private _productServices: ProductServices, private route: Router) {
 
   }
 
@@ -18,12 +19,14 @@ export class AddproductComponent implements OnInit {
 
   }
 
-  public submitProduct(){
+  public submitProduct() {
     this._productServices.addProduct(this.model).subscribe(
       () => {
 
       }
     );
+    alert("Product Added Successfully!");
+    this.route.navigateByUrl('/listproduct');
   }
 
 }

@@ -6,6 +6,8 @@ import { WishlistComponent } from '../cart-wishlist/components/wishlist/wishlist
 import { AddproductComponent } from '../landing-page/components/addproduct/addproduct.component';
 import { AdminComponent } from '../landing-page/components/admin/admin.component';
 import { AllproductsComponent } from '../landing-page/components/allproducts/allproducts.component';
+import { EditproductComponent } from '../landing-page/components/editproduct/editproduct.component';
+import { ListproductsComponent } from '../landing-page/components/listproducts/listproducts.component';
 import { ProductsComponent } from '../landing-page/components/products/products.component';
 import { SearchResultComponent } from '../landing-page/components/search-result/search-result.component';
 import { TopProductsComponent } from '../landing-page/components/top-products/top-products.component';
@@ -25,6 +27,8 @@ const routes: Routes = [
   { path: 'order', component: OrderhistoryComponent },
   { path: 'admin', component: AdminComponent},
   { path: 'addproduct', component: AddproductComponent},
+  { path: 'editproduct', component: EditproductComponent},
+  { path: 'listproducts', component: ListproductsComponent},
 ];
 
 @NgModule({

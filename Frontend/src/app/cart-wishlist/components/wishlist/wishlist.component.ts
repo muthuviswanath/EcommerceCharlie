@@ -15,7 +15,7 @@ export class WishlistComponent implements OnInit {
   constructor(private _wishListService: WishListServices) {
 
   }
-  
+
   ngOnInit(): void {
     this._wishListService.getAllWishList().subscribe(
       (response) => {
@@ -30,5 +30,6 @@ export class WishlistComponent implements OnInit {
 
       }
     )
+    window.location.reload();
   }
 }

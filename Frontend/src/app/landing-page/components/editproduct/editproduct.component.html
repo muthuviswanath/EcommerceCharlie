@@ -1,0 +1,43 @@
+<div class="login-form">
+
+  <h2 class="text-center">Edit Product</h2>
+
+  <div class="form-group">
+    <input type="text" class="form-control" [(ngModel)]="prodData.productName" placeholder="Product ID"
+      [value]="prodData.productName">
+  </div>
+
+  <div class="form-group">
+    <input type="text" class="form-control" [(ngModel)]="prodData.productDescription" placeholder="Product Description"
+      [value]="prodData.productDescription">
+  </div>
+
+  <div class="form-group">
+    <input type="number" class="form-control" [(ngModel)]="prodData.price" placeholder="Product Price"
+      [value]="prodData.price">
+  </div>
+
+  <div class="form-group">
+    <input type="number" class="form-control" [(ngModel)]="prodData.productOfferPrice" placeholder="Product Offer Price"
+      [value]="prodData.productOfferPrice">
+  </div>
+
+  <div class="form-group">
+    <input type="number" class="form-control" [(ngModel)]="prodData.productRating" placeholder="Product Rating"
+      [value]="prodData.productRating">
+  </div>
+
+  <div class="form-group">
+    <input type="number" class="form-control" [(ngModel)]="prodData.quantity" placeholder="Product Quantity"
+      [value]="prodData.quantity">
+  </div>
+
+  <div class="form-group">
+    <input type="text" class="form-control" [(ngModel)]="prodData.imagePath" placeholder="Product ImageURL"
+      [value]="prodData.imagePath">
+  </div>
+
+  <div class="form-group">
+    <button type="submit" class="btn btn-primary btn-lg btn-block" (click)="editProductData()">Update</button>
+  </div>
+</div>

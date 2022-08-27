@@ -57,6 +57,7 @@ export class CartComponent implements OnInit {
         this.updateCart();
       }
     );
+    window.location.reload();
   }
 
   public removeItem(cartId: any) {
@@ -65,5 +66,6 @@ export class CartComponent implements OnInit {
 
       }
     )
+    window.location.reload();
   }
 }

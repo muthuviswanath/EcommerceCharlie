@@ -51,6 +51,8 @@ export class ProductsComponent implements OnInit {
   public submitToCart(): void {
     this.model.productId = this.prodData.productId;
     this.model.cartTotal = this.prodData.productOfferPrice;
+    this.model.productName = this.prodData.productName;
+    this.model.imgURL = this.prodData.imagePath;
     this.model.userId = 5;
     this._cartService.addToCart(this.model).subscribe();
     alert("Added To Cart Successfully");
