@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using ProductWebAPI.DTOs;
 using ProductWebAPI.Models;
 
 namespace ProductWebAPI.Controllers
@@ -22,10 +23,24 @@ namespace ProductWebAPI.Controllers
 
         // GET: api/WishLists
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<WishList>>> GetWishLists()
+        public async Task<ActionResult<IEnumerable<wishListDTO>>> GetWishLists()
         {
             //return await _context.WishLists.Include(u => u.User).Include(p => p.Product).ToListAsync();
-            return await _context.WishLists.ToListAsync();
+
+            var wishListItem = _context.WishLists.Include(i => i.Product).Include(i => i.User).Select(w => new wishListDTO
+            {
+                WishListId=w.WishListId,
+                ProductId=w.ProductId,
+                userId=w.UserId,
+                ProductName=w.Product.ProductName,
+                imgURL=w.Product.ImagePath,
+                ProductDescription=w.Product.ProductDescription,
+                ProductRating=w.Product.ProductRating,
+                ProductOfferPrice=w.Product.ProductOfferPrice,
+
+            });
+            var itemResult = await wishListItem.ToListAsync();
+            return itemResult;
         }
 
         // GET: api/WishLists/5
