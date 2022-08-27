@@ -1,13 +1,14 @@
-﻿using System;
-
-namespace ProductWebAPI.NewFolder
+﻿namespace ProductWebAPI.DTOs
 {
     public class CartDTO
     {
-        public int cartId;
-        public int cartQuantity;
-        public float price;
-        public string productName;
-        public string imgURL;
+
+        public int cartId { get; set; }
+        public int productId {  get; set; }
+        //public int cartQuantity;
+        public float cartTotal { get; set; }
+        public string productName { get; set; }
+        public string imgURL { get; set; }
+        public int userId { get; set; }
     }
 }

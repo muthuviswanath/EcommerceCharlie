@@ -5,5 +5,7 @@ export interface ICart {
   userId: number;
   productId: number;
   cartTotal: number;
+  productName:string;
+  imgURL:string;
   // product: IProduct;
 }

@@ -5,7 +5,9 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using ProductWebAPI.DTOs;
 using ProductWebAPI.Models;
+
 
 namespace ProductWebAPI.Controllers
 {
@@ -20,12 +22,28 @@ namespace ProductWebAPI.Controllers
             _context = context;
         }
 
-        // GET: api/Carts
+        // GET: api/Carts changes by apoorv 
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Cart>>> GetCarts()
+        public async Task<ActionResult<IEnumerable<CartDTO>>> GetCarts()
         {
             //return await _context.Carts.Include(u => u.User).Include(p => p.Product).ToListAsync();
-            return await _context.Carts.ToListAsync();
+            var cartData =  _context.Carts.Include(p => p.Product).Include(p=>p.User).Select(c => new CartDTO
+            {
+                cartId = c.CartId,
+                cartTotal = (float)c.CartTotal,
+                productName = c.Product.ProductName,
+                imgURL = c.Product.ImagePath,
+                userId=c.UserId,
+                productId=c.ProductId,
+            });
+            var value=await cartData.ToListAsync();
+            return  value;
+
+            //return await _context.Carts.ToListAsync();
+
+
+
+
         }
 
         // GET: api/Carts/5
