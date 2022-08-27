@@ -13,8 +13,9 @@ import { AllproductsComponent } from './components/allproducts/allproducts.compo
 import { CartWishlistModule } from '../cart-wishlist/cart-wishlist.module';
 import { SearchResultComponent } from './components/search-result/search-result.component';
 import { AdminComponent } from './components/admin/admin.component';
+import { AddproductComponent } from './components/addproduct/addproduct.component';
 
-const Components = [HomeComponent, ProductsComponent, TopProductsComponent, AllproductsComponent, SearchResultComponent, AdminComponent]
+const Components = [HomeComponent, ProductsComponent, TopProductsComponent, AllproductsComponent, SearchResultComponent, AdminComponent, AddproductComponent]
 @NgModule({
   declarations: Components,
   imports: [
