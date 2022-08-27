@@ -10,6 +10,7 @@ import { HttpHeaders } from "@angular/common/http";
 export class ProductServices implements OnInit {
 
   baseURL: string = "http://localhost:33037/";
+  public data: any = {};
 
   constructor(private http: HttpClient) {
 
@@ -19,21 +20,30 @@ export class ProductServices implements OnInit {
 
   }
 
+
+  setOptions(option, value) {
+    this.data[option] = value;
+  }
+
+  getOptions() {
+    return this.data;
+  }
+
   public getAllProducts(): Observable<IProduct[]> {
     return this.http.get<IProduct[]>(`${this.baseURL}api/Products`);
   }
 
-  public getProductById(prodId: any) {
-    return this.http.get(`${this.baseURL}api/Products/${prodId}`);
+  public getProductById(productId: any) {
+    return this.http.get(`${this.baseURL}api/Products/${productId}`);
   }
 
-  public searchProducts(prodData: any) {
+  public searchProducts(productData: any) {
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json; charset=utf-8'
       })
     };
-    return this.http.post(`${this.baseURL}api/Products/search`, JSON.stringify(prodData), httpOptions);
+    return this.http.post(`${this.baseURL}api/Products/search`, JSON.stringify(productData), httpOptions);
   }
 
   public addProduct(productData: any) {
@@ -45,4 +55,12 @@ export class ProductServices implements OnInit {
     return this.http.post(`${this.baseURL}api/Products`, productData, httpOptions);
   }
 
+  public updateProduct(productId: any, productData: any) {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json; charset=utf-8'
+      })
+    };
+    return this.http.put(`${this.baseURL}api/Products/${productId}`, productData, httpOptions);
+  }
 }
