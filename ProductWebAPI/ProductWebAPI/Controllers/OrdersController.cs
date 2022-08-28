@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using ProductWebAPI.DTOs;
 using ProductWebAPI.Models;
 
 namespace ProductWebAPI.Controllers
@@ -22,10 +23,24 @@ namespace ProductWebAPI.Controllers
 
         // GET: api/Orders
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Order>>> GetOrders()
+        public async Task<ActionResult<IEnumerable<OrderDTO>>> GetOrders()
         {
             //return await _context.Orders.Include(u => u.User).Include(p => p.Product).ToListAsync();
-            return await _context.Orders.ToListAsync();
+            var orderData = _context.Orders.Include(i => i.Product).Include(i => i.User).Select(o => new OrderDTO
+            {
+                OrderId = o.OrderId,
+                UserId = o.UserId,
+                ProductId = o.ProductId,
+                OrderDate = o.OrderDate,
+                ProductName = o.Product.ProductName,
+                imgURL = o.Product.ImagePath,
+                ProductDescription = o.Product.ProductDescription,
+                ProductRating = o.Product.ProductRating,
+                ProductOfferPrice = o.Product.ProductOfferPrice
+
+            });
+            var orderResult = await orderData.ToListAsync();
+            return orderResult;
         }
 
         // GET: api/Orders/5
