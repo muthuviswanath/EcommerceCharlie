@@ -36,7 +36,6 @@ export class LoginComponent implements OnInit {
   public login() {
     this.formData = this.loginForm.value;
     this.showMessage = true;
-
     // Changes For API Logic
     if (this.loginForm.valid) {
       if (this.formData.username == "admin" && this.formData.password == "admin") {
@@ -51,8 +50,12 @@ export class LoginComponent implements OnInit {
               this.route.navigateByUrl('/register');
             }
             else {
-              alert("Login Successful!");
-              this.route.navigateByUrl('/topproducts');
+             
+              localStorage.setItem('user', JSON.stringify(response));
+              var userdata= localStorage.getItem('user');
+              var obj=JSON.parse(userdata);
+              console.log(obj.userName); 
+              this.route.navigateByUrl('/topproducts')
             }
           }
         );

@@ -55,7 +55,9 @@ export class ProductsComponent implements OnInit {
     this.model.cartTotal = this.prodData.productOfferPrice;
     this.model.productName = this.prodData.productName;
     this.model.imgURL = this.prodData.imagePath;
-    this.model.userId = 3;
+    var userdata= localStorage.getItem('user');
+    var obj=JSON.parse(userdata);
+    this.model.userId = obj.userId;// to get userId at time of user login using local storage 
     this._cartService.addToCart(this.model).subscribe();
     alert("Added To Cart Successfully");
   }
