@@ -29,7 +29,8 @@ export class WishlistComponent implements OnInit {
       () => {
 
       }
-    )
+    );
+    alert("Wishlist Item Removed Successfully!")
     window.location.reload();
   }
 }

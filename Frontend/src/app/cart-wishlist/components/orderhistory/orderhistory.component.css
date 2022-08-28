@@ -2,7 +2,6 @@ about {
   text-align: center;
   width: 60%;
   margin: auto;
-
 }
 
 .c1 {
@@ -79,7 +78,6 @@ about {
   font-size: 16px;
   font-weight: 600;
   padding-right: 50px !important;
-
 }
 
 .navbar-contfirst {
@@ -158,7 +156,6 @@ about {
 
 .cardtitle-cont:hover {
   border-bottom: 4px solid #ADD8E6;
-
 }
 
 .cardtext-cont {
@@ -186,7 +183,6 @@ about {
   line-height: 1.4;
   margin: 40px 0px 40px 0px;
 }
-
 
 .projecthead {
   font-family: 'DM Serif Display', sans-serif;
@@ -265,7 +261,6 @@ about {
 }
 
 .navbar-cont .nav-link:hover {
-
   border: 4px solid white !important;
   color: white;
 }

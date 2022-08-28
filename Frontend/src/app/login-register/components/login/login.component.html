@@ -12,11 +12,11 @@
       </div>
       <input type="text" name="username" class="form-control" placeholder="Username" [formControl]="username" />
       <div [hidden]="username.valid || username.untouched" class="error">
-        <div [hidden]="!username.hasError('minlength')">
-          username cant be less than 7 characters
+        <div class="cr" [hidden]="!username.hasError('minlength')">
+          Username can't be less than 3 Characters!
         </div>
-        <div [hidden]="!username.hasError('required')">
-          username cant be empty.
+        <div class="cr" [hidden]="!username.hasError('required')">
+          Username can't be empty!
         </div>
       </div>
     </div>
@@ -46,11 +46,11 @@
       </div>
       <input type="password" name="password" class="form-control" placeholder="Password" [formControl]="password" />
       <div [hidden]="password.valid || password.untouched" class="error">
-        <div [hidden]="!password.hasError('minlength')">
-          Password cant be less than 6 characters
+        <div class="cr" [hidden]="!password.hasError('minlength')">
+          Password can't be less than 3 Characters!
         </div>
-        <div [hidden]="!password.hasError('required')">
-          password cant be empty.
+        <div class="cr" [hidden]="!password.hasError('required')">
+          Password can't be empty!
         </div>
         <div>
         </div>

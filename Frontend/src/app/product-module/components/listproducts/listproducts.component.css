@@ -1,8 +1,24 @@
-.about {
+about {
   text-align: center;
-  width: 72%;
+  width: 60%;
   margin: auto;
+}
 
+.c1 {
+  background-color: #FFF4E4;
+}
+
+.p1 {
+  margin-bottom: 5px !important;
+}
+
+.p2 {
+  font-size: 16px !important;
+}
+
+.b1 {
+  background-color: #27BEB9;
+  border: none
 }
 
 .navbar-cont {
@@ -17,7 +33,7 @@
 
 .imgcont {
   width: 100%;
-  height: 80%;
+  height: 100%;
 }
 
 .about p {
@@ -25,7 +41,7 @@
 }
 
 .board {
-  padding-left: 30px !important;
+  padding-left: 10px !important;
   padding-right: 0px !important;
 }
 
@@ -43,7 +59,7 @@
 
 .navbar-cont {
   justify-content: start;
-  padding-left: 235px;
+  padding-left: 360px;
 }
 
 .navbar-cont .nav-link {
@@ -61,6 +77,7 @@
   font-size: 16px;
   font-weight: 600;
   padding-right: 50px !important;
+
 }
 
 .navbar-contfirst {
@@ -122,12 +139,15 @@
 }
 
 .card-cont {
-  margin: 110px;
-  margin-top: 10px;
-  margin-left: 53px;
+  margin: 10px;
+  margin-top: 60px;
   box-shadow: 5px 1px 28px gray;
 }
 
+.card-cont:hover {
+  border: 10px solid #ADD8E6;
+  border-left: 10px solid #ADD8E6 !important;
+}
 
 .cardtitle-cont {
   font-weight: 900 !important;
@@ -164,7 +184,6 @@
   line-height: 1.4;
   margin: 40px 0px 40px 0px;
 }
-
 
 .projecthead {
   font-family: 'DM Serif Display', sans-serif;
@@ -235,7 +254,6 @@
   background-color: #F39520 !important;
   color: black;
   border: none;
-  width: 100%;
 }
 
 .explore-cnt:hover {
@@ -252,14 +270,9 @@
     margin-left: 0px;
   }
 
-  .page-head {
-    text-align: center;
-    margin: 40px 0px 40px 0px;
-  }
-
   .custome-head-cnt {
-    margin-left: 0px;
-    margin-right: 0px;
+    margin-left: 50px;
+    margin-right: 50px;
     margin-top: 50px;
   }
 
@@ -301,52 +314,8 @@
     justify-content: center;
     padding-left: 0px;
   }
-
-  .card-cont {
-    margin: 10px;
-    margin-top: 60px;
-  }
 }
 
-.title {
-  text-align: center;
-  margin-top: 10px;
-  font-weight: bolder;
-}
-
-.crd {
-  margin-bottom: 20px;
-}
-
-.products {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-}
-
-.product>mat-card>img {
-  object-fit: contain;
-  height: 200px;
-}
-
-.product>mat-card {
-  display: flex;
-  flex-direction: column;
-  min-height: 350px;
-  width: 300px;
-  margin: 20px;
-  align-items: center;
-}
-
-.product>mat-card>button {
-  margin-top: 20px;
-  background-color: #f0c14b;
-  border: 1px solid;
-  border-color: #a88134 #9c7e31 #846a29;
-  padding: 5px;
-  font-weight: bold;
-}
-
-.d1{
-  background-color:#FFF4E4;
+.ct {
+  margin-top: 30px;
 }

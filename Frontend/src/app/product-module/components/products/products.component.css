@@ -1,24 +1,50 @@
-about {
+.heading {
+  font-family: 'DM Serif Display';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 30px;
+  line-height: 49px;
+  color: #2A2A2E;
+}
+
+.content {
+  font-family: 'Raleway';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 29px;
+  color: #767679;
+}
+
+.addcart {
+  width: 145px;
+  height: 35px;
+  background: #27BEB9;
+  border-radius: 3px;
+  font-family: 'Lato';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 26px;
+  margin-top: 10px;
+  color: #FFFFFF;
+}
+
+.dsc {
+  padding-left: 25px;
+  padding-right: 25px;
+}
+
+.bigimg {
+  width: 100%;
+  height: 90%;
+}
+
+.about {
   text-align: center;
-  width: 60%;
+  min-width: 340px;
+  width: 50%;
   margin: auto;
-}
-
-.c1 {
-  background-color: #FFF4E4;
-}
-
-.p1 {
-  margin-bottom: 5px !important;
-}
-
-.p2 {
-  font-size: 16px !important;
-}
-
-.b1 {
-  background-color: #27BEB9;
-  border: none
 }
 
 .navbar-cont {
@@ -33,7 +59,7 @@ about {
 
 .imgcont {
   width: 100%;
-  height: 100%;
+  height: 400px;
 }
 
 .about p {
@@ -41,8 +67,10 @@ about {
 }
 
 .board {
+  background-color: #202A44;
   padding-left: 10px !important;
   padding-right: 0px !important;
+  text-align: justify;
 }
 
 .footer {
@@ -55,12 +83,11 @@ about {
 
 .footer div:hover {
   color: black;
-
 }
 
 .navbar-cont {
   justify-content: start;
-  padding-left: 360px;
+  padding-left: 250px;
 }
 
 .navbar-cont .nav-link {
@@ -78,7 +105,6 @@ about {
   font-size: 16px;
   font-weight: 600;
   padding-right: 50px !important;
-
 }
 
 .navbar-contfirst {
@@ -129,7 +155,6 @@ about {
 }
 
 .content-alignment {
-  font-size: 16px;
   text-align: justify;
 }
 
@@ -140,14 +165,8 @@ about {
 }
 
 .card-cont {
-  margin: 10px;
-  margin-top: 60px;
+  margin: 35px;
   box-shadow: 5px 1px 28px gray;
-}
-
-.card-cont:hover {
-  border: 10px solid #ADD8E6;
-  border-left: 10px solid #ADD8E6 !important;
 }
 
 .cardtitle-cont {
@@ -176,24 +195,13 @@ about {
   padding-bottom: 15px !important;
 }
 
-.page-head {
-  font-family: 'DM Serif Display', sans-serif;
-  font-size: 36px;
-  text-align: center;
-  font-weight: 400;
-  color: #1A0B5B !important;
-  line-height: 1.4;
-  margin: 40px 0px 40px 0px;
-}
-
-
 .projecthead {
   font-family: 'DM Serif Display', sans-serif;
-  font-size: 36px;
+  font-size: 48px;
   font-weight: 400;
   color: #1A0B5B !important;
   line-height: 1.4;
-  margin: 40px 0px 20px 0px;
+  margin: 40px 0px 20px 50px;
 }
 
 .line-cnt {
@@ -206,21 +214,29 @@ about {
 }
 
 .big-imgcont {
-  margin: auto;
-  text-align: center;
-  height: 500px;
+  margin-left: 15px !important;
+  padding: 15px;
+  background-color: #FFDAE4;
+  border: solid black 2px;
 }
 
 .big-img {
-  height: 80%;
-  width: 70%;
+  height: 100%;
+  width: 100%;
   object-fit: cover;
 }
 
 .big-text {
-  font-size: 53px;
+  font-size: 45px;
   font-weight: 400;
   font-family: "DM Serif Display";
+}
+
+.small-text {
+  font-size: 16px;
+  font-weight: 700;
+  font-family: "Raleway";
+  color: #515FD1;
 }
 
 .big-textcont {
@@ -234,7 +250,7 @@ about {
 }
 
 .pink-btncnt {
-  background-color: white;
+  background-color: #F39520;
   text-align: center;
 }
 
@@ -247,8 +263,9 @@ about {
   background-color: white !important;
   color: #27BEB9;
   border: solid black 1px;
-  border-radius: 15px;
+  border-radius: 5px;
   font-family: 'DM Serif Display';
+  margin-top: 10px;
 }
 
 .explore-cntyellow {
@@ -263,10 +280,15 @@ about {
 }
 
 .navbar-cont .nav-link:hover {
-
   border: 4px solid white !important;
   color: white;
 }
+
+.yellow-color {
+  color: yellow;
+  margin-left: 5px;
+}
+
 
 @media(max-width:700px) {
   .projecthead {
@@ -294,15 +316,6 @@ about {
 
   .big-imgcont {
     margin-left: 0px !important;
-    height: 400px;
-  }
-
-  .big-img {
-    width: 100%;
-  }
-
-  .about {
-    width: 100%;
   }
 
   .navbar-contfirst {
@@ -314,11 +327,8 @@ about {
   }
 
   .navbar-cont {
-    justify-content: center;
     padding-left: 0px;
+    justify-content: center !important;
   }
-}
 
-.ct {
-  margin-top: 30px;
 }

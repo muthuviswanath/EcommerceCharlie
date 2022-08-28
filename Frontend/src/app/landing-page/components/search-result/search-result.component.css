@@ -2,7 +2,6 @@
   text-align: center;
   width: 72%;
   margin: auto;
-
 }
 
 .navbar-cont {
@@ -136,7 +135,6 @@
 
 .cardtitle-cont:hover {
   border-bottom: 4px solid #ADD8E6;
-
 }
 
 .cardtext-cont {

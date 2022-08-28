@@ -1,50 +1,24 @@
-.heading {
-  font-family: 'DM Serif Display';
-  font-style: normal;
-  font-weight: 400;
-  font-size: 30px;
-  line-height: 49px;
-  color: #2A2A2E;
-}
-
-.content {
-  font-family: 'Raleway';
-  font-style: normal;
-  font-weight: 400;
-  font-size: 15px;
-  line-height: 29px;
-  color: #767679;
-}
-
-.addcart {
-  width: 145px;
-  height: 35px;
-  background: #27BEB9;
-  border-radius: 3px;
-  font-family: 'Lato';
-  font-style: normal;
-  font-weight: 600;
-  font-size: 18px;
-  line-height: 26px;
-  margin-top: 10px;
-  color: #FFFFFF;
-}
-
-.dsc {
-  padding-left: 25px;
-  padding-right: 25px;
-}
-
-.bigimg {
-  width: 100%;
-  height: 90%;
-}
-
 .about {
   text-align: center;
   min-width: 340px;
   width: 50%;
   margin: auto;
+}
+
+.d1 {
+  background-color: #FFF4E4;
+}
+
+.d2 {
+  background-color: white;
+}
+
+.d3 {
+  background-color: #FFEDB8;
+}
+
+.p1 {
+  font-family: 'Raleway';
 }
 
 .navbar-cont {
@@ -177,7 +151,6 @@
 
 .cardtitle-cont:hover {
   border-bottom: 4px solid #ADD8E6;
-
 }
 
 .cardtext-cont {
@@ -202,7 +175,7 @@
   font-weight: 400;
   color: #1A0B5B !important;
   line-height: 1.4;
-  margin: 40px 0px 20px 50px;
+  margin: 40px 0px 20px 0px;
 }
 
 .line-cnt {
@@ -231,6 +204,11 @@
   font-size: 45px;
   font-weight: 400;
   font-family: "DM Serif Display";
+  margin-bottom: 40px;
+}
+
+.big-textspc {
+  margin-top: 40px;
 }
 
 .small-text {
@@ -247,7 +225,7 @@
 .pink-cont {
   background-color: #E72E62;
   padding: 1px 0px 60px 0px;
-  margin-top: 40px;
+  margin-top: 100px;
 }
 
 .pink-btncnt {
@@ -264,9 +242,8 @@
   background-color: white !important;
   color: #27BEB9;
   border: solid black 1px;
-  border-radius: 5px;
+  border-radius: 15px;
   font-family: 'DM Serif Display';
-  margin-top: 10px;
 }
 
 .explore-cntyellow {
@@ -281,16 +258,9 @@
 }
 
 .navbar-cont .nav-link:hover {
-
   border: 4px solid white !important;
   color: white;
 }
-
-.yellow-color {
-  color: yellow;
-  margin-left: 5px;
-}
-
 
 @media(max-width:700px) {
   .projecthead {
@@ -332,5 +302,4 @@
     padding-left: 0px;
     justify-content: center !important;
   }
-
 }

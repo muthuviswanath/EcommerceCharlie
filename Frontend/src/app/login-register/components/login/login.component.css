@@ -93,8 +93,6 @@
   text-decoration: underline;
 }
 
-
-/*  icon for input field  */
 .input-icons i {
   position: absolute;
   left: 280px;
@@ -128,4 +126,8 @@
 
 .btnlong {
   width: 100%;
+}
+
+.cr {
+  color: red;
 }

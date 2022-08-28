@@ -3,14 +3,14 @@ import { RouterModule, Routes } from '@angular/router';
 import { CartComponent } from '../cart-wishlist/components/cart/cart.component';
 import { OrderhistoryComponent } from '../cart-wishlist/components/orderhistory/orderhistory.component';
 import { WishlistComponent } from '../cart-wishlist/components/wishlist/wishlist.component';
-import { AddproductComponent } from '../landing-page/components/addproduct/addproduct.component';
+import { AddproductComponent } from '../product-module/components/addproduct/addproduct.component';
 import { AdminComponent } from '../landing-page/components/admin/admin.component';
-import { AllproductsComponent } from '../landing-page/components/allproducts/allproducts.component';
-import { EditproductComponent } from '../landing-page/components/editproduct/editproduct.component';
-import { ListproductsComponent } from '../landing-page/components/listproducts/listproducts.component';
-import { ProductsComponent } from '../landing-page/components/products/products.component';
+import { AllproductsComponent } from '../product-module/components/allproducts/allproducts.component';
+import { EditproductComponent } from '../product-module/components/editproduct/editproduct.component';
+import { ListproductsComponent } from '../product-module/components/listproducts/listproducts.component';
+import { ProductsComponent } from '../product-module/components/products/products.component';
 import { SearchResultComponent } from '../landing-page/components/search-result/search-result.component';
-import { TopProductsComponent } from '../landing-page/components/top-products/top-products.component';
+import { TopProductsComponent } from '../product-module/components/top-products/top-products.component';
 import { LoginComponent } from '../login-register/components/login/login.component';
 import { RegisterComponent } from '../login-register/components/register/register.component';
 
@@ -25,10 +25,10 @@ const routes: Routes = [
   { path: 'wishlist', component: WishlistComponent },
   { path: 'search/:id', component: SearchResultComponent },
   { path: 'order', component: OrderhistoryComponent },
-  { path: 'admin', component: AdminComponent},
-  { path: 'addproduct', component: AddproductComponent},
-  { path: 'editproduct', component: EditproductComponent},
-  { path: 'listproducts', component: ListproductsComponent},
+  { path: 'admin', component: AdminComponent },
+  { path: 'addproduct', component: AddproductComponent },
+  { path: 'editproduct', component: EditproductComponent },
+  { path: 'listproducts', component: ListproductsComponent },
 ];
 
 @NgModule({

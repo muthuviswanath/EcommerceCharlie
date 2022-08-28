@@ -8,9 +8,9 @@ describe('UppernavComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ UppernavComponent ]
+      declarations: [UppernavComponent]
     })
-    .compileComponents();
+      .compileComponents();
 
     fixture = TestBed.createComponent(UppernavComponent);
     component = fixture.componentInstance;

@@ -29,14 +29,16 @@ export class ProductsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.sub = this.route.params.subscribe(params => {
-      this.id = params['id'];
-    });
+    this.sub = this.route.params.subscribe(
+      (params) => {
+        this.id = params['id'];
+      }
+    );
     this.prodData = this._productServices.getProductById(this.id).subscribe(
       (response) => {
         this.prodData = response;
       }
-    )
+    );
     this._productServices.getAllProducts().subscribe(
       (response) => {
         this.productsList = response.filter(
@@ -53,7 +55,7 @@ export class ProductsComponent implements OnInit {
     this.model.cartTotal = this.prodData.productOfferPrice;
     this.model.productName = this.prodData.productName;
     this.model.imgURL = this.prodData.imagePath;
-    this.model.userId = 5;
+    this.model.userId = 3;
     this._cartService.addToCart(this.model).subscribe();
     alert("Added To Cart Successfully");
   }
@@ -61,7 +63,7 @@ export class ProductsComponent implements OnInit {
   // Code Added By Apoorv
   public submitToWishList(): void {
     this.model.productId = this.prodData.productId;
-    this.model.userId = 5;
+    this.model.userId = 3;
     this._wishListService.addToWishList(this.model).subscribe();
     alert("Added To WishList Successfully");
   }

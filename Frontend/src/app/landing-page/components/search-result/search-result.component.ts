@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { IProduct } from '../../interfaces/IProduct';
-import { ProductServices } from '../../services/product.services';
+import { IProduct } from '../../../product-module/interfaces/IProduct';
+import { ProductServices } from '../../../product-module/services/product.services';
 
 @Component({
   selector: 'app-search-result',
@@ -20,13 +20,14 @@ export class SearchResultComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.sub = this.route.params.subscribe(params => {
-      this.id = params['id'];
-    });
+    this.sub = this.route.params.subscribe(
+      (params) => {
+        this.id = params['id'];
+      }
+    );
     this._productService.searchProducts(this.id).subscribe(
       (response) => {
-        this.searchList = response
-        console.log(this.searchList);
+        this.searchList = response;
       }
     );
   }

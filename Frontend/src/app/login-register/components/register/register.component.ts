@@ -24,7 +24,7 @@ export class RegisterComponent implements OnInit {
 
       }
     );
-    alert('Registration Successful');
+    alert('Registration Successful!');
   }
 
 }

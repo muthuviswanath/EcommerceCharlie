@@ -10,7 +10,7 @@ export class UppernavComponent implements OnInit {
 
   public searchString: string = "";
 
-  constructor(private http: HttpClient) {
+  constructor() {
 
   }
 

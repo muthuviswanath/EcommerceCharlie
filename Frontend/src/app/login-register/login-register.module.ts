@@ -12,9 +12,9 @@ const Components = [LoginComponent, RegisterComponent]
   declarations: Components,
   imports: [
     CommonModule,
-    FormsModule,
     LoginRegisterRoutingModule,
     ReactiveFormsModule,
+    FormsModule
   ],
   providers: [LoginServices],
   exports: Components

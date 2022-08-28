@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, NgForm, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { LoginServices } from 'src/app/login-register/services/login.services';
 
@@ -24,32 +24,35 @@ export class LoginComponent implements OnInit {
     this.loginForm;
   }
 
-  loginForm: FormGroup = this.builder.group({
-    username: this.username,
-    password: this.password,
-    // email: this.email,
-  })
+  loginForm: FormGroup = this.builder.group(
+    {
+      username: this.username,
+      password: this.password,
+      // email: this.email,
+    }
+  );
 
 
   public login() {
     this.formData = this.loginForm.value;
     this.showMessage = true;
-    console.log(this.formData);
 
     // Changes For API Logic
     if (this.loginForm.valid) {
       if (this.formData.username == "admin" && this.formData.password == "admin") {
-        this.route.navigateByUrl('/admin')
+        alert("Admin Login Successful!");
+        this.route.navigateByUrl('/admin');
       }
       else {
         this._loginService.loginUser(this.loginForm.value).subscribe(
           (response) => {
-            console.log(response)
             if (response == null) {
-              this.route.navigateByUrl('/register')
+              alert("Invalid Credentials! Please Register before Sign In");
+              this.route.navigateByUrl('/register');
             }
             else {
-              this.route.navigateByUrl('/topproducts')
+              alert("Login Successful!");
+              this.route.navigateByUrl('/topproducts');
             }
           }
         );

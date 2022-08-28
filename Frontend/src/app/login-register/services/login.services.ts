@@ -8,33 +8,38 @@ import { ILogin } from "../interfaces/ILogin";
 })
 
 export class LoginServices implements OnInit {
-  constructor(private http: HttpClient) { }
-  baseURl: string = "http://localhost:33037/"
-  getLoginInfo(): Observable<ILogin[]> {
-    return this
-      .http
-      .get<ILogin[]>(this.baseURl + "api/Users");
+
+  baseURL: string = "http://localhost:33037/";
+
+  constructor(private http: HttpClient) {
+
   }
+
+  getLoginInfo(): Observable<ILogin[]> {
+    return this.http.get<ILogin[]>(`${this.baseURL}api/Users`);
+  }
+
   ngOnInit(): void {
 
   }
 
-  public registerUser(data: any) {
+  // Register User Service
+  public registerUser(userData: any) {
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json; charset=utf-8'
       })
     };
-    return this.http.post(this.baseURl + "api/Users", data, httpOptions);
+    return this.http.post(`${this.baseURL}api/Users`, userData, httpOptions);
   }
 
-  /***Login user service  */
-  public loginUser(data: any) {
+  // Login User Service
+  public loginUser(userData: any) {
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json; charset=utf-8'
       })
     };
-    return this.http.post(this.baseURl + "api/Users/login", data, httpOptions);
+    return this.http.post(`${this.baseURL}api/Users/login`, userData, httpOptions);
   }
 }

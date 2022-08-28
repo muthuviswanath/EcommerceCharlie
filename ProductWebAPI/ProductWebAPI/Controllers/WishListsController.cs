@@ -23,11 +23,11 @@ namespace ProductWebAPI.Controllers
 
         // GET: api/WishLists
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<wishListDTO>>> GetWishLists()
+        public async Task<ActionResult<IEnumerable<WishListDTO>>> GetWishLists()
         {
             //return await _context.WishLists.Include(u => u.User).Include(p => p.Product).ToListAsync();
 
-            var wishListItem = _context.WishLists.Include(i => i.Product).Include(i => i.User).Select(w => new wishListDTO
+            var wishListItem = _context.WishLists.Include(i => i.Product).Include(i => i.User).Select(w => new WishListDTO
             {
                 WishListId=w.WishListId,
                 ProductId=w.ProductId,

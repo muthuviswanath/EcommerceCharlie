@@ -3,6 +3,6 @@ export interface ICart {
   userId: number;
   productId: number;
   cartTotal: number;
-  productName:string;
-  imgURL:string;
+  productName: string;
+  imgURL: string;
 }

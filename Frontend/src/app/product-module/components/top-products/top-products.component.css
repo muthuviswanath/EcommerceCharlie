@@ -1,24 +1,7 @@
 .about {
   text-align: center;
-  min-width: 340px;
-  width: 50%;
+  width: 72%;
   margin: auto;
-}
-
-.d1 {
-  background-color: #FFF4E4;
-}
-
-.d2 {
-  background-color: white;
-}
-
-.d3 {
-  background-color: #FFEDB8;
-}
-
-.p1 {
-  font-family: 'Raleway';
 }
 
 .navbar-cont {
@@ -33,7 +16,7 @@
 
 .imgcont {
   width: 100%;
-  height: 400px;
+  height: 80%;
 }
 
 .about p {
@@ -41,10 +24,8 @@
 }
 
 .board {
-  background-color: #202A44;
-  padding-left: 10px !important;
+  padding-left: 30px !important;
   padding-right: 0px !important;
-  text-align: justify;
 }
 
 .footer {
@@ -61,7 +42,7 @@
 
 .navbar-cont {
   justify-content: start;
-  padding-left: 250px;
+  padding-left: 235px;
 }
 
 .navbar-cont .nav-link {
@@ -70,7 +51,6 @@
   font-family: Raleway !important;
   font-size: 16px;
   font-weight: 600;
-
 }
 
 .navbar-contfirst .nav-link {
@@ -130,6 +110,7 @@
 }
 
 .content-alignment {
+  font-size: 16px;
   text-align: justify;
 }
 
@@ -140,7 +121,9 @@
 }
 
 .card-cont {
-  margin: 35px;
+  margin: 110px;
+  margin-top: 10px;
+  margin-left: 53px;
   box-shadow: 5px 1px 28px gray;
 }
 
@@ -152,6 +135,7 @@
 
 .cardtitle-cont:hover {
   border-bottom: 4px solid #ADD8E6;
+
 }
 
 .cardtext-cont {
@@ -170,9 +154,19 @@
   padding-bottom: 15px !important;
 }
 
+.page-head {
+  font-family: 'DM Serif Display', sans-serif;
+  font-size: 36px;
+  text-align: center;
+  font-weight: 400;
+  color: #1A0B5B !important;
+  line-height: 1.4;
+  margin: 40px 0px 40px 0px;
+}
+
 .projecthead {
   font-family: 'DM Serif Display', sans-serif;
-  font-size: 48px;
+  font-size: 36px;
   font-weight: 400;
   color: #1A0B5B !important;
   line-height: 1.4;
@@ -189,34 +183,21 @@
 }
 
 .big-imgcont {
-  margin-left: 15px !important;
-  padding: 15px;
-  background-color: #FFDAE4;
-  border: solid black 2px;
+  margin: auto;
+  text-align: center;
+  height: 500px;
 }
 
 .big-img {
-  height: 100%;
-  width: 100%;
+  height: 80%;
+  width: 70%;
   object-fit: cover;
 }
 
 .big-text {
-  font-size: 45px;
+  font-size: 53px;
   font-weight: 400;
   font-family: "DM Serif Display";
-  margin-bottom: 40px;
-}
-
-.big-textspc {
-  margin-top: 40px;
-}
-
-.small-text {
-  font-size: 16px;
-  font-weight: 700;
-  font-family: "Raleway";
-  color: #515FD1;
 }
 
 .big-textcont {
@@ -226,11 +207,11 @@
 .pink-cont {
   background-color: #E72E62;
   padding: 1px 0px 60px 0px;
-  margin-top: 100px;
+  margin-top: 40px;
 }
 
 .pink-btncnt {
-  background-color: #F39520;
+  background-color: white;
   text-align: center;
 }
 
@@ -252,6 +233,7 @@
   background-color: #F39520 !important;
   color: black;
   border: none;
+  width: 100%;
 }
 
 .explore-cnt:hover {
@@ -268,9 +250,14 @@
     margin-left: 0px;
   }
 
+  .page-head {
+    text-align: center;
+    margin: 40px 0px 40px 0px;
+  }
+
   .custome-head-cnt {
-    margin-left: 50px;
-    margin-right: 50px;
+    margin-left: 0px;
+    margin-right: 0px;
     margin-top: 50px;
   }
 
@@ -289,6 +276,15 @@
 
   .big-imgcont {
     margin-left: 0px !important;
+    height: 400px;
+  }
+
+  .big-img {
+    width: 100%;
+  }
+
+  .about {
+    width: 100%;
   }
 
   .navbar-contfirst {
@@ -300,7 +296,55 @@
   }
 
   .navbar-cont {
+    justify-content: center;
     padding-left: 0px;
-    justify-content: center !important;
   }
+
+  .card-cont {
+    margin: 10px;
+    margin-top: 60px;
+  }
+}
+
+.title {
+  text-align: center;
+  margin-top: 10px;
+  font-weight: bolder;
+}
+
+.crd {
+  margin-bottom: 20px;
+}
+
+.products {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.product>mat-card>img {
+  object-fit: contain;
+  height: 200px;
+}
+
+.product>mat-card {
+  display: flex;
+  flex-direction: column;
+  min-height: 350px;
+  width: 300px;
+  margin: 20px;
+  align-items: center;
+}
+
+.product>mat-card>button {
+  margin-top: 20px;
+  background-color: #f0c14b;
+  border: 1px solid;
+  border-color: #a88134 #9c7e31 #846a29;
+  padding: 5px;
+  font-weight: bold;
+}
+
+.d1 {
+  background-color: #FFF4E4;
 }

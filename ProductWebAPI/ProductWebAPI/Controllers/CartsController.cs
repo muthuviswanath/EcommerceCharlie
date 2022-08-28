@@ -33,8 +33,9 @@ namespace ProductWebAPI.Controllers
                 cartTotal = (float)c.CartTotal,
                 productName = c.Product.ProductName,
                 imgURL = c.Product.ImagePath,
-                userId=c.UserId,
-                productId=c.ProductId,
+                userId = c.UserId,
+                productId = c.ProductId,
+                // cartQuantity = 1,
             });
             var value=await cartData.ToListAsync();
             return  value;

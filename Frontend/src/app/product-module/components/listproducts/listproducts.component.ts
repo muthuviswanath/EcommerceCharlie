@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
 import { IProduct } from '../../interfaces/IProduct';
 import { ProductServices } from '../../services/product.services';
 
@@ -11,9 +10,9 @@ import { ProductServices } from '../../services/product.services';
 export class ListproductsComponent implements OnInit {
 
   productList: IProduct[];
-  exportData:any;
+  exportData: any;
 
-  constructor(private _productServices: ProductServices, private route: Router) {
+  constructor(private _productServices: ProductServices) {
 
   }
 
@@ -22,19 +21,19 @@ export class ListproductsComponent implements OnInit {
       (response) => {
         this.productList = response;
       }
-    )
+    );
   }
 
-  public onUpdate(prodData: any){
-    this._productServices.setOptions('productId',prodData);
+  public onUpdate(prodData: any) {
+    this._productServices.setOptions('productId', prodData);
   }
 
-  public onDelete(prodData: any){
+  public onDelete(prodData: any) {
     this._productServices.deleteProduct(prodData).subscribe(
       () => {
 
       }
-    )
+    );
     alert("Product Deleted Successfully");
     window.location.reload();
   }

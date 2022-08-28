@@ -55,7 +55,6 @@ about {
 
 .footer div:hover {
   color: black;
-
 }
 
 .navbar-cont {
@@ -78,7 +77,6 @@ about {
   font-size: 16px;
   font-weight: 600;
   padding-right: 50px !important;
-
 }
 
 .navbar-contfirst {
@@ -157,7 +155,6 @@ about {
 
 .cardtitle-cont:hover {
   border-bottom: 4px solid #ADD8E6;
-
 }
 
 .cardtext-cont {
@@ -263,7 +260,6 @@ about {
 }
 
 .navbar-cont .nav-link:hover {
-
   border: 4px solid white !important;
   color: white;
 }

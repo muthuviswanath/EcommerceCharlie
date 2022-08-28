@@ -12,7 +12,7 @@ export class EditproductComponent implements OnInit {
 
   prodData: any = {};
 
-  constructor(private _productServices:ProductServices, private route: Router) {
+  constructor(private _productServices: ProductServices, private route: Router) {
     let prodRecord = this._productServices.getOptions();
     this.prodData = this._productServices.getProductById(prodRecord.productId).subscribe(
       (response) => {
@@ -25,8 +25,8 @@ export class EditproductComponent implements OnInit {
 
   }
 
-  public editProductData(){
-    this._productServices.updateProduct(this.prodData.productId,this.prodData).subscribe(
+  public editProductData() {
+    this._productServices.updateProduct(this.prodData.productId, this.prodData).subscribe(
       () => {
 
       }

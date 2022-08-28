@@ -1,6 +1,6 @@
 ﻿namespace ProductWebAPI.DTOs
 {
-    public class wishListDTO
+    public class WishListDTO
     {
         public int WishListId { get; set; }
         public int ProductId { get; set; }
