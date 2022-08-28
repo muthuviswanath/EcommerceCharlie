@@ -63,7 +63,7 @@ export class ProductsComponent implements OnInit {
     this.model.cartProductPrice = this.prodData.productOfferPrice;
     this.model.productName = this.prodData.productName;
     this.model.imgURL = this.prodData.imagePath;
-    this.model.cartQuantity = 1;
+    this.model.cartTotal = 1;
     this.model.userId = this.obj.userId;
 
     // POST: Subscribing To Add Product To Cart

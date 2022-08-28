@@ -24,7 +24,7 @@ export class CartComponent implements OnInit {
       (response) => {
         this.cartList = response;
         for (let item of this.cartList) {
-          this.totalCartPrice += (item.cartQuantity * item.cartProductPrice)
+          this.totalCartPrice += (item.cartQuantity * item.cartProductPrice);
         }
       }
     );
