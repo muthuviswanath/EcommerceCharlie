@@ -32,7 +32,7 @@ export class EditproductComponent implements OnInit {
       }
     );
     alert("Product Updated Successfully");
-    this.route.navigateByUrl('/listproduct');
+    this.route.navigateByUrl('/listproducts');
   }
 
 }

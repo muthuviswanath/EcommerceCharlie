@@ -26,7 +26,7 @@ export class AddproductComponent implements OnInit {
       }
     );
     alert("Product Added Successfully!");
-    this.route.navigateByUrl('/listproduct');
+    this.route.navigateByUrl('/listproducts');
   }
 
 }
