@@ -17,6 +17,7 @@ export class WishlistComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    // GET: Subscribing To Get All Wishlist Data
     this._wishListService.getAllWishList().subscribe(
       (response) => {
         this.wishList = response;
@@ -24,7 +25,9 @@ export class WishlistComponent implements OnInit {
     );
   }
 
+  // To Remove Wishlist Data
   public removeItem(wishListId: any) {
+    // DELETE: Subscribing To Delete Wishlist Item
     this._wishListService.deleteWishListData(wishListId).subscribe(
       () => {
 

@@ -18,6 +18,7 @@ export class TopProductsComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    // GET: Subscribing To Get All Products
     this._productServices.getAllProducts().subscribe(
       (response) => {
         this.productsList = response;

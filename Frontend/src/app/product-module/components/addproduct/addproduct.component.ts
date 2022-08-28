@@ -19,7 +19,9 @@ export class AddproductComponent implements OnInit {
 
   }
 
+  // To Add Product in Databse
   public submitProduct() {
+    // GET: Subscrbing to Add Product in Database
     this._productServices.addProduct(this.model).subscribe(
       () => {
 

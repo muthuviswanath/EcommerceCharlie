@@ -23,6 +23,7 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
     this.loginForm;
   }
+
   loginForm: FormGroup = this.builder.group(
     {
       username: this.username,
@@ -31,10 +32,11 @@ export class LoginComponent implements OnInit {
     }
   );
 
-
+  // To Check User Credentials
   public login() {
     this.formData = this.loginForm.value;
     this.showMessage = true;
+
     // Changes For API Logic
     if (this.loginForm.valid) {
       if (this.formData.username == "admin" && this.formData.password == "admin") {
@@ -42,6 +44,7 @@ export class LoginComponent implements OnInit {
         this.route.navigateByUrl('/admin');
       }
       else {
+        // POST: Subscribing To Check Login Value
         this._loginService.loginUser(this.loginForm.value).subscribe(
           (response) => {
             if (response == null) {
@@ -49,11 +52,10 @@ export class LoginComponent implements OnInit {
               this.route.navigateByUrl('/register');
             }
             else {
-             
               localStorage.setItem('user', JSON.stringify(response));
-              var userdata= localStorage.getItem('user');
-              var obj=JSON.parse(userdata);
-              console.log(obj.userName); 
+              var userdata = localStorage.getItem('user');
+              var obj = JSON.parse(userdata);
+              alert(`Welcome ${obj.userName}!`);
               this.route.navigateByUrl('/topproducts')
             }
           }

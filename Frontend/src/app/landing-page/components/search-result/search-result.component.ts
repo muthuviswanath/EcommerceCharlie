@@ -15,16 +15,19 @@ export class SearchResultComponent implements OnInit {
   productsList: IProduct[];
   searchList: any = [];
 
-  constructor(private route: ActivatedRoute, private _productService: ProductServices) {
+  constructor(private activatedRoute: ActivatedRoute, private _productService: ProductServices) {
 
   }
 
   ngOnInit(): void {
-    this.sub = this.route.params.subscribe(
+    // Getting Search Value from the URL
+    this.sub = this.activatedRoute.params.subscribe(
       (params) => {
         this.id = params['id'];
       }
     );
+
+    // GET: Subscribing To Get All the Products that matches Search Value
     this._productService.searchProducts(this.id).subscribe(
       (response) => {
         this.searchList = response;

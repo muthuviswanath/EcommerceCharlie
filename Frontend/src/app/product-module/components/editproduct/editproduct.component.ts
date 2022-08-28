@@ -14,7 +14,8 @@ export class EditproductComponent implements OnInit {
 
   constructor(private _productServices: ProductServices, private route: Router) {
     let prodRecord = this._productServices.getOptions();
-    this.prodData = this._productServices.getProductById(prodRecord.productId).subscribe(
+    // GET: Subscribing To Get Product By Product ID
+    this._productServices.getProductById(prodRecord.productId).subscribe(
       (response) => {
         this.prodData = response;
       }
@@ -25,7 +26,9 @@ export class EditproductComponent implements OnInit {
 
   }
 
+  // To Edit Product
   public editProductData() {
+    // PUT: Subscribing To Edit Product Data
     this._productServices.updateProduct(this.prodData.productId, this.prodData).subscribe(
       () => {
 

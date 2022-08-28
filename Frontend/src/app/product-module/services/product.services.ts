@@ -29,23 +29,27 @@ export class ProductServices implements OnInit {
     return this.data;
   }
 
+  // GET: Service To Get All Products from Database
   public getAllProducts(): Observable<IProduct[]> {
     return this.http.get<IProduct[]>(`${this.baseURL}api/Products`);
   }
 
+  // GET: Service To Get Product Item by Product ID
   public getProductById(productId: any) {
     return this.http.get(`${this.baseURL}api/Products/${productId}`);
   }
 
-  public searchProducts(productData: any) {
+  // POST: Service To get Products that matches Search Value
+  public searchProducts(searchString: any) {
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json; charset=utf-8'
       })
     };
-    return this.http.post(`${this.baseURL}api/Products/search`, JSON.stringify(productData), httpOptions);
+    return this.http.post(`${this.baseURL}api/Products/search`, JSON.stringify(searchString), httpOptions);
   }
 
+  // POST: Service To add Product in Database
   public addProduct(productData: any) {
     const httpOptions = {
       headers: new HttpHeaders({
@@ -55,6 +59,7 @@ export class ProductServices implements OnInit {
     return this.http.post(`${this.baseURL}api/Products`, productData, httpOptions);
   }
 
+  // PUT: Service To Update Product Data
   public updateProduct(productId: any, productData: any) {
     const httpOptions = {
       headers: new HttpHeaders({
@@ -64,6 +69,7 @@ export class ProductServices implements OnInit {
     return this.http.put(`${this.baseURL}api/Products/${productId}`, productData, httpOptions);
   }
 
+  // DELETE: Service To Delete Product from Database
   public deleteProduct(productId: any) {
     return this.http.delete(`${this.baseURL}api/Products/${productId}`, productId);
   }

@@ -16,6 +16,7 @@ export class OrderhistoryComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    // GET: Subscribing To Get All Order History
     this._orderService.getAllOrder().subscribe(
       (response) => {
         this.orderList = response;

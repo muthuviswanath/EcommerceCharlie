@@ -29,14 +29,14 @@ namespace ProductWebAPI.Controllers
 
             var wishListItem = _context.WishLists.Include(i => i.Product).Include(i => i.User).Select(w => new WishListDTO
             {
-                WishListId=w.WishListId,
-                ProductId=w.ProductId,
-                userId=w.UserId,
-                ProductName=w.Product.ProductName,
-                imgURL=w.Product.ImagePath,
-                ProductDescription=w.Product.ProductDescription,
-                ProductRating=w.Product.ProductRating,
-                ProductOfferPrice=w.Product.ProductOfferPrice,
+                WishListId = w.WishListId,
+                ProductId = w.ProductId,
+                userId = w.UserId,
+                ProductName = w.Product.ProductName,
+                imgURL = w.Product.ImagePath,
+                ProductDescription = w.Product.ProductDescription,
+                ProductRating = w.Product.ProductRating,
+                ProductOfferPrice = w.Product.ProductOfferPrice,
 
             });
             var itemResult = await wishListItem.ToListAsync();

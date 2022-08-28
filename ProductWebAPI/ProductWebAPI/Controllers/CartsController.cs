@@ -27,18 +27,18 @@ namespace ProductWebAPI.Controllers
         public async Task<ActionResult<IEnumerable<CartDTO>>> GetCarts()
         {
             //return await _context.Carts.Include(u => u.User).Include(p => p.Product).ToListAsync();
-            var cartData =  _context.Carts.Include(p => p.Product).Include(p=>p.User).Select(c => new CartDTO
+            var cartData = _context.Carts.Include(p => p.Product).Include(p => p.User).Select(c => new CartDTO
             {
                 cartId = c.CartId,
-                cartTotal = (float)c.CartTotal,
+                cartQuantity = c.CartTotal,
                 productName = c.Product.ProductName,
                 imgURL = c.Product.ImagePath,
                 userId = c.UserId,
                 productId = c.ProductId,
-                // cartQuantity = 1,
+                cartProductPrice = c.Product.ProductOfferPrice,
             });
-            var value=await cartData.ToListAsync();
-            return  value;
+            var value = await cartData.ToListAsync();
+            return value;
 
             //return await _context.Carts.ToListAsync();
 
@@ -64,7 +64,7 @@ namespace ProductWebAPI.Controllers
         // PUT: api/Carts/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutCart(int id, [FromBody]Cart cart)
+        public async Task<IActionResult> PutCart(int id, [FromBody] Cart cart)
         {
             if (id != cart.CartId)
             {

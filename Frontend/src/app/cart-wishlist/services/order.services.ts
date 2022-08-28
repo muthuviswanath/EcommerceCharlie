@@ -19,6 +19,7 @@ export class OrderServices implements OnInit {
 
   }
 
+  // GET: Service To Get All Order History Data from Database
   public getAllOrder(): Observable<IOrder[]> {
     return this.http.get<IOrder[]>(`${this.baseURL}api/Orders`);
   }

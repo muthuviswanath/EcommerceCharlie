@@ -39,8 +39,14 @@
                       </div>
                       <div class="col-md-2 d-flex justify-content-center">
                         <div>
-                          <p class="small text-muted mb-4 pb-2 p1">Cart Total</p>
-                          <p class="lead fw-normal mb-0">{{item.cartTotal}}</p>
+                          <p class="small text-muted mb-4 pb-2 p1">Cart Quantity</p>
+                          <p class="lead fw-normal mb-0">{{item.cartQuantity}}</p>
+                        </div>
+                      </div>
+                      <div class="col-md-2 d-flex justify-content-center">
+                        <div>
+                          <p class="small text-muted mb-4 pb-2 p1">Product Price</p>
+                          <p class="lead fw-normal mb-0">{{item.cartProductPrice}}</p>
                         </div>
                       </div>
                       <div class="col-md-2 d-flex justify-content-center">
@@ -65,3 +71,4 @@
     </div>
   </div>
 </div>
+<p>Total: {{totalCartPrice}}</p>

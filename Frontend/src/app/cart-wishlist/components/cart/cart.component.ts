@@ -12,21 +12,27 @@ export class CartComponent implements OnInit {
 
   cartList: ICart[];
   cartData: any = {};
-  cartPrice: number = 0;
+  totalCartPrice: number = 0;
 
   constructor(private _cartService: CartServices) {
 
   }
 
   ngOnInit(): void {
+    // GET: Subscribing To Get All Cart Items
     this._cartService.getAllCart().subscribe(
       (response) => {
         this.cartList = response;
+        for (let item of this.cartList) {
+          this.totalCartPrice += (item.cartQuantity * item.cartProductPrice)
+        }
       }
     );
   }
 
+  // To Update Cart
   public updateCart() {
+    // PUT: Subscribing To Update Cart Data
     this._cartService.updateCartData(this.cartData.cartId, this.cartData).subscribe(
       () => {
 
@@ -35,7 +41,9 @@ export class CartComponent implements OnInit {
     window.location.reload();
   }
 
+  // To Increment Quantity of Cart Item
   public incrementItem(cartid: any) {
+    // GET: Subscribing To Get Cart Item by Cart ID
     this._cartService.getCartById(cartid).subscribe(
       (response) => {
         this.cartData = response;
@@ -45,7 +53,9 @@ export class CartComponent implements OnInit {
     );
   }
 
+  // To Decrement Quantity of Cart Item
   public decrementItem(cartId: any) {
+    // GET: Subscribing To Get Cart Item by Cart ID
     this._cartService.getCartById(cartId).subscribe(
       (response) => {
         this.cartData = response;
@@ -56,7 +66,9 @@ export class CartComponent implements OnInit {
     window.location.reload();
   }
 
+  // To Remove Cart Item
   public removeItem(cartId: any) {
+    // DELETE: Subscribing To Delete Cart Item
     this._cartService.deleteCartData(cartId).subscribe(
       () => {
 

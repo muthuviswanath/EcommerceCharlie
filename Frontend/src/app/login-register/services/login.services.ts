@@ -15,6 +15,7 @@ export class LoginServices implements OnInit {
 
   }
 
+  // GET: Service To Get Details of All Users
   getLoginInfo(): Observable<ILogin[]> {
     return this.http.get<ILogin[]>(`${this.baseURL}api/Users`);
   }
@@ -23,7 +24,7 @@ export class LoginServices implements OnInit {
 
   }
 
-  // Register User Service
+  // POST: Service To Register User
   public registerUser(userData: any) {
     const httpOptions = {
       headers: new HttpHeaders({
@@ -33,7 +34,7 @@ export class LoginServices implements OnInit {
     return this.http.post(`${this.baseURL}api/Users`, userData, httpOptions);
   }
 
-  // Login User Service
+  // POST: Service To Check User Credentials
   public loginUser(userData: any) {
     const httpOptions = {
       headers: new HttpHeaders({

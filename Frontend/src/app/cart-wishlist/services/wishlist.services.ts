@@ -19,10 +19,12 @@ export class WishListServices implements OnInit {
 
   }
 
+  // GET: Service To Get All Wishlist Data from Database
   public getAllWishList(): Observable<IWishList[]> {
     return this.http.get<IWishList[]>(`${this.baseURL}api/WishLists`);
   }
 
+  // POST: Service To Add Wishlist Data in Database
   // Code Added By Apoorv
   public addToWishList(data: any) {
     const httpOptions = {
@@ -33,7 +35,8 @@ export class WishListServices implements OnInit {
     return this.http.post(`${this.baseURL}api/WishLists`, data, httpOptions);
   }
 
-  public deleteWishListData(wishListId: any){
+  // DELETE: Service To Delete Wishlist Data from Database
+  public deleteWishListData(wishListId: any) {
     return this.http.delete(`${this.baseURL}api/WishLists/${wishListId}`, wishListId);
   }
 }

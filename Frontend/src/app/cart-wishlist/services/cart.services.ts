@@ -29,10 +29,12 @@ export class CartServices implements OnInit {
     return this.data;
   }
 
+  // GET: Service To Get All Cart Items from Database
   public getAllCart(): Observable<ICart[]> {
     return this.http.get<ICart[]>(`${this.baseURL}api/Carts`);
   }
 
+  // POST: Service To Post Cart Item in Database
   public addToCart(cartData: any) {
     const httpOptions = {
       headers: new HttpHeaders({
@@ -42,10 +44,12 @@ export class CartServices implements OnInit {
     return this.http.post(`${this.baseURL}api/Carts`, cartData, httpOptions);
   }
 
+  // GET: Service To Get Cart Item by Cart ID
   public getCartById(cartId: any) {
     return this.http.get(`${this.baseURL}api/Carts/${cartId}`);
   }
 
+  // PUT: Service To Update Cart Data
   public updateCartData(cartId: any, data: any) {
     const httpOptions = {
       headers: new HttpHeaders({
@@ -55,6 +59,7 @@ export class CartServices implements OnInit {
     return this.http.put(`${this.baseURL}api/Carts/${cartId}`, data, httpOptions);
   }
 
+  // DELETE: Service To Delete Cart Item from Database
   public deleteCartData(cartId: any) {
     return this.http.delete(`${this.baseURL}api/Carts/${cartId}`, cartId);
   }
