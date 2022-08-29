@@ -1,72 +1,74 @@
+
+
+
+
 <div class="container-fluid mt-3 container-fullscreen-cont">
   <div class="custome-head-cnt">
     <div class="row c1">
       <div class="page-head h4">Order History</div>
     </div>
-    <div class="row ct">
-      <div class="col-sm-2"></div>
-      <div class="about col-sm-8">
-        <div class="row rowimg-cont">
-          <div class="backgroundimage-cont">
-            <div>
-              <div class="col">
-                <div class="card mb-4">
-                  <div class="card-body p-4">
-                    <div class="row align-items-center" *ngFor="let item of orderList">
-                      <div class="col-md-3 d-flex justify-content-center">
-                        <div>
-                          <p class="small text-muted mb-4 pb-2 p1">Order ID</p>
-                          <p class="lead fw-normal mb-0 p2">{{item.orderId}}</p>
-                        </div>
+    
+
+<div class="container">
+  <div class="wrapper wrapper-content animated fadeInRight">
+      <div class="row">
+        <div class="col-md-2"></div>
+          <div class="col-md-8">
+              <div class="ibox">
+
+                  
+                  
+                  
+                  
+                  <div class="ibox-content" *ngFor="let item of orderList">
+                      <div class="table-responsive">
+                          <table class="table shoping-cart-table">
+  
+                              <tbody>
+                              <tr>
+                                  <td width="90">
+                                      
+                                        <img src={{item.imgURL}} style="height:69px;width:69px">
+                                
+                                  </td>
+                                  <td class="desc">
+                                      <p class="small text-muted mb-4 pb-2 p1">Product Name</p>
+                                      <p class="big">
+                                        {{item.productName}}
+                                      </p>
+                                      <dl class="small m-b-none">
+                                        <dt>Description</dt>
+                                        <dd>{{item.productDescription}}</dd>
+                                    </dl>
+            
+
+                                    <dl class="small m-b-none">
+                                      <p class="text-muted mb-4 pb-2 p1">Order Date</p>
+                                      <p class="lead fw-normal mb-0">{{item.orderDate | date}}</p>
+                                  </dl>
+                                    
+                                   
+                                  </td>
+                                  <td>
+                                    <p class="small text-muted mb-4 pb-2 p1">Product Price</p>
+                                    Rs:{{item.productOfferPrice}}
+                                  </td>
+                              </tr>
+                              </tbody>
+                          </table>
                       </div>
-                      <div class="col-md-2 d-flex justify-content-center">
-                        <div>
-                          <p class="small text-muted mb-4 pb-2 p1">User ID</p>
-                          <p class="lead fw-normal mb-0">{{item.userId}}</p>
-                        </div>
-                      </div>
-                      <div class="col-md-2 d-flex justify-content-center">
-                        <div>
-                          <p class="small text-muted mb-4 pb-2 p1">Product ID</p>
-                          <p class="lead fw-normal mb-0">{{item.productId}}</p>
-                        </div>
-                      </div>
-                      <div class="col-md-2 d-flex justify-content-center">
-                        <div>
-                          <p class="small text-muted mb-4 pb-2 p1">Product Name</p>
-                          <p class="lead fw-normal mb-0">{{item.productName}}</p>
-                        </div>
-                      </div>
-                      <div class="col-md-2 d-flex justify-content-center">
-                        <div>
-                          <p class="small text-muted mb-4 pb-2 p1">Product Desc</p>
-                          <p class="lead fw-normal mb-0">{{item.productDescription}}</p>
-                        </div>
-                      </div>
-                      <div class="col-md-2 d-flex justify-content-center">
-                        <div>
-                          <p class="small text-muted mb-4 pb-2 p1">Product Rating</p>
-                          <p class="lead fw-normal mb-0">{{item.productRating}}</p>
-                        </div>
-                      </div>
-                      <div class="col-md-2 d-flex justify-content-center">
-                        <div>
-                          <p class="small text-muted mb-4 pb-2 p1">Order Date</p>
-                          <p class="lead fw-normal mb-0">{{item.orderDate | date}}</p>
-                        </div>
-                      </div>
-                      <div class="col-md-2 d-flex justify-content-center">
-                        <div>
-                        </div>
-                      </div>
-                    </div>
                   </div>
-                </div>
+                  <div class="ibox-content">
+                      <a class="btn btn-white" routerLink="/allproducts"><i class="fa fa-arrow-left"></i> Continue shopping</a>
+  
+                  </div>
               </div>
-            </div>
+  
           </div>
-        </div>
+          <div class="col-md-2"></div>
       </div>
-    </div>
   </div>
+  </div>
+
+</div>
 </div>

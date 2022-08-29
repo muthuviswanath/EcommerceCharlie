@@ -37,14 +37,22 @@
                                         <dt>Description</dt>
                                         <dd>{{item.productDescription}}</dd>
                                     </dl>
-            
-                                      <div class="m-t-sm">
-                                          <input type="button" value="Remove" (click)="removeItem(item.wishListId)">
-                                      </div>
+                                    <div class="m-t-sm">
+                                      <input type="button" value="Remove" (click)="removeItem(item.wishListId)">
+                                  </div>
+                        
                                   </td>
+            
+                                      
                                   <td>
                                     <p class="small text-muted mb-4 pb-2 p1">Product Price</p>
                                     Rs:{{item.productOfferPrice}}
+                                    <br>
+    
+                                    
+                                  </td>
+                                  <td>
+                                    <a class="btn btn-white" [routerLink]="[ '/product',item.productId]">View Product</a>
                                   </td>
                               </tr>
                               </tbody>
@@ -65,3 +73,6 @@
 
 </div>
 </div>
+
+
+
