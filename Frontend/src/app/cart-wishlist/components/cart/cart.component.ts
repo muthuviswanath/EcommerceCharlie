@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ProductServices } from 'src/app/product-module/services/product.services';
 import { ICart } from '../../interfaces/ICart';
 import { CartServices } from '../../services/cart.services';
 
@@ -12,9 +13,11 @@ export class CartComponent implements OnInit {
 
   cartList: ICart[];
   cartData: any = {};
+  productData: any = {};
   totalCartPrice: number = 0;
+  productQuantity: number = 0;
 
-  constructor(private _cartService: CartServices) {
+  constructor(private _cartService: CartServices, private _productService: ProductServices) {
 
   }
 
@@ -41,6 +44,16 @@ export class CartComponent implements OnInit {
     window.location.reload();
   }
 
+  // To Update Product
+  public updateProduct() {
+    // PUT: Subscribing To Update Product by Product ID
+    this._productService.updateProduct(this.productData.productId, this.productData).subscribe(
+      () => {
+
+      }
+    );
+  }
+
   // To Increment Quantity of Cart Item
   public incrementItem(cartid: any) {
     // GET: Subscribing To Get Cart Item by Cart ID
@@ -48,22 +61,51 @@ export class CartComponent implements OnInit {
       (response) => {
         this.cartData = response;
         this.cartData.cartTotal++;
+        // GET: Subscribing To Product by Product ID
+        this._productService.getProductById(this.cartData.productId).subscribe(
+          (response) => {
+            this.productData = response;
+            this.productData.quantity--;
+            if (this.productData.quantity < 0) {
+              this.productData.quantity = 0;
+              alert("Not Enough Products!");
+            }
+            this.updateProduct();
+          }
+        )
         this.updateCart();
       }
     );
+
+
   }
 
   // To Decrement Quantity of Cart Item
   public decrementItem(cartId: any) {
+    let flag: Boolean = true;
     // GET: Subscribing To Get Cart Item by Cart ID
     this._cartService.getCartById(cartId).subscribe(
       (response) => {
         this.cartData = response;
         this.cartData.cartTotal--;
+        if (this.cartData.cartTotal < 0) {
+          this.cartData.cartTotal = 0;
+          alert("Cart Quantity can't be Negative!");
+          flag = false;
+        }
+        // GET: Subscribing To Product by Product ID
+        this._productService.getProductById(this.cartData.productId).subscribe(
+          (response) => {
+            this.productData = response;
+            this.productData.quantity++;
+            if (flag) {
+              this.updateProduct();
+            }
+          }
+        );
         this.updateCart();
       }
     );
-    window.location.reload();
   }
 
   // To Remove Cart Item

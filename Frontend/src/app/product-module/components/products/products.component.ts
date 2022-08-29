@@ -62,6 +62,13 @@ export class ProductsComponent implements OnInit {
     this.model.productName = this.prodData.productName;
     this.model.imgURL = this.prodData.imagePath;
     this.model.cartTotal = 1;
+    this.prodData.quantity--;
+    // PUT: Subscribing To Update Product By Product ID
+    this._productServices.updateProduct(this.prodData.productId,this.prodData).subscribe(
+      () => {
+
+      }
+    );
     this.model.userId = this.obj.userId;
 
     // POST: Subscribing To Add Product To Cart
