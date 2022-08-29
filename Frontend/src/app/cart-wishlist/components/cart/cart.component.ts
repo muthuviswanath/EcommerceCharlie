@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { ProductServices } from 'src/app/product-module/services/product.services';
 import { ICart } from '../../interfaces/ICart';
 import { CartServices } from '../../services/cart.services';
@@ -17,7 +18,7 @@ export class CartComponent implements OnInit {
   totalCartPrice: number = 0;
   filteredList: ICart[];
 
-  constructor(private _cartService: CartServices, private _productService: ProductServices) {
+  constructor(private _cartService: CartServices, private _productService: ProductServices, private route: Router) {
 
   }
 
@@ -60,6 +61,7 @@ export class CartComponent implements OnInit {
         );
       }
     );
+    window.location.reload();
   }
 
   // To Decrement Quantity of Cart Item
@@ -88,6 +90,7 @@ export class CartComponent implements OnInit {
         this.updateCart();
       }
     );
+    window.location.reload();
   }
 
   // To Remove Cart Item
@@ -110,7 +113,7 @@ export class CartComponent implements OnInit {
     // DELETE: Subscribing To Delete Cart Item
     this._cartService.deleteCartData(cartId).subscribe();
     alert("Cart Item Removed Successfully!")
-    // window.location.reload();
+    window.location.reload();
   }
 
   // Load Cart Data

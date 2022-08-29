@@ -21,7 +21,7 @@ export class ProductsComponent implements OnInit {
   sub: any;
   id: any;
   fakeArray = new Array(5);
-  discountprice:any;
+  discountprice: any;
   // To get User ID at time of user Login using Local Storage
   userdata = localStorage.getItem('user');
   obj = JSON.parse(this.userdata);
@@ -46,16 +46,16 @@ export class ProductsComponent implements OnInit {
     this._productServices.getProductById(this.id).subscribe(
       (response) => {
         this.prodData = response;
-        this.discountprice=100-Math.round((this.prodData.productOfferPrice/this.prodData.price) * 100) ;
+        this.discountprice = 100 - Math.round((this.prodData.productOfferPrice / this.prodData.price) * 100);
       }
     );
     // GET: Subscribing To Get All Products then Filtering them using Product Description to Get Related Products
     this._productServices.getAllProducts().subscribe(
-      response => 
+      response =>
         this.productsList = response.filter(
           element => element.productDescription == this.prodData.productDescription
         )
-      
+
     );
   }
 
@@ -87,7 +87,11 @@ export class ProductsComponent implements OnInit {
     // PUT: Subscribing To Update Product By Product ID
     this._productServices.updateProduct(this.prodData.productId, this.prodData).subscribe();
     alert("Added To Cart Successfully");
-    this.route.navigateByUrl('/cart')
+    this.route.navigateByUrl('/cart').then(
+      () => {
+        window.location.reload();
+      }
+    );
   }
 
   // To Add Product To Wishlist
