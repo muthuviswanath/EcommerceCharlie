@@ -16,6 +16,7 @@ import { RegisterComponent } from '../login-register/components/register/registe
 import { AccountComponent } from '../login-register/components/account/account.component';
 import { UserComponent } from '../login-register/components/user/user.component';
 import { AllproductslistComponent } from '../product-module/components/allproductslist/allproductslist.component';
+import { AboutComponent } from '../shared/components/about/about.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/allproducts', pathMatch: 'full' },
@@ -35,6 +36,7 @@ const routes: Routes = [
   { path: 'listproducts', component: ListproductsComponent },
   { path: 'account', component: AccountComponent },
   { path: 'user', component: UserComponent },
+  { path: 'about', component: AboutComponent }
 ];
 
 @NgModule({
