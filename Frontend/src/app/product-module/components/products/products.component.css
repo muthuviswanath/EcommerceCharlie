@@ -332,3 +332,13 @@
   }
 
 }
+.disc{
+  color:red;
+  font-size: 22px;
+  margin-right: 10px;
+}
+.discprice{
+  color: black;
+  font-size: 30px;
+
+}

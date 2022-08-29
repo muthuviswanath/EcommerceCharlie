@@ -11,9 +11,9 @@
             <p>{{prodData.productName}}</p>
           </div>
           <div class="row content">
-            <p> Discount MRP: {{prodData.productOfferPrice}} INR</p>
-            <p> MRP: {{prodData.price}} INR</p>
-            <p> Description: {{prodData.productDescription}} INR</p>
+            <p> <span class="disc">-{{this.discountprice}}%</span><span class="discprice">{{prodData.productOfferPrice}} INR</span></p>
+            <p> MRP:<s>{{prodData.price}} INR</s></p>
+            <p> Description: {{prodData.productDescription}}</p>
             <p> Product Rating:<span *ngFor="let n of fakeArray ;let i=index">
                 <i *ngIf="i<prodData.productRating" class='fa fa-star yellow-color'></i>
               </span></p>

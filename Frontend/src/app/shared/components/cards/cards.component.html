@@ -3,6 +3,8 @@
   <div class="container">
     <a class="btn btn-white-view" [routerLink]="[ '/product',items.productId]">
       <h4><b>{{items.productName}}</b></h4>
+      <p> <span class="disc">-{{this.discountprice}}%</span><span class="discprice">{{items.productOfferPrice}} INR</span></p>
+      <p> MRP:<s>{{items.price}} INR</s></p>
     </a>
   </div>
 </div>

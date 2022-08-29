@@ -18,3 +18,12 @@ img {
   width: 100%;
   height: 200px;
 }
+
+.disc{
+  color:red;
+  margin-right: 5px;
+}
+.discprice{
+  font-size: 18px;
+  color: black;
+}

@@ -21,7 +21,9 @@ start:number=0;
     // GET: Subscribing To Get All Products
     this._productServices.getAllProducts().subscribe(
       (response) => {
-        this.productsList = response;
+        this.productsList = response.filter(
+          element => (element.productRating >=4) 
+        );
       }
     );
   }
