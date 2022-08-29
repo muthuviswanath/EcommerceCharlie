@@ -12,7 +12,7 @@ export class TopProductsComponent implements OnInit {
 
   IProduct: Array<any> = [];
   productsList: IProduct[];
-
+start:number=0;
   constructor(private _productServices: ProductServices) {
 
   }
@@ -25,4 +25,10 @@ export class TopProductsComponent implements OnInit {
       }
     );
   }
+  forward():void{
+      this.start+=4;
+  }
+  backward():void{
+    this.start-=4;
+}
 }
