@@ -15,6 +15,7 @@ import { LoginComponent } from '../login-register/components/login/login.compone
 import { RegisterComponent } from '../login-register/components/register/register.component';
 import { AccountComponent } from '../login-register/components/account/account.component';
 import { UserComponent } from '../login-register/components/user/user.component';
+import { AllproductslistComponent } from '../product-module/components/allproductslist/allproductslist.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/allproducts', pathMatch: 'full' },
@@ -23,6 +24,7 @@ const routes: Routes = [
   { path: 'product/:id', component: ProductsComponent },
   { path: 'cart', component: CartComponent },
   { path: 'allproducts', component: AllproductsComponent },
+  { path: 'alllistproducts', component: AllproductslistComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'wishlist', component: WishlistComponent },
   { path: 'search/:id', component: SearchResultComponent },

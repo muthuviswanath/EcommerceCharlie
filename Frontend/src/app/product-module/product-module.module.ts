@@ -10,8 +10,9 @@ import { ProductsComponent } from './components/products/products.component';
 import { TopProductsComponent } from './components/top-products/top-products.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from '../shared/shared.module';
+import { AllproductslistComponent } from './components/allproductslist/allproductslist.component';
 
-const Components = [AddproductComponent, AllproductsComponent, EditproductComponent, ListproductsComponent, ProductsComponent, TopProductsComponent];
+const Components = [AddproductComponent, AllproductsComponent, EditproductComponent, ListproductsComponent, ProductsComponent, TopProductsComponent, AllproductslistComponent];
 
 @NgModule({
   declarations: Components,

@@ -1,0 +1,22 @@
+<div class="container-fluid mt-3 container-fullscreen-cont">
+  <div class="custome-head-cnt">
+    <div class="row d1">
+      <div class="page-head h4">
+        <div>All Products</div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-2"></div>
+    <div class="col-sm-8">
+      <div class="row">
+        <div class="col-sm-3 crd" *ngFor="let prod of allproductsList;let i=index">
+          <app-cards [items]="prod"></app-cards>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-2"></div>
+  </div>
+</div>
