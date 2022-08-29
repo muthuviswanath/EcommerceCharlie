@@ -9,7 +9,7 @@ import { ProductServices } from '../../../product-module/services/product.servic
   styleUrls: ['./search-result.component.css']
 })
 export class SearchResultComponent implements OnInit {
-
+  flag: boolean = true;
   sub: any;
   id: any;
   productsList: IProduct[];
@@ -31,7 +31,11 @@ export class SearchResultComponent implements OnInit {
     this._productService.searchProducts(this.id).subscribe(
       (response) => {
         this.searchList = response;
+        if (this.searchList.length == 0) {
+          this.flag = false;
+        }
       }
+
     );
   }
 }
