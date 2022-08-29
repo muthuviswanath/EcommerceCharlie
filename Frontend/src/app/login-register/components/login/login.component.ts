@@ -56,7 +56,7 @@ export class LoginComponent implements OnInit {
               var userdata = localStorage.getItem('user');
               var obj = JSON.parse(userdata);
               alert(`Welcome ${obj.userName}!`);
-              this.route.navigateByUrl('/topproducts')
+              this.route.navigateByUrl('/topproducts');
             }
           }
         );
