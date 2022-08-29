@@ -1,0 +1,36 @@
+<div class="login-form">
+
+  <h2 class="text-center">User Data</h2>
+
+  <div class="form-group">
+    <p>User Name: {{userData.userName}}</p>
+  </div>
+
+  <div class="form-group">
+    <p>First Name: {{userData.firstName}}</p>
+  </div>
+
+  <div class="form-group">
+    <p>Last Name: {{userData.lastName}}</p>
+  </div>
+
+  <div class="form-group">
+    <p>Address: {{userData.address}}</p>
+  </div>
+
+  <div class="form-group">
+    <p>Phone Number: {{userData.phoneNumber}}</p>
+  </div>
+
+  <div class="form-group">
+    <p>User Email: {{userData.email}}</p>
+  </div>
+
+  <div class="form-group">
+    <p>Password: {{userData.password}}</p>
+  </div>
+
+  <div class="form-group">
+    <button type="submit" class="btn btn-primary btn-lg btn-block" (click)="editUser()">Update</button>
+  </div>
+</div>

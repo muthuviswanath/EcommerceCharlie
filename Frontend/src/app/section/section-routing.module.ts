@@ -13,6 +13,8 @@ import { SearchResultComponent } from '../landing-page/components/search-result/
 import { TopProductsComponent } from '../product-module/components/top-products/top-products.component';
 import { LoginComponent } from '../login-register/components/login/login.component';
 import { RegisterComponent } from '../login-register/components/register/register.component';
+import { AccountComponent } from '../login-register/components/account/account.component';
+import { UserComponent } from '../login-register/components/user/user.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/allproducts', pathMatch: 'full' },
@@ -29,6 +31,8 @@ const routes: Routes = [
   { path: 'addproduct', component: AddproductComponent },
   { path: 'editproduct', component: EditproductComponent },
   { path: 'listproducts', component: ListproductsComponent },
+  { path: 'account', component: AccountComponent },
+  { path: 'user', component: UserComponent },
 ];
 
 @NgModule({

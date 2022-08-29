@@ -10,6 +10,7 @@ import { ILogin } from "../interfaces/ILogin";
 export class LoginServices implements OnInit {
 
   baseURL: string = "http://localhost:33037/";
+  public data: any = {};
 
   constructor(private http: HttpClient) {
 
@@ -22,6 +23,19 @@ export class LoginServices implements OnInit {
 
   ngOnInit(): void {
 
+  }
+
+  setOptions(option, value) {
+    this.data[option] = value;
+  }
+
+  getOptions() {
+    return this.data;
+  }
+
+  // GET: Service To Get User Data by User ID
+  public getUserById(userId: any) {
+    return this.http.get(`${this.baseURL}api/Users/${userId}`);
   }
 
   // POST: Service To Register User
@@ -42,5 +56,15 @@ export class LoginServices implements OnInit {
       })
     };
     return this.http.post(`${this.baseURL}api/Users/login`, userData, httpOptions);
+  }
+
+  // PUT: Service To Update User Data
+  public updateUser(userId: any, userData: any) {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json; charset=utf-8'
+      })
+    };
+    return this.http.put(`${this.baseURL}api/Users/${userId}`, userData, httpOptions);
   }
 }
