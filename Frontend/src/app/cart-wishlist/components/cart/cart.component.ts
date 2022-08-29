@@ -110,6 +110,20 @@ export class CartComponent implements OnInit {
 
   // To Remove Cart Item
   public removeItem(cartId: any) {
+    // GET: Subscribing To Get Cart Item by Cart ID
+    this._cartService.getCartById(cartId).subscribe(
+      (response) => {
+        this.cartData = response;
+        // GET: Subscribing To Product by Product ID
+        this._productService.getProductById(this.cartData.productId).subscribe(
+          (response) => {
+            this.productData = response;
+            this.productData.quantity += this.cartData.cartTotal;
+            this.updateProduct();
+          }
+        );
+      }
+    );
     // DELETE: Subscribing To Delete Cart Item
     this._cartService.deleteCartData(cartId).subscribe(
       () => {
