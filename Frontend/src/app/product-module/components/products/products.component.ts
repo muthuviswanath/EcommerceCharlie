@@ -49,9 +49,7 @@ export class ProductsComponent implements OnInit {
     this._productServices.getAllProducts().subscribe(
       (response) => {
         this.productsList = response.filter(
-          (element) => {
-            element.productDescription == this.prodData.productDescription;
-          }
+          element => element.productDescription == this.prodData.productDescription
         );
       }
     );
