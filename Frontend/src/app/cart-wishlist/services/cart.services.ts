@@ -38,6 +38,7 @@ export class CartServices implements OnInit {
   public getIndiviualCartId():Observable<ICart[]>{
     return this.http.get<ICart[]>(`${this.baseURL}api/carts/user/${this.userid}`);
   }
+  
   // POST: Service To Post Cart Item in Database
   public addToCart(cartData: any) {
     const httpOptions = {

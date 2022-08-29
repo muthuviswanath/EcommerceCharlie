@@ -57,6 +57,28 @@ namespace ProductWebAPI.Controllers
             return wishList;
         }
 
+        [HttpGet("user/{id}")]
+        public async Task<ActionResult<IEnumerable<WishListDTO>>>GetWishListbyId(int id)
+        {
+            var userwishList = _context.WishLists.Where(x => x.UserId == id).Include(c => c.User).Include(p => p.Product).Select(w => new WishListDTO
+            {
+                WishListId = w.WishListId,
+                ProductId = w.ProductId,
+                userId = w.UserId,
+                ProductName = w.Product.ProductName,
+                imgURL = w.Product.ImagePath,
+                ProductDescription = w.Product.ProductDescription,
+                ProductRating = w.Product.ProductRating,
+                ProductOfferPrice = w.Product.ProductOfferPrice,
+
+            });
+
+            var newList = await userwishList.ToListAsync();
+            return newList;
+        }
+
+
+
         // PUT: api/WishLists/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]

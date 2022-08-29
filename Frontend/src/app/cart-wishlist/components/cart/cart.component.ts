@@ -24,16 +24,7 @@ export class CartComponent implements OnInit {
   ngOnInit(): void {
     // GET: Subscribing To Get All Cart Items
 
-    this._cartService.getIndiviualCartId().subscribe(
-      (response) => {
-        this.cartList = response;
-        for (let item of this.cartList) {
-          
-          this.totalCartPrice += (item.cartQuantity * item.cartProductPrice);
-        }
-      }
-    );
-    
+    this.loadcartData();
   }
 
   // To Update Cart
@@ -134,6 +125,19 @@ export class CartComponent implements OnInit {
       }
     );
     alert("Cart Item Removed Successfully!")
-    window.location.reload();
+   this.loadcartData();
+  }
+
+  public loadcartData(){
+    this._cartService.getIndiviualCartId().subscribe(
+      (response) => {
+        this.cartList = response;
+        for (let item of this.cartList) {
+          
+          this.totalCartPrice += (item.cartQuantity * item.cartProductPrice);
+        }
+      }
+    );
+    
   }
 }

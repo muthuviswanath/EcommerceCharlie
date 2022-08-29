@@ -24,6 +24,11 @@ export class WishListServices implements OnInit {
     return this.http.get<IWishList[]>(`${this.baseURL}api/WishLists`);
   }
 
+  userid: number;
+  public getIndiviualWishList():Observable<IWishList[]>{
+    return this.http.get<IWishList[]>(`${this.baseURL}api/WishLists/user/${this.userid}`);
+  }
+
   // POST: Service To Add Wishlist Data in Database
   // Code Added By Apoorv
   public addToWishList(data: any) {
@@ -32,11 +37,12 @@ export class WishListServices implements OnInit {
         'Content-Type': 'application/json; charset=utf-8'
       })
     };
+    this.userid = data.userId;
     return this.http.post(`${this.baseURL}api/WishLists`, data, httpOptions);
   }
 
   // DELETE: Service To Delete Wishlist Data from Database
   public deleteWishListData(wishListId: any) {
-    return this.http.delete(`${this.baseURL}api/WishLists/${wishListId}`, wishListId);
+    return this.http.delete(`${this.baseURL}api/WishLists/${wishListId}`);
   }
 }
