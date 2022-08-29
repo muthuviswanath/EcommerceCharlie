@@ -47,16 +47,16 @@ export class LoginComponent implements OnInit {
         // POST: Subscribing To Check Login Value
         this._loginService.loginUser(this.loginForm.value).subscribe(
           (response) => {
-            if (response == null) {
-              alert("Invalid Credentials! Please Register before Sign In");
-              this.route.navigateByUrl('/register');
-            }
-            else {
+            if (response != null) {
               localStorage.setItem('user', JSON.stringify(response));
               var userdata = localStorage.getItem('user');
               var obj = JSON.parse(userdata);
+              this.route.navigateByUrl('/topproducts')
               alert(`Welcome ${obj.userName}!`);
-              this.route.navigateByUrl('/topproducts');
+            }
+            else {
+              alert("Invalid Credentials! Please Register before Sign In");
+              this.route.navigateByUrl('/register');
             }
           }
         );

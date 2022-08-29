@@ -34,6 +34,10 @@ export class CartServices implements OnInit {
     return this.http.get<ICart[]>(`${this.baseURL}api/Carts`);
   }
 
+  userid: number;
+  public getIndiviualCartId():Observable<ICart[]>{
+    return this.http.get<ICart[]>(`${this.baseURL}api/carts/user/${this.userid}`);
+  }
   // POST: Service To Post Cart Item in Database
   public addToCart(cartData: any) {
     const httpOptions = {
@@ -41,6 +45,7 @@ export class CartServices implements OnInit {
         'Content-Type': 'application/json; charset=utf-8'
       })
     };
+    this.userid = cartData.userId;
     return this.http.post(`${this.baseURL}api/Carts`, cartData, httpOptions);
   }
 

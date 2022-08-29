@@ -61,6 +61,26 @@ namespace ProductWebAPI.Controllers
             return cart;
         }
 
+        [HttpGet("user/{id}")]
+        public async Task<ActionResult<IEnumerable<CartDTO>>> GetCartbyUserId(int id)
+        {
+            var usercart = _context.Carts.Where(x => x.UserId == id).Include(c => c.User).Include(p => p.Product).Select(u => new CartDTO
+            {
+                cartId = u.CartId,
+                cartQuantity = u.CartTotal,
+                productName = u.Product.ProductName,
+                imgURL = u.Product.ImagePath,
+                userId = u.UserId,
+                productId = u.ProductId,
+                cartProductPrice = u.Product.ProductOfferPrice,
+            });
+
+            var newcart = await usercart.ToListAsync();
+
+            return newcart;
+        
+        }
+
         // PUT: api/Carts/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]

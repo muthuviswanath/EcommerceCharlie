@@ -15,7 +15,7 @@ export class CartComponent implements OnInit {
   cartData: any = {};
   productData: any = {};
   totalCartPrice: number = 0;
-  productQuantity: number = 0;
+  filteredList: ICart[];
 
   constructor(private _cartService: CartServices, private _productService: ProductServices) {
 
@@ -23,14 +23,17 @@ export class CartComponent implements OnInit {
 
   ngOnInit(): void {
     // GET: Subscribing To Get All Cart Items
-    this._cartService.getAllCart().subscribe(
+
+    this._cartService.getIndiviualCartId().subscribe(
       (response) => {
         this.cartList = response;
         for (let item of this.cartList) {
+          
           this.totalCartPrice += (item.cartQuantity * item.cartProductPrice);
         }
       }
     );
+    
   }
 
   // To Update Cart
