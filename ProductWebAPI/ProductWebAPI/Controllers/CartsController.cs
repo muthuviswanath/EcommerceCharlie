@@ -30,7 +30,7 @@ namespace ProductWebAPI.Controllers
             var cartData = _context.Carts.Include(p => p.Product).Include(p => p.User).Select(c => new CartDTO
             {
                 cartId = c.CartId,
-                cartQuantity = c.CartTotal,
+                cartTotal = c.CartTotal,
                 productName = c.Product.ProductName,
                 imgURL = c.Product.ImagePath,
                 userId = c.UserId,
@@ -61,24 +61,38 @@ namespace ProductWebAPI.Controllers
             return cart;
         }
 
+        // GET: api/Carts/5
+        [HttpGet("product/{id}")]
+        public async Task<ActionResult<CartDTO>> GetCartbyProductId(int id)
+        {
+            var usercart = _context.Carts.Include(u => u.User).Include(p => p.Product).Select(c => new CartDTO
+            {
+                cartId = c.CartId,
+                cartTotal = c.CartTotal,
+                productName = c.Product.ProductName,
+                imgURL = c.Product.ImagePath,
+                userId = c.UserId,
+                productId = c.ProductId,
+                cartProductPrice = c.Product.ProductOfferPrice,
+            });
+            return await usercart.FirstOrDefaultAsync(p => p.productId == id);
+        }
+
         [HttpGet("user/{id}")]
         public async Task<ActionResult<IEnumerable<CartDTO>>> GetCartbyUserId(int id)
         {
             var usercart = _context.Carts.Where(x => x.UserId == id).Include(c => c.User).Include(p => p.Product).Select(u => new CartDTO
             {
                 cartId = u.CartId,
-                cartQuantity = u.CartTotal,
+                cartTotal = u.CartTotal,
                 productName = u.Product.ProductName,
                 imgURL = u.Product.ImagePath,
                 userId = u.UserId,
                 productId = u.ProductId,
                 cartProductPrice = u.Product.ProductOfferPrice,
             });
-
             var newcart = await usercart.ToListAsync();
-
             return newcart;
-        
         }
 
         // PUT: api/Carts/5

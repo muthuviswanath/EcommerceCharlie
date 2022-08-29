@@ -10,6 +10,11 @@ import { ICart } from "../interfaces/ICart";
 export class CartServices implements OnInit {
 
   baseURL: string = "http://localhost:33037/";
+  public data: any = {};
+
+  // To get User ID at time of user Login using Local Storage
+  userdata = localStorage.getItem('user');
+  obj = JSON.parse(this.userdata);
 
   constructor(private http: HttpClient) {
 
@@ -18,8 +23,6 @@ export class CartServices implements OnInit {
   ngOnInit(): void {
 
   }
-
-  public data: any = {};
 
   public setOptions(option, value) {
     this.data[option] = value;
@@ -34,11 +37,16 @@ export class CartServices implements OnInit {
     return this.http.get<ICart[]>(`${this.baseURL}api/Carts`);
   }
 
-  userid: number;
-  public getIndiviualCartId():Observable<ICart[]>{
-    return this.http.get<ICart[]>(`${this.baseURL}api/carts/user/${this.userid}`);
+  // GET: Service To Get Cart Item by User ID
+  public getIndiviualCartId(): Observable<ICart[]> {
+    return this.http.get<ICart[]>(`${this.baseURL}api/carts/user/${this.obj.userId}`);
   }
-  
+
+  // GET: Service To Get Cart Item by Product ID
+  public getCartByProductId(productId: any) {
+    return this.http.get(`${this.baseURL}api/Carts/product/${productId}`);
+  }
+
   // POST: Service To Post Cart Item in Database
   public addToCart(cartData: any) {
     const httpOptions = {
@@ -46,7 +54,6 @@ export class CartServices implements OnInit {
         'Content-Type': 'application/json; charset=utf-8'
       })
     };
-    this.userid = cartData.userId;
     return this.http.post(`${this.baseURL}api/Carts`, cartData, httpOptions);
   }
 
@@ -56,13 +63,13 @@ export class CartServices implements OnInit {
   }
 
   // PUT: Service To Update Cart Data
-  public updateCartData(cartId: any, data: any) {
+  public updateCartData(cartId: any, cartData: any) {
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json; charset=utf-8'
       })
     };
-    return this.http.put(`${this.baseURL}api/Carts/${cartId}`, data, httpOptions);
+    return this.http.put(`${this.baseURL}api/Carts/${cartId}`, cartData, httpOptions);
   }
 
   // DELETE: Service To Delete Cart Item from Database

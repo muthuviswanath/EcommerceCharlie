@@ -18,22 +18,22 @@ export class WishlistComponent implements OnInit {
 
   ngOnInit(): void {
     // GET: Subscribing To Get All Wishlist Data
-    this.loadWishlist();
+    this._wishListService.getAllWishList().subscribe(
+      (response) => {
+        this.wishList = response;
+      }
+    );
   }
 
   // To Remove Wishlist Data
   public removeItem(wishListId: any) {
     // DELETE: Subscribing To Delete Wishlist Item
-    this._wishListService.deleteWishListData(wishListId).subscribe();
-    alert("Wishlist Item Removed Successfully!")
-    this.loadWishlist();
-  }
+    this._wishListService.deleteWishListData(wishListId).subscribe(
+      () => {
 
-  public loadWishlist(){
-    this._wishListService.getIndiviualWishList().subscribe(
-      (response) => {
-        this.wishList = response;
       }
     );
+    alert("Wishlist Item Removed Successfully!")
+    window.location.reload();
   }
 }

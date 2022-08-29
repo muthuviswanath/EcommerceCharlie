@@ -22,20 +22,14 @@ export class CartComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    // GET: Subscribing To Get All Cart Items
-
-    this.loadcartData();
+    this.loadCartData();
   }
 
   // To Update Cart
   public updateCart() {
     // PUT: Subscribing To Update Cart Data
-    this._cartService.updateCartData(this.cartData.cartId, this.cartData).subscribe(
-      () => {
-
-      }
-    );
-    window.location.reload();
+    this._cartService.updateCartData(this.cartData.cartId, this.cartData).subscribe();
+    this.loadCartData();
   }
 
   // To Update Product
@@ -55,23 +49,9 @@ export class CartComponent implements OnInit {
       (response) => {
         this.cartData = response;
         this.cartData.cartTotal++;
-        // GET: Subscribing To Product by Product ID
-        this._productService.getProductById(this.cartData.productId).subscribe(
-          (response) => {
-            this.productData = response;
-            this.productData.quantity--;
-            if (this.productData.quantity < 0) {
-              this.productData.quantity = 0;
-              alert("Not Enough Products!");
-            }
-            this.updateProduct();
-          }
-        )
         this.updateCart();
       }
     );
-
-
   }
 
   // To Decrement Quantity of Cart Item
@@ -118,26 +98,24 @@ export class CartComponent implements OnInit {
         );
       }
     );
-    // DELETE: Subscribing To Delete Cart Item
-    this._cartService.deleteCartData(cartId).subscribe(
-      () => {
 
-      }
-    );
+    // DELETE: Subscribing To Delete Cart Item
+    this._cartService.deleteCartData(cartId).subscribe();
     alert("Cart Item Removed Successfully!")
-   this.loadcartData();
+    window.location.reload();
   }
 
-  public loadcartData(){
+  // Load Cart Data
+  public loadCartData() {
+    // GET: Subscribing To Get All Cart Items By User ID
     this._cartService.getIndiviualCartId().subscribe(
       (response) => {
         this.cartList = response;
         for (let item of this.cartList) {
-          
-          this.totalCartPrice += (item.cartQuantity * item.cartProductPrice);
+          this.totalCartPrice += (item.cartTotal * item.cartProductPrice);
         }
       }
     );
-    
   }
 }
+

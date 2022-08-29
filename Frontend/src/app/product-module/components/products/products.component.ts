@@ -15,7 +15,9 @@ export class ProductsComponent implements OnInit {
   productsList: IProduct[];
   items: any = {};
   prodData: any = {};
-  model: any = {};
+  cartData: any = {};
+  cartDTOData: any = {};
+  wishListData: any = {};
   sub: any;
   id: any;
   fakeArray = new Array(5);
@@ -57,22 +59,31 @@ export class ProductsComponent implements OnInit {
 
   // To Add Product To Cart
   public submitToCart(): void {
-    this.model.productId = this.prodData.productId;
-    this.model.cartProductPrice = this.prodData.productOfferPrice;
-    this.model.productName = this.prodData.productName;
-    this.model.imgURL = this.prodData.imagePath;
-    this.model.cartTotal = 1;
-    this.prodData.quantity--;
-    // PUT: Subscribing To Update Product By Product ID
-    this._productServices.updateProduct(this.prodData.productId,this.prodData).subscribe(
-      () => {
-
+    // GET: Subscribing To Get Cart Item By Product ID
+    this._cartService.getCartByProductId(this.prodData.productId).subscribe(
+      (response) => {
+        this.cartDTOData = response;
+        if (this.cartDTOData != null) {
+          this.cartDTOData.cartTotal += 1;
+          this._cartService.updateCartData(this.cartDTOData.cartId, this.cartDTOData).subscribe();
+        }
+        else {
+          this.cartDTOData = {
+            userId: this.obj.userId,
+            productId: this.prodData.productId,
+            cartTotal: 1,
+            productName: this.prodData.productName,
+            cartProductPrice: this.prodData.productOfferPrice,
+            imgURL: this.prodData.imagePath,
+          };
+          // POST: Subscribing To Add Product To Cart
+          this._cartService.addToCart(this.cartDTOData).subscribe();
+        }
       }
     );
-    this.model.userId = this.obj.userId;
-
-    // POST: Subscribing To Add Product To Cart
-    this._cartService.addToCart(this.model).subscribe();
+    this.prodData.quantity--;
+    // PUT: Subscribing To Update Product By Product ID
+    this._productServices.updateProduct(this.prodData.productId, this.prodData).subscribe();
     alert("Added To Cart Successfully");
     this.route.navigateByUrl('/cart')
   }
@@ -80,11 +91,11 @@ export class ProductsComponent implements OnInit {
   // To Add Product To Wishlist
   // Code Added By Apoorv
   public submitToWishList(): void {
-    this.model.productId = this.prodData.productId;
-    this.model.userId = this.obj.userId;
+    this.wishListData.productId = this.prodData.productId;
+    this.wishListData.userId = this.obj.userId;
 
     // POST: Subscrbing To Add Product To Wishlist
-    this._wishListService.addToWishList(this.model).subscribe();
+    this._wishListService.addToWishList(this.wishListData).subscribe();
     alert("Added To WishList Successfully");
     this.route.navigateByUrl('/wishlist')
   }
