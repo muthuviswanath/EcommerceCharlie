@@ -35,11 +35,7 @@ export class CartComponent implements OnInit {
   // To Update Product
   public updateProduct() {
     // PUT: Subscribing To Update Product by Product ID
-    this._productService.updateProduct(this.productData.productId, this.productData).subscribe(
-      () => {
-
-      }
-    );
+    this._productService.updateProduct(this.productData.productId, this.productData).subscribe();
   }
 
   // To Increment Quantity of Cart Item
@@ -50,6 +46,18 @@ export class CartComponent implements OnInit {
         this.cartData = response;
         this.cartData.cartTotal++;
         this.updateCart();
+        // GET: Subscribing To Get Product by Product ID
+        this._productService.getProductById(this.cartData.productId).subscribe(
+          (response) => {
+            this.productData = response;
+            this.productData.quantity--;
+            if (this.productData.quantity < 0) {
+              this.productData.quantity = 0;
+              alert("Not Enough Products!");
+            }
+            this.updateProduct();
+          }
+        );
       }
     );
   }
@@ -67,7 +75,7 @@ export class CartComponent implements OnInit {
           alert("Cart Quantity can't be Negative!");
           flag = false;
         }
-        // GET: Subscribing To Product by Product ID
+        // GET: Subscribing To Get Product by Product ID
         this._productService.getProductById(this.cartData.productId).subscribe(
           (response) => {
             this.productData = response;
@@ -102,11 +110,12 @@ export class CartComponent implements OnInit {
     // DELETE: Subscribing To Delete Cart Item
     this._cartService.deleteCartData(cartId).subscribe();
     alert("Cart Item Removed Successfully!")
-    window.location.reload();
+    // window.location.reload();
   }
 
   // Load Cart Data
   public loadCartData() {
+    this.totalCartPrice = 0;
     // GET: Subscribing To Get All Cart Items By User ID
     this._cartService.getIndiviualCartId().subscribe(
       (response) => {
