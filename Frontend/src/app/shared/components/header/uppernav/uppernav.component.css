@@ -303,6 +303,7 @@
 
 .unav {
   width: 100%;
+  align-items: center;
 }
 
 .search_btn {

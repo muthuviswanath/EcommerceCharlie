@@ -25,11 +25,11 @@ start:any=0;
     );
   }
   forward():void{
-    if(this.start<this.allproductsList.length)
+    if(this.start<this.allproductsList.length-4)
       this.start+=4;
   }
   backward():void{
-    if(this.start>=0)
+    if(this.start>0)
     this.start-=4;
 }
 }

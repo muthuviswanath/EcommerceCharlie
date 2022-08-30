@@ -28,11 +28,11 @@ start:number=0;
     );
   }
   forward():void{
-    if(this.start<this.productsList.length)
+    if(this.start<this.productsList.length-4)
       this.start+=4;
   }
   backward():void{
-    if(this.start>=0)
+    if(this.start>0)
     this.start-=4;
 }
 }
