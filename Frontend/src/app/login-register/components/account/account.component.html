@@ -1,36 +1,72 @@
-<div class="login-form">
 
-  <h2 class="text-center">User Data</h2>
 
-  <div class="form-group">
-    <p>User Name: {{userData.userName}}</p>
-  </div>
-
-  <div class="form-group">
-    <p>First Name: {{userData.firstName}}</p>
-  </div>
-
-  <div class="form-group">
-    <p>Last Name: {{userData.lastName}}</p>
-  </div>
-
-  <div class="form-group">
-    <p>Address: {{userData.address}}</p>
-  </div>
-
-  <div class="form-group">
-    <p>Phone Number: {{userData.phoneNumber}}</p>
-  </div>
-
-  <div class="form-group">
-    <p>User Email: {{userData.email}}</p>
-  </div>
-
-  <div class="form-group">
-    <p>Password: {{userData.password}}</p>
-  </div>
-
-  <div class="form-group">
-    <button type="submit" class="btn btn-primary btn-lg btn-block" (click)="editUser()">Update</button>
-  </div>
-</div>
+<div class="page-content page-container" id="page-content">
+  <div class="padding">
+      <div class="row container d-flex justify-content-center">
+<div class="col-xl-8 col-md-12">
+                                              <div class="card user-card-full">
+                                                  <div class="row m-l-0 m-r-0">
+                                                      <div class="col-sm-4 bg-c-lite-green user-profile">
+                                                          <div class="card-block text-center text-white">
+                                                              <div class="m-b-25">
+                                                                  <img src="https://img.icons8.com/bubbles/100/000000/user.png" class="img-radius" alt="User-Profile-Image">
+                                                              </div>
+                                                              <h6 class="f-w-600">{{userData.firstName}} {{userData.lastName}}</h6>
+                                                            
+                                                              <i class=" mdi mdi-square-edit-outline feather icon-edit m-t-10 f-16"></i>
+                                                          </div>
+                                                      </div>
+                                                      <div class="col-sm-8">
+                                                          <div class="card-block">
+                                                              <h6 class="m-b-20 p-b-5 b-b-default f-w-600">Account Information</h6>
+                                                              <div class="row">
+                                                                  <div class="col-sm-6">
+                                                                      <p class="m-b-10 f-w-600">Email</p>
+                                                                      <h6 class="text-muted f-w-400">{{userData.email}}</h6>
+                                                                  </div>
+                                                                  <div class="col-sm-6">
+                                                                      <p class="m-b-10 f-w-600">Username</p>
+                                                                      <h6 class="text-muted f-w-400">{{userData.userName}}</h6>
+                                                                  </div>
+                                                              </div>
+                                                              <h6 class="m-b-20 m-t-40 p-b-5 b-b-default f-w-600">Security Information</h6>
+                                                              <div class="row">
+                                                                  <div class="col-sm-6">
+                                                                      <p class="m-b-10 f-w-600">Username</p>
+                                                                      <h6 class="text-muted f-w-400">{{userData.userName}}</h6>
+                                                                  </div>
+                                                                  <div class="col-sm-6">
+                                                                      <p class="m-b-10 f-w-600">Password</p>
+                                                                      <h6 class="text-muted f-w-400">{{userData.password}}</h6>
+                                                                  </div>
+                                                              </div>
+                                                              <h6 class="m-b-20 m-t-40 p-b-5 b-b-default f-w-600">Personal Information</h6>
+                                                              <div class="row">
+                                                                  <div class="col-sm-6">
+                                                                      <p class="m-b-10 f-w-600">Name</p>
+                                                                      <h6 class="text-muted f-w-400">{{userData.firstName}} {{userData.lastName}}</h6>
+                                                                  </div>
+                                                                  <div class="col-sm-6">
+                                                                      <p class="m-b-10 f-w-600">Address</p>
+                                                                      <h6 class="text-muted f-w-400">{{userData.address}}</h6>
+                                                                  </div>
+                                                                  <div class="col-sm-6">
+                                                                    <p class="m-b-10 f-w-600">Phone Number</p>
+                                                                    <h6 class="text-muted f-w-400">{{userData.phoneNumber}}</h6>
+                                                                </div>
+                                                              </div>
+                                          <hr>
+                                                              <div class="row">
+                                                                <div class="form-group">
+                                                                  <button type="submit" class="btn btn-primary btn-lg btn-block pnkbtn" (click)="editUser()">Update</button>
+                                                                </div>
+                                                              </div>
+                                
+                                                          </div>
+                                                      </div>
+                                                  </div>
+                                              </div>
+                                          </div>
+                                           </div>
+                                              </div>
+                                          </div>
