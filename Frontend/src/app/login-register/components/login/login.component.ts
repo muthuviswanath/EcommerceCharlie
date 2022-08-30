@@ -48,6 +48,7 @@ export class LoginComponent implements OnInit {
         this._loginService.loginUser(this.loginForm.value).subscribe(
           (response) => {
             if (response != null) {
+              localStorage.removeItem('user');
               localStorage.setItem('user', JSON.stringify(response));
               var userdata = localStorage.getItem('user');
               var obj = JSON.parse(userdata);

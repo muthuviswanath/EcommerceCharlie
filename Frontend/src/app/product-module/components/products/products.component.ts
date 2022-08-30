@@ -1,3 +1,4 @@
+import { formatCurrency } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CartServices } from 'src/app/cart-wishlist/services/cart.services';
@@ -18,6 +19,7 @@ export class ProductsComponent implements OnInit {
   cartData: any = {};
   cartDTOData: any = {};
   wishListData: any = {};
+  ListData: any = {};
   sub: any;
   id: any;
   fakeArray = new Array(5);
@@ -101,10 +103,31 @@ export class ProductsComponent implements OnInit {
     this.wishListData.userId = this.obj.userId;
 
     // POST: Subscrbing To Add Product To Wishlist
-    this._wishListService.addToWishList(this.wishListData).subscribe();
-    alert("Added To WishList Successfully");
-    this.route.navigateByUrl('/wishlist')
-  }
+    // this._wishListService.addToWishList(this.wishListData).subscribe();
+    // alert("Added To WishList Successfully");
+    // this.route.navigateByUrl('/wishlist')
 
+
+    // code to restrict user for adding dupilcate product to wishlist. 
+    this._wishListService.getIndiviualwishListById().subscribe((res) => {
+      this.ListData = res;
+      console.log(res);
+      let flag = 0;
+      for (let i = 0; i < this.ListData.length; i++) {
+        if (this.wishListData.productId == this.ListData[i].productId) {
+          flag = 1;
+          alert("the product is already in your wishList");
+          break;
+        }
+      }
+      if (flag == 0) {
+        //code for adding product to wishlist if its not present earlier
+        this._wishListService.addToWishList(this.wishListData).subscribe(data => {
+          alert("Added To WishList Successfully");
+          this.route.navigateByUrl('/wishlist');
+        });
+      }
+    });
+  }
 
 }

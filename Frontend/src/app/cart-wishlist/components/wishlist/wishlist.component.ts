@@ -18,8 +18,14 @@ export class WishlistComponent implements OnInit {
 
   ngOnInit(): void {
     // GET: Subscribing To Get All Wishlist Data
-    this._wishListService.getAllWishList().subscribe(
-      (response) => {
+    // this._wishListService.getAllWishList().subscribe(
+    //   (response) => {
+    //     this.wishList = response;
+    //   }
+    // );
+  
+    this._wishListService.getIndiviualwishListById().subscribe(
+      (response)=>{
         this.wishList = response;
       }
     );
