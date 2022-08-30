@@ -12,17 +12,16 @@ export class UserComponent implements OnInit {
   userData: any = {};
 
   constructor(private _loginService: LoginServices, private route: Router) {
-    let userRecord = this._loginService.getOptions();
-    // GET: Subscribing To Get Product By Product ID
-    this._loginService.getUserById(userRecord.userId).subscribe(
+
+  }
+
+  ngOnInit(): void {
+    // GET: Subscribing To Get User Data From Local
+    this._loginService.getUserByIdLocal().subscribe(
       (response) => {
         this.userData = response;
       }
     )
-  }
-
-  ngOnInit(): void {
-
   }
 
   // To Edit User Details

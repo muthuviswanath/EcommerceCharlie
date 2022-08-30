@@ -12,6 +12,10 @@ export class LoginServices implements OnInit {
   baseURL: string = "http://localhost:33037/";
   public data: any = {};
 
+  // To get User ID at time of user Login using Local Storage
+  userdata = localStorage.getItem('user');
+  obj = JSON.parse(this.userdata);
+
   constructor(private http: HttpClient) {
 
   }
@@ -36,6 +40,11 @@ export class LoginServices implements OnInit {
   // GET: Service To Get User Data by User ID
   public getUserById(userId: any) {
     return this.http.get(`${this.baseURL}api/Users/${userId}`);
+  }
+
+  // GET: Service To Get Local User Data by User ID
+  public getUserByIdLocal() {
+    return this.http.get(`${this.baseURL}api/Users/${this.obj.userId}`);
   }
 
   // POST: Service To Register User
