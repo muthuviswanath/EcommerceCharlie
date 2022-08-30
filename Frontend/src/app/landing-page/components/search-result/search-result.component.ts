@@ -34,8 +34,8 @@ export class SearchResultComponent implements OnInit {
         if (this.searchList.length == 0) {
           this.flag = false;
         }
-      }
+      },
+    )
 
-    );
   }
 }

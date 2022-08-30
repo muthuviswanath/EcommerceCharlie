@@ -3,8 +3,8 @@
     <li class="nav-item big_block">
       <input autocomplete="off" type="text" class="form-control rounded search_bar" [(ngModel)]="searchString"
         placeholder="Search" />
-      <button title="_blank" type="submit" class="rounded search_btn" (click)="submitSearch()"
-        [routerLink]="[ '/search',searchString]"><i class="fa fa-search"></i></button>
+      <button title="_blank" type="submit" class="rounded search_btn" (click)="submitSearch()"><i
+          class="fa fa-search"></i></button>
     </li>
     <li class="nav-item small_block">
 
@@ -21,6 +21,9 @@
     </li>
     <li class="nav-item small_block">
       <a class="nav-link h6" routerLink="/cart">Cart</a>
+    </li>
+    <li class="nav-item small_block">
+      <a class="nav-link h6" routerLink="/account">Account</a>
     </li>
   </ul>
 </nav>
