@@ -11,7 +11,7 @@ export class AllproductslistComponent implements OnInit {
 
   IProduct: Array<any> = [];
   allproductsList: IProduct[];
-
+start:any=0;
   constructor(private _productServices: ProductServices) {
 
   }
@@ -24,5 +24,12 @@ export class AllproductslistComponent implements OnInit {
       }
     );
   }
-
+  forward():void{
+    if(this.start<this.allproductsList.length)
+      this.start+=4;
+  }
+  backward():void{
+    if(this.start>=0)
+    this.start-=4;
+}
 }

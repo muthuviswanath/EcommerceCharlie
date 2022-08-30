@@ -28,9 +28,11 @@ start:number=0;
     );
   }
   forward():void{
+    if(this.start<this.productsList.length)
       this.start+=4;
   }
   backward():void{
+    if(this.start>=0)
     this.start-=4;
 }
 }
