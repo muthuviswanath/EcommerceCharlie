@@ -10,13 +10,14 @@ import { Router } from '@angular/router';
 export class UppernavComponent implements OnInit {
 
   public searchString: string = "";
+  public isLoggedIn: boolean;
 
   constructor(private route: Router) {
 
   }
 
   ngOnInit(): void {
-
+    this.isLoggedIn = JSON.parse(localStorage.getItem('auth'));
   }
 
   submitSearch() {
@@ -26,6 +27,12 @@ export class UppernavComponent implements OnInit {
         window.location.reload();
       }
     )
+  }
+
+  logout(){
+    localStorage.setItem('user', JSON.stringify(null));
+    localStorage.setItem('auth', JSON.stringify(false));
+    window.location.reload();
   }
 
 

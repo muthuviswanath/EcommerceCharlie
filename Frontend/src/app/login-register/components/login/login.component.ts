@@ -49,11 +49,16 @@ export class LoginComponent implements OnInit {
         this._loginService.loginUser(this.loginForm.value).subscribe(
           (response) => {
             if (response != null) {
-              localStorage.removeItem('user');
+              // localStorage.removeItem('user');
               localStorage.setItem('user', JSON.stringify(response));
               var userdata = localStorage.getItem('user');
               var obj = JSON.parse(userdata);
-              this.route.navigateByUrl('/')
+              localStorage.setItem('auth', JSON.stringify(true));
+              this.route.navigateByUrl('/').then(
+                () => {
+                  window.location.reload();
+                }
+              )
               this.toast.success({ detail: "SUCCESS", summary: `Welcome ${obj.userName}!`, duration: 5000 });
             }
             else {
