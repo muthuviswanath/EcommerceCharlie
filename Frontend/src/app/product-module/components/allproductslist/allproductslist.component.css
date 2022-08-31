@@ -348,3 +348,13 @@
 .d1 {
   background-color: #FFF4E4;
 }
+
+.frm{
+  text-align: center;
+}
+.btnspc{
+  margin-left: 10px;
+}
+.btnspc:hover{
+  border: 2px solid black;
+}

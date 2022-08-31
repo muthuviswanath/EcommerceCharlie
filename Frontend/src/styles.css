@@ -3,8 +3,7 @@
 html, body { height: 100%;
 width:100% }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
-/**div{width: 100%;
-padding: 0px;}**/
+
 .d1{
     margin: 0px;
     width: 100%;
@@ -12,4 +11,9 @@ padding: 0px;}**/
 .c1{
     width: 100%;
     margin: 0px;
+}
+
+@media(min-width:700px) {
+    div{width: 100%;
+        padding: 0px;}
 }

@@ -19,12 +19,18 @@
               </span></p>
           </div>
           <form>
-            <input class="addcart" type="button" value="Add To Cart" (click)="submitToCart()" />
+            <span>
+        
+            <input class="addcart" type="button" value=" Add To Cart" (click)="submitToCart()"/>
+              <i class="fa fa-shopping-cart"
+          style="font-size:24px;color: #39468e; margin-left: 5px;"></i>
+            </span>
           </form>
 
           <form>
+            <span>
             <input class="addcart" type="button" value="Add To wishlist" (click)="submitToWishList()"
-               />
+               /><i class="fa fa-heart" aria-hidden="true" style="font-size:24px;color: #39468e; margin-left: 5px;"></i></span>
           </form>
         </div>
       </div>

@@ -357,3 +357,12 @@
    border: solid black 1px;
 
 }
+.frm{
+  text-align: center;
+}
+.btnspc{
+  margin-left: 15px;
+}
+.btnspc:hover{
+  border: 2px solid black;
+}

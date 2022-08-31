@@ -28,8 +28,11 @@
   line-height: 26px;
   margin-top: 10px;
   color: #FFFFFF;
+  border: none;
 }
-
+.addcart:hover{
+  border: solid black 2px;
+}
 .dsc {
   padding-left: 25px;
   padding-right: 25px;
