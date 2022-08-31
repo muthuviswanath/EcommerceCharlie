@@ -9,11 +9,22 @@
 </div>
 <div class="container-fluid">
   <div class="row">
+    <div class="dropdown">
+      <button class="dropbtn">Sort</button>
+      <div class="dropdown-content">
+        <a (click)="sortasc()">Ascending </a>
+        <a (click)="sortdesc()">Descending</a>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="container-fluid">
+  <div class="row">
     <div class="col-sm-2"></div>
     <div class="col-sm-8">
       <div class="row">
-        <div class="col-sm-3 crd" *ngFor="let prod of productsList;let i=index">
-          <app-cards *ngIf="i>=start&&i<start+4"  [items]="prod"></app-cards>
+        <div class="col-sm-3 crd" *ngFor="let prod of sortedProductsList;let i=index">
+          <app-cards *ngIf="i>=start&&i<start+4" [items]="prod"></app-cards>
         </div>
       </div>
       <div class="row">
@@ -21,10 +32,10 @@
         <div class="col-sm-4">
           <form class="frm">
             <input class="scrowl btnspc" type="button" value="<<prev" (click)="backward()" />
-              <input class="scrowl btnspc" type="button" value="next>>" (click)="forward()" />
-            </form>
-            </div>
-            <div class="col-sm-4"></div>
+            <input class="scrowl btnspc" type="button" value="next>>" (click)="forward()" />
+          </form>
+        </div>
+        <div class="col-sm-4"></div>
       </div>
     </div>
     <div class="col-sm-2"></div>

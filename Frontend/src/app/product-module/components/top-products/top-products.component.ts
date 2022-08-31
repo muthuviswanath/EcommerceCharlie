@@ -12,7 +12,8 @@ export class TopProductsComponent implements OnInit {
 
   IProduct: Array<any> = [];
   productsList: IProduct[];
-start:number=0;
+  sortedProductsList: IProduct[];
+  start: number = 0;
   constructor(private _productServices: ProductServices) {
 
   }
@@ -22,17 +23,24 @@ start:number=0;
     this._productServices.getAllProducts().subscribe(
       (response) => {
         this.productsList = response.filter(
-          element => (element.productRating >=4) 
+          element => (element.productRating >= 4)
         );
+        this.sortedProductsList = this.productsList;
       }
     );
   }
-  forward():void{
-    if(this.start<this.productsList.length-4)
-      this.start+=4;
+  sortasc() {
+    this.sortedProductsList = this.productsList.sort((a, b) => (a.productOfferPrice < b.productOfferPrice ? -1 : 1));
   }
-  backward():void{
-    if(this.start>0)
-    this.start-=4;
-}
+  sortdesc() {
+    this.sortedProductsList = this.productsList.sort((a, b) => (a.productOfferPrice > b.productOfferPrice ? -1 : 1));
+  }
+  forward(): void {
+    if (this.start < this.productsList.length - 4)
+      this.start += 4;
+  }
+  backward(): void {
+    if (this.start > 0)
+      this.start -= 4;
+  }
 }
