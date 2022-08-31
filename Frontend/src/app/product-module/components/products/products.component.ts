@@ -64,71 +64,87 @@ export class ProductsComponent implements OnInit {
 
   // To Add Product To Cart
   public submitToCart(): void {
-    // GET: Subscribing To Get Cart Item By Product ID
-    this._cartService.getCartByProductId(this.prodData.productId).subscribe(
-      (response) => {
-        this.cartDTOData = response;
-        if (this.cartDTOData != null) {
-          this.cartDTOData.cartTotal += 1;
-          this._cartService.updateCartData(this.cartDTOData.cartId, this.cartDTOData).subscribe();
+    if (this.obj == null) {
+      this.toast.error({ detail: "ERROR", summary: 'Please Login First!', duration: 5000 });
+      this.route.navigateByUrl('/login');
+    }
+    else {
+      this._cartService.getCartByProductId(this.prodData.productId).subscribe(
+        (response) => {
+          this.cartDTOData = response;
+          if (this.cartDTOData != null) {
+            this.cartDTOData.cartTotal += 1;
+            this._cartService.updateCartData(this.cartDTOData.cartId, this.cartDTOData).subscribe();
+          }
+          else {
+            this.cartDTOData = {
+              userId: this.obj.userId,
+              productId: this.prodData.productId,
+              cartTotal: 1,
+              productName: this.prodData.productName,
+              cartProductPrice: this.prodData.productOfferPrice,
+              imgURL: this.prodData.imagePath,
+            };
+            // POST: Subscribing To Add Product To Cart
+            this._cartService.addToCart(this.cartDTOData).subscribe();
+          }
         }
-        else {
-          this.cartDTOData = {
-            userId: this.obj.userId,
-            productId: this.prodData.productId,
-            cartTotal: 1,
-            productName: this.prodData.productName,
-            cartProductPrice: this.prodData.productOfferPrice,
-            imgURL: this.prodData.imagePath,
-          };
-          // POST: Subscribing To Add Product To Cart
-          this._cartService.addToCart(this.cartDTOData).subscribe();
+      );
+      // GET: Subscribing To Get Cart Item By Product ID
+
+      this.prodData.quantity--;
+      // PUT: Subscribing To Update Product By Product ID
+      this._productServices.updateProduct(this.prodData.productId, this.prodData).subscribe();
+      this.toast.success({ detail: "SUCCESS", summary: 'Added To Cart Successfully', duration: 5000 });
+      this.route.navigateByUrl('/cart').then(
+        () => {
+          window.location.reload();
         }
-      }
-    );
-    this.prodData.quantity--;
-    // PUT: Subscribing To Update Product By Product ID
-    this._productServices.updateProduct(this.prodData.productId, this.prodData).subscribe();
-    this.toast.success({detail:"SUCCESS",summary:'Added To Cart Successfully',duration:5000});
-    this.route.navigateByUrl('/cart').then(
-      () => {
-        window.location.reload();
-      }
-    );
+      );
+    }
+
   }
 
   // To Add Product To Wishlist
   // Code Added By Apoorv
   public submitToWishList(): void {
-    this.wishListData.productId = this.prodData.productId;
-    this.wishListData.userId = this.obj.userId;
 
-    // POST: Subscrbing To Add Product To Wishlist
-    // this._wishListService.addToWishList(this.wishListData).subscribe();
-    // alert("Added To WishList Successfully");
-    // this.route.navigateByUrl('/wishlist')
+    if (this.obj == null) {
+      this.toast.error({ detail: "ERROR", summary: 'Please Login First!', duration: 5000 });
+      this.route.navigateByUrl('/login');
+    }
+    else {
+      this.wishListData.productId = this.prodData.productId;
+      this.wishListData.userId = this.obj.userId;
+
+      // POST: Subscrbing To Add Product To Wishlist
+      // this._wishListService.addToWishList(this.wishListData).subscribe();
+      // alert("Added To WishList Successfully");
+      // this.route.navigateByUrl('/wishlist')
 
 
-    // code to restrict user for adding dupilcate product to wishlist.
-    this._wishListService.getIndiviualwishListById().subscribe((res) => {
-      this.ListData = res;
-      console.log(res);
-      let flag = 0;
-      for (let i = 0; i < this.ListData.length; i++) {
-        if (this.wishListData.productId == this.ListData[i].productId) {
-          flag = 1;
-          this.toast.warning({detail:"WARN",summary:'the product is already in your wishList',duration:5000});
-          break;
+      // code to restrict user for adding dupilcate product to wishlist.
+      this._wishListService.getIndiviualwishListById().subscribe((res) => {
+        this.ListData = res;
+        console.log(res);
+        let flag = 0;
+        for (let i = 0; i < this.ListData.length; i++) {
+          if (this.wishListData.productId == this.ListData[i].productId) {
+            flag = 1;
+            this.toast.warning({ detail: "WARN", summary: 'the product is already in your wishList', duration: 5000 });
+            break;
+          }
         }
-      }
-      if (flag == 0) {
-        //code for adding product to wishlist if its not present earlier
-        this._wishListService.addToWishList(this.wishListData).subscribe(data => {
-          this.toast.success({detail:"SUCCESS",summary:'Added To WishList Successfully',duration:5000});
-          this.route.navigateByUrl('/wishlist');
-        });
-      }
-    });
+        if (flag == 0) {
+          //code for adding product to wishlist if its not present earlier
+          this._wishListService.addToWishList(this.wishListData).subscribe(data => {
+            this.toast.success({ detail: "SUCCESS", summary: 'Added To WishList Successfully', duration: 5000 });
+            this.route.navigateByUrl('/wishlist');
+          });
+        }
+      });
+    }
+
   }
 
 }
