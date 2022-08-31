@@ -56,6 +56,27 @@ namespace ProductWebAPI.Controllers
 
             return order;
         }
+        [HttpGet("user/{id}")]
+        public async Task<ActionResult<IEnumerable<OrderDTO>>> GetOrderListbyID(int id)
+        {
+            var userOrderList = _context.Orders.Where(x => x.UserId == id).Include(c => c.User).Include(p => p.Product).Select(o => new OrderDTO
+            {
+                OrderId = o.OrderId,
+                UserId = o.UserId,
+                ProductId = o.ProductId,
+                OrderDate = o.OrderDate,
+                ProductName = o.Product.ProductName,
+                imgURL = o.Product.ImagePath,
+                ProductDescription = o.Product.ProductDescription,
+                ProductRating = o.Product.ProductRating,
+                ProductOfferPrice = o.Product.ProductOfferPrice
+
+
+            });
+            var userOrderListData = await userOrderList.ToListAsync();
+            return userOrderListData;
+
+        }
 
         // PUT: api/Orders/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
