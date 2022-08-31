@@ -29,7 +29,7 @@ export class UppernavComponent implements OnInit {
     )
   }
 
-  logout(){
+  logout() {
     localStorage.setItem('user', JSON.stringify(null));
     localStorage.setItem('auth', JSON.stringify(false));
     window.location.reload();

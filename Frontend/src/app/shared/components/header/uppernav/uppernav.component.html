@@ -6,25 +6,28 @@
       <button title="_blank" type="submit" class="rounded search_btn" (click)="submitSearch()"><i
           class="fa fa-search"></i></button>
     </li>
-    
+
 
     <li class="nav-item small_block">
-      
+
     </li>
     <li class="nav-item small_block">
-      <a class="nav-link h6" routerLink="/wishlist">WishList</a>
+      <a class="nav-link h6" *ngIf="isLoggedIn" routerLink="/wishlist">WishList</a>
     </li>
     <li class="nav-item small_block">
-      <a class="nav-link h6" *ngIf="!isLoggedIn" routerLink="/login">Sign In</a>
+      <a class="nav-link h6" *ngIf="isLoggedIn" routerLink="/cart"><i class="fa fa-shopping-cart"
+          style="font-size:22px"></i> Cart</a>
     </li>
+    <li class="nav-item small_block">
+      <a class="nav-link h6" *ngIf="isLoggedIn" routerLink="/account"><i style='font-size:24px' class='fas'>&#xf2bd;</i>
+        User</a>
+    </li>
+
     <li class="nav-item small_block">
       <a class="nav-link h6" *ngIf="isLoggedIn" (click)="logout()">Sign Out</a>
     </li>
     <li class="nav-item small_block">
-      <a class="nav-link h6" routerLink="/cart"><i class="fa fa-shopping-cart" style="font-size:22px"></i> Cart</a>
-    </li>
-    <li class="nav-item small_block">
-      <a class="nav-link h6" routerLink="/account"><i style='font-size:24px' class='fas'>&#xf2bd;</i> User</a>
+      <a class="nav-link h6" *ngIf="!isLoggedIn" routerLink="/login">Sign In</a>
     </li>
   </ul>
 </nav>
