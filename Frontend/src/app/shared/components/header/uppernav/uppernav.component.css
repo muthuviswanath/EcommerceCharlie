@@ -309,12 +309,18 @@
 .search_btn {
   height: 35px;
   width: 50px !important;
+  border: none;
+  background-color: #70c5c0;
+  color: white;
 }
-
+.search_btn:hover{
+  border: solid black 1px;
+}
 .search_bar {
   height: 35px;
   width: 80%;
   display: inline-block;
+  
 }
 
 .crt_img {

@@ -421,8 +421,8 @@ about {
     font-size: 20px;
   }
   .inpspc{
-    margin-top:10px;
-    margin-bottom:10px;
+    
+    margin-bottom:20px;
   }
   .pnkbtn{
     background-color: #E72E62;
@@ -431,4 +431,7 @@ about {
   .bdywidth
   {
     width: 101%;
+  }
+  .lblspc{
+    margin-bottom: 5px;
   }
