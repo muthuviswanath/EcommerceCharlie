@@ -2,7 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { NgToastService } from 'ng-angular-popup';
 import { ProductServices } from 'src/app/product-module/services/product.services';
 import { ICart } from '../../interfaces/ICart';
+import { IOrder } from '../../interfaces/IOrder';
 import { CartServices } from '../../services/cart.services';
+import { OrderServices } from '../../services/order.services';
 
 @Component({
   selector: 'app-cart',
@@ -17,8 +19,11 @@ export class CartComponent implements OnInit {
   productData: any = {};
   totalCartPrice: number = 0;
   filteredList: ICart[];
+  // To get User ID at time of user Login using Local Storage
+  userdata = localStorage.getItem('user');
+  obj = JSON.parse(this.userdata);
 
-  constructor(private _cartService: CartServices, private _productService: ProductServices, private toast: NgToastService) {
+  constructor(private _cartService: CartServices, private _orderService: OrderServices, private _productService: ProductServices, private toast: NgToastService) {
 
   }
 
@@ -128,6 +133,22 @@ export class CartComponent implements OnInit {
         }
       }
     );
+  }
+
+  public purchase() {
+    for (let item of this.cartList) {
+      var orderData = {
+        userId: this.obj.userId,
+        productId: item.productId,
+        orderDate: new Date(),
+        productName: item.productName,
+        productOfferPrice: item.cartProductPrice,
+        imgURL: item.imgURL,
+      };
+      this._orderService.addToOrderHistory(orderData).subscribe();
+      // DELETE: Subscribing To Delete Cart Item
+      this._cartService.deleteCartData(item.cartId).subscribe();
+    }
   }
 }
 

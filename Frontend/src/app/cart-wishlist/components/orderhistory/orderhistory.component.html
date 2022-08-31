@@ -1,74 +1,71 @@
-
-
-
-
 <div class="container-fluid mt-3 container-fullscreen-cont">
   <div class="custome-head-cnt">
     <div class="row c1">
       <div class="page-head h4">Order History</div>
     </div>
-    
 
-<div class="container">
-  <div class="wrapper wrapper-content animated fadeInRight">
-      <div class="row">
-        <div class="col-md-2"></div>
+
+    <div class="container">
+      <div class="wrapper wrapper-content animated fadeInRight">
+        <div class="row">
+          <div class="col-md-2"></div>
           <div class="col-md-8">
-              <div class="ibox">
+            <div class="ibox">
 
-                  
-                  
-                  
-                  
-                  <div class="ibox-content" *ngFor="let item of orderList">
-                      <div class="table-responsive">
-                          <table class="table shoping-cart-table">
-  
-                              <tbody>
-                              <tr>
-                                  <td width="90">
-                                      
-                                        <img src={{item.imgURL}} style="height:69px;width:69px">
-                                
-                                  </td>
-                                  <td class="desc">
-                                      <p class="small text-muted mb-4 pb-2 p1">Product Name</p>
-                                      <p class="big">
-                                        {{item.productName}}
-                                      </p>
-                                      <dl class="small m-b-none">
-                                        <dt>Description</dt>
-                                        <dd>{{item.productDescription}}</dd>
-                                    </dl>
-            
 
-                                    <dl class="small m-b-none">
-                                      <p class="text-muted mb-4 pb-2 p1">Order Date</p>
-                                      <p class="lead fw-normal mb-0">{{item.orderDate | date}}</p>
-                                  </dl>
-                                    
-                                   
-                                  </td>
-                                  <td>
-                                    <p class="small text-muted mb-4 pb-2 p1">Product Price</p>
-                                    Rs:{{item.productOfferPrice}}
-                                  </td>
-                              </tr>
-                              </tbody>
-                          </table>
-                      </div>
-                  </div>
-                  <div class="ibox-content">
-                      <a class="btn btn-white" routerLink="/allproducts"><i class="fa fa-arrow-left"></i> Continue shopping</a>
-  
-                  </div>
+
+
+
+              <div class="ibox-content" *ngFor="let item of orderList">
+                <div class="table-responsive">
+                  <table class="table shoping-cart-table">
+
+                    <tbody>
+                      <tr>
+                        <td width="90">
+
+                          <img src={{item.imgURL}} style="height:69px;width:69px" alt="abc">
+
+                        </td>
+                        <td class="desc">
+                          <p class="small text-muted mb-4 pb-2 p1">Product Name</p>
+                          <p class="big">
+                            {{item.productName}}
+                          </p>
+                          <!-- <dl class="small m-b-none">
+                            <dt>Description</dt>
+                            <dd>{{item.productDescription}}</dd>
+                          </dl> -->
+
+
+                          <dl class="small m-b-none">
+                            <p class="text-muted mb-4 pb-2 p1">Order Date</p>
+                            <p class="lead fw-normal mb-0">{{item.orderDate | date}}</p>
+                          </dl>
+
+
+                        </td>
+                        <td>
+                          <p class="small text-muted mb-4 pb-2 p1">Product Price</p>
+                          Rs:{{item.productOfferPrice}}
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
               </div>
-  
+              <div class="ibox-content">
+                <a class="btn btn-white" routerLink="/allproducts"><i class="fa fa-arrow-left"></i> Continue
+                  shopping</a>
+
+              </div>
+            </div>
+
           </div>
           <div class="col-md-2"></div>
+        </div>
       </div>
-  </div>
-  </div>
+    </div>
 
-</div>
+  </div>
 </div>

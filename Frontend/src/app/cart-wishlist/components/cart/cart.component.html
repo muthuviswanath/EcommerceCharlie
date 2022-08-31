@@ -10,11 +10,6 @@
       <div class="row">
           <div class="col-md-9">
               <div class="ibox">
-
-
-
-
-
                   <div class="ibox-content" *ngFor="let item of cartList">
                       <div class="table-responsive">
                           <table class="table shoping-cart-table">
@@ -54,7 +49,7 @@
                       </div>
                   </div>
                   <div class="ibox-content">
-                      <button class="btn btn-primary pull-right"><i class="fa fa fa-shopping-cart"></i> Checkout</button>
+                      <button (click)="purchase()" routerLink="/order" class="btn btn-primary pull-right"><i class="fa fa fa-shopping-cart"></i> Checkout</button>
                       <a class="btn btn-white" routerLink="/allproducts"><i class="fa fa-arrow-left"></i> Continue shopping</a>
 
                   </div>
@@ -80,7 +75,7 @@
                       </span>
                       <div class="m-t-sm">
                           <div class="btn-group">
-                          <a href="#" class="btn btn-primary btn-sm"><i class="fa fa-shopping-cart"></i> Checkout</a>
+                          <a (click)="purchase()" routerLink="/order" class="btn btn-primary btn-sm"><i class="fa fa-shopping-cart"></i> Checkout</a>
                           <a href="#" class="btn btn-white btn-sm"> Cancel</a>
                           </div>
                       </div>
