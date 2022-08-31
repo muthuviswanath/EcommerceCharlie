@@ -7,6 +7,7 @@ import { SharedModule } from './shared/shared.module';
 import { LandingPageModule } from './landing-page/landing-page.module';
 import { LoginRegisterModule } from './login-register/login-register.module';
 import { CartWishlistModule } from './cart-wishlist/cart-wishlist.module';
+import { NgToastModule } from 'ng-angular-popup';
 
 
 @NgModule({
@@ -17,6 +18,7 @@ import { CartWishlistModule } from './cart-wishlist/cart-wishlist.module';
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    NgToastModule,
     SharedModule,
     LandingPageModule,
     LoginRegisterModule,

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { NgToastService } from 'ng-angular-popup';
 import { ProductServices } from 'src/app/product-module/services/product.services';
 import { ICart } from '../../interfaces/ICart';
 import { CartServices } from '../../services/cart.services';
@@ -18,7 +18,7 @@ export class CartComponent implements OnInit {
   totalCartPrice: number = 0;
   filteredList: ICart[];
 
-  constructor(private _cartService: CartServices, private _productService: ProductServices, private route: Router) {
+  constructor(private _cartService: CartServices, private _productService: ProductServices, private toast: NgToastService) {
 
   }
 
@@ -54,7 +54,7 @@ export class CartComponent implements OnInit {
             this.productData.quantity--;
             if (this.productData.quantity < 0) {
               this.productData.quantity = 0;
-              alert("Not Enough Products!");
+              this.toast.warning({ detail: "WARN", summary: 'Not Enough Products!', duration: 5000 });
             }
             this.updateProduct();
           }
@@ -74,7 +74,7 @@ export class CartComponent implements OnInit {
         this.cartData.cartTotal--;
         if (this.cartData.cartTotal < 0) {
           this.cartData.cartTotal = 0;
-          alert("Cart Quantity can't be Negative!");
+          this.toast.warning({ detail: "WARN", summary: "Cart Quantity can't be Negative!", duration: 5000 });
           flag = false;
         }
         // GET: Subscribing To Get Product by Product ID
@@ -112,7 +112,7 @@ export class CartComponent implements OnInit {
 
     // DELETE: Subscribing To Delete Cart Item
     this._cartService.deleteCartData(cartId).subscribe();
-    alert("Cart Item Removed Successfully!")
+    this.toast.success({ detail: "SUCCESS", summary: 'Cart Item Removed Successfully!', duration: 5000 });
     window.location.reload();
   }
 

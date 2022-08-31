@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NgToastService } from 'ng-angular-popup';
 import { IWishList } from '../../interfaces/IWishList';
 import { WishListServices } from '../../services/wishlist.services';
 
@@ -12,7 +13,7 @@ export class WishlistComponent implements OnInit {
   wishList: IWishList[];
   wishListData: any = {};
 
-  constructor(private _wishListService: WishListServices) {
+  constructor(private _wishListService: WishListServices, private toast: NgToastService) {
 
   }
 
@@ -23,9 +24,9 @@ export class WishlistComponent implements OnInit {
     //     this.wishList = response;
     //   }
     // );
-  
+
     this._wishListService.getIndiviualwishListById().subscribe(
-      (response)=>{
+      (response) => {
         this.wishList = response;
       }
     );
@@ -39,7 +40,7 @@ export class WishlistComponent implements OnInit {
 
       }
     );
-    alert("Wishlist Item Removed Successfully!")
+    this.toast.success({ detail: "SUCCESS", summary: 'Wishlist Item Removed Successfully!', duration: 5000 });
     window.location.reload();
   }
 }

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { NgToastService } from 'ng-angular-popup';
 import { LoginServices } from '../../services/login.services';
 
 @Component({
@@ -11,7 +12,7 @@ export class RegisterComponent implements OnInit {
 
   model: any = {};
 
-  constructor(private _loginService: LoginServices, private route: Router) {
+  constructor(private _loginService: LoginServices, private route: Router, private toast: NgToastService) {
 
   }
 
@@ -27,7 +28,7 @@ export class RegisterComponent implements OnInit {
 
       }
     );
-    alert('Registration Successful!');
+    this.toast.success({detail:"SUCCESS",summary:'Registration Successful!',duration:5000});
     this.route.navigateByUrl('/login')
   }
 

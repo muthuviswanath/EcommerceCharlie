@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { NgToastService } from 'ng-angular-popup';
 import { ProductServices } from '../../services/product.services';
 import { ProductsComponent } from '../products/products.component';
 
@@ -12,7 +13,7 @@ export class EditproductComponent implements OnInit {
 
   prodData: any = {};
 
-  constructor(private _productServices: ProductServices, private route: Router) {
+  constructor(private _productServices: ProductServices, private route: Router, private toast: NgToastService) {
     let prodRecord = this._productServices.getOptions();
     // GET: Subscribing To Get Product By Product ID
     this._productServices.getProductById(prodRecord.productId).subscribe(
@@ -34,7 +35,7 @@ export class EditproductComponent implements OnInit {
 
       }
     );
-    alert("Product Updated Successfully");
+    this.toast.success({detail:"SUCCESS",summary:'Product Updated Successfully',duration:5000});
     this.route.navigateByUrl('/listproducts');
   }
 

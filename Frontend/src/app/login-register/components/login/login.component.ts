@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { NgToastService } from 'ng-angular-popup';
 import { LoginServices } from 'src/app/login-register/services/login.services';
 
 @Component({
@@ -16,7 +17,7 @@ export class LoginComponent implements OnInit {
   password = new FormControl('', [Validators.required, Validators.minLength(3)]);
   // email = new FormControl('', [Validators.required, Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$")]);
 
-  constructor(private _loginService: LoginServices, private builder: FormBuilder, private route: Router) {
+  constructor(private _loginService: LoginServices, private builder: FormBuilder, private route: Router, private toast: NgToastService) {
 
   }
 
@@ -40,7 +41,7 @@ export class LoginComponent implements OnInit {
     // Changes For API Logic
     if (this.loginForm.valid) {
       if (this.formData.username == "admin" && this.formData.password == "admin") {
-        alert("Admin Login Successful!");
+        this.toast.success({ detail: "SUCCESS", summary: 'Admin Login Successful!', duration: 5000 });
         this.route.navigateByUrl('/admin');
       }
       else {
@@ -53,10 +54,10 @@ export class LoginComponent implements OnInit {
               var userdata = localStorage.getItem('user');
               var obj = JSON.parse(userdata);
               this.route.navigateByUrl('/')
-              alert(`Welcome ${obj.userName}!`);
+              this.toast.success({ detail: "SUCCESS", summary: `Welcome ${obj.userName}!`, duration: 5000 });
             }
             else {
-              alert("Invalid Credentials! Please Register before Sign In");
+              this.toast.info({ detail: "INFO", summary: 'Please Register before Sign In', sticky: true });
               this.route.navigateByUrl('/register');
             }
           }

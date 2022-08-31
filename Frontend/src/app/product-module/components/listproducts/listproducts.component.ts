@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NgToastService } from 'ng-angular-popup';
 import { IProduct } from '../../interfaces/IProduct';
 import { ProductServices } from '../../services/product.services';
 
@@ -12,7 +13,7 @@ export class ListproductsComponent implements OnInit {
   productList: IProduct[];
   exportData: any;
 
-  constructor(private _productServices: ProductServices) {
+  constructor(private _productServices: ProductServices, private toast: NgToastService) {
 
   }
 
@@ -38,7 +39,8 @@ export class ListproductsComponent implements OnInit {
 
       }
     );
-    alert("Product Deleted Successfully");
+    alert("");
+    this.toast.success({detail:"SUCCESS",summary:'Product Deleted Successfully!',duration:5000});
     window.location.reload();
   }
 }

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { NgToastService } from 'ng-angular-popup';
 import { LoginServices } from '../../services/login.services';
 
 @Component({
@@ -11,7 +12,7 @@ export class UserComponent implements OnInit {
 
   userData: any = {};
 
-  constructor(private _loginService: LoginServices, private route: Router) {
+  constructor(private _loginService: LoginServices, private route: Router, private toast: NgToastService) {
 
   }
 
@@ -32,7 +33,7 @@ export class UserComponent implements OnInit {
 
       }
     );
-    alert("User Updated Successfully");
+    this.toast.success({detail:"SUCCESS",summary:'User Updated Successfully',duration:5000});
     this.route.navigateByUrl('/account');
   }
 
