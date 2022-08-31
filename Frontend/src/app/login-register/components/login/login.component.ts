@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { NgToastService } from 'ng-angular-popup';
@@ -13,6 +13,7 @@ export class LoginComponent implements OnInit {
 
   public formData: any = {};
   public showMessage: boolean = false;
+  @Output() isLogged: boolean;
   username = new FormControl('', [Validators.required, Validators.minLength(3)]);
   password = new FormControl('', [Validators.required, Validators.minLength(3)]);
   // email = new FormControl('', [Validators.required, Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$")]);
@@ -23,6 +24,7 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
     this.loginForm;
+    this.isLogged;
   }
 
   loginForm: FormGroup = this.builder.group(
@@ -41,8 +43,14 @@ export class LoginComponent implements OnInit {
     // Changes For API Logic
     if (this.loginForm.valid) {
       if (this.formData.username == "admin" && this.formData.password == "admin") {
+        localStorage.setItem('user', 'admin');
+        localStorage.setItem('auth', JSON.stringify(true));
         this.toast.success({ detail: "SUCCESS", summary: 'Admin Login Successful!', duration: 5000 });
-        this.route.navigateByUrl('/admin');
+        this.route.navigateByUrl('/admin').then(
+          () => {
+            window.location.reload();
+          }
+        )
       }
       else {
         // POST: Subscribing To Check Login Value

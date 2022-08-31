@@ -11,13 +11,18 @@ export class UppernavComponent implements OnInit {
 
   public searchString: string = "";
   public isLoggedIn: boolean;
-
+  user = localStorage.getItem('user');
+  public isAdmin: boolean = false;
   constructor(private route: Router) {
 
   }
 
   ngOnInit(): void {
     this.isLoggedIn = JSON.parse(localStorage.getItem('auth'));
+    if (this.user == 'admin') {
+      this.isAdmin = true;
+      this.isLoggedIn = true;
+    }
   }
 
   submitSearch() {
@@ -32,7 +37,12 @@ export class UppernavComponent implements OnInit {
   logout() {
     localStorage.setItem('user', JSON.stringify(null));
     localStorage.setItem('auth', JSON.stringify(false));
-    window.location.reload();
+    this.route.navigateByUrl("/login").then(
+      () => {
+        window.location.reload();
+      }
+    )
+
   }
 
 
