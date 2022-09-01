@@ -17,23 +17,20 @@ export class UserComponent implements OnInit {
   }
 
   ngOnInit(): void {
+
     // GET: Subscribing To Get User Data From Local
     this._loginService.getUserByIdLocal().subscribe(
       (response) => {
         this.userData = response;
       }
-    )
+    );
   }
 
   // To Edit User Details
   public editUserData() {
     // PUT: Subscribing To Edit User Data
-    this._loginService.updateUser(this.userData.userId, this.userData).subscribe(
-      () => {
-
-      }
-    );
-    this.toast.success({detail:"SUCCESS",summary:'User Updated Successfully',duration:5000});
+    this._loginService.updateUser(this.userData.userId, this.userData).subscribe();
+    this.toast.success({ detail: "SUCCESS", summary: 'User Updated Successfully', duration: 5000 });
     this.route.navigateByUrl('/account');
   }
 

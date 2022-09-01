@@ -16,6 +16,7 @@ export class AccountComponent implements OnInit {
   }
 
   ngOnInit(): void {
+
     // GET: Subscribing To Get User Data From Local
     this._loginService.getUserByIdLocal().subscribe(
       (response) => {

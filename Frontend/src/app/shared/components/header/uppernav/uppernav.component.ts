@@ -13,6 +13,7 @@ export class UppernavComponent implements OnInit {
   public isLoggedIn: boolean;
   user = localStorage.getItem('user');
   public isAdmin: boolean = false;
+
   constructor(private route: Router) {
 
   }
@@ -25,6 +26,7 @@ export class UppernavComponent implements OnInit {
     }
   }
 
+  // To Search Products
   submitSearch() {
     const payLoad = { searchString: this.searchString };
     this.route.navigateByUrl(`/search/` + this.searchString).then(
@@ -34,6 +36,7 @@ export class UppernavComponent implements OnInit {
     )
   }
 
+  // To Remove User From Local Storage
   logout() {
     localStorage.setItem('user', JSON.stringify(null));
     localStorage.setItem('auth', JSON.stringify(false));
@@ -41,10 +44,7 @@ export class UppernavComponent implements OnInit {
       () => {
         window.location.reload();
       }
-    )
-
+    );
   }
-
-
 }
 

@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { NgToastService } from 'ng-angular-popup';
 import { ProductServices } from 'src/app/product-module/services/product.services';
 import { ICart } from '../../interfaces/ICart';
-import { IOrder } from '../../interfaces/IOrder';
 import { CartServices } from '../../services/cart.services';
 import { OrderServices } from '../../services/order.services';
 
@@ -19,6 +18,7 @@ export class CartComponent implements OnInit {
   productData: any = {};
   totalCartPrice: number = 0;
   filteredList: ICart[];
+
   // To get User ID at time of user Login using Local Storage
   userdata = localStorage.getItem('user');
   obj = JSON.parse(this.userdata);
@@ -33,25 +33,28 @@ export class CartComponent implements OnInit {
 
   // To Update Cart
   public updateCart() {
+
     // PUT: Subscribing To Update Cart Data
     this._cartService.updateCartData(this.cartData.cartId, this.cartData).subscribe();
-    this.loadCartData();
   }
 
   // To Update Product
   public updateProduct() {
+
     // PUT: Subscribing To Update Product by Product ID
     this._productService.updateProduct(this.productData.productId, this.productData).subscribe();
   }
 
   // To Increment Quantity of Cart Item
   public incrementItem(cartid: any) {
+
     // GET: Subscribing To Get Cart Item by Cart ID
     this._cartService.getCartById(cartid).subscribe(
       (response) => {
         this.cartData = response;
         this.cartData.cartTotal++;
         this.updateCart();
+
         // GET: Subscribing To Get Product by Product ID
         this._productService.getProductById(this.cartData.productId).subscribe(
           (response) => {
@@ -72,6 +75,7 @@ export class CartComponent implements OnInit {
   // To Decrement Quantity of Cart Item
   public decrementItem(cartId: any) {
     let flag: Boolean = true;
+
     // GET: Subscribing To Get Cart Item by Cart ID
     this._cartService.getCartById(cartId).subscribe(
       (response) => {
@@ -82,6 +86,7 @@ export class CartComponent implements OnInit {
           this.toast.warning({ detail: "WARN", summary: "Cart Quantity can't be Negative!", duration: 5000 });
           flag = false;
         }
+
         // GET: Subscribing To Get Product by Product ID
         this._productService.getProductById(this.cartData.productId).subscribe(
           (response) => {
@@ -100,10 +105,12 @@ export class CartComponent implements OnInit {
 
   // To Remove Cart Item
   public removeItem(cartId: any) {
+
     // GET: Subscribing To Get Cart Item by Cart ID
     this._cartService.getCartById(cartId).subscribe(
       (response) => {
         this.cartData = response;
+
         // GET: Subscribing To Product by Product ID
         this._productService.getProductById(this.cartData.productId).subscribe(
           (response) => {
@@ -124,6 +131,7 @@ export class CartComponent implements OnInit {
   // Load Cart Data
   public loadCartData() {
     this.totalCartPrice = 0;
+
     // GET: Subscribing To Get All Cart Items By User ID
     this._cartService.getIndiviualCartId().subscribe(
       (response) => {
@@ -135,6 +143,7 @@ export class CartComponent implements OnInit {
     );
   }
 
+  // To Add Cart Items in Order History
   public purchase() {
     for (let item of this.cartList) {
       var orderData = {
@@ -145,7 +154,9 @@ export class CartComponent implements OnInit {
         productOfferPrice: item.cartProductPrice,
         imgURL: item.imgURL,
       };
+      // POST: Subscribing To Add Order in Databse
       this._orderService.addToOrderHistory(orderData).subscribe();
+
       // DELETE: Subscribing To Delete Cart Item
       this._cartService.deleteCartData(item.cartId).subscribe();
     }

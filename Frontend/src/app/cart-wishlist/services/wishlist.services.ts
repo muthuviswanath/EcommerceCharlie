@@ -10,10 +10,11 @@ import { IWishList } from "../interfaces/IWishList";
 export class WishListServices implements OnInit {
 
   baseURL: string = "http://localhost:33037/";
-   // To get User ID at time of user Login using Local Storage
-   userdata = localStorage.getItem('user');
-   obj = JSON.parse(this.userdata);
- 
+
+  // To get User ID at time of user Login using Local Storage
+  userdata = localStorage.getItem('user');
+  obj = JSON.parse(this.userdata);
+
 
   constructor(private http: HttpClient) {
 
@@ -27,10 +28,11 @@ export class WishListServices implements OnInit {
   public getAllWishList(): Observable<IWishList[]> {
     return this.http.get<IWishList[]>(`${this.baseURL}api/WishLists`);
   }
-  
+
+  // GET: Service To Get Wishlist Of The User
   public getIndiviualwishListById(): Observable<IWishList[]> {
     const userdata = localStorage.getItem('user');
-    const  obj = JSON.parse(userdata);
+    const obj = JSON.parse(userdata);
     return this.http.get<IWishList[]>(`${this.baseURL}api/WishLists/user/${obj.userId}`);
   }
 
@@ -50,7 +52,8 @@ export class WishListServices implements OnInit {
     return this.http.delete(`${this.baseURL}api/WishLists/${wishListId}`, wishListId);
   }
 
-  public getWishlistItemById(wishlistid:any){
+  // GET: Service To Get Wishlist By Wishlist ID
+  public getWishlistItemById(wishlistid: any) {
     return this.http.get(`${this.baseURL}api/WishLists/${wishlistid}`)
   }
 }

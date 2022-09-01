@@ -9,13 +9,14 @@ import { Component, OnInit, Input } from '@angular/core';
 export class CardsComponent implements OnInit {
 
   @Input() items: any = {};
-  discountprice:any;
+  discountprice: any;
+
   constructor() {
 
   }
 
   ngOnInit(): void {
-    this.discountprice=100-Math.round((this.items.productOfferPrice/this.items.price) * 100)
+    this.discountprice = 100 - Math.round((this.items.productOfferPrice / this.items.price) * 100)
   }
 
 }

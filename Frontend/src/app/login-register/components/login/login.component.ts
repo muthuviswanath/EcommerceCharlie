@@ -16,7 +16,6 @@ export class LoginComponent implements OnInit {
   @Output() isLogged: boolean;
   username = new FormControl('', [Validators.required, Validators.minLength(3)]);
   password = new FormControl('', [Validators.required, Validators.minLength(3)]);
-  // email = new FormControl('', [Validators.required, Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$")]);
 
   constructor(private _loginService: LoginServices, private builder: FormBuilder, private route: Router, private toast: NgToastService) {
 
@@ -31,7 +30,6 @@ export class LoginComponent implements OnInit {
     {
       username: this.username,
       password: this.password,
-      // email: this.email,
     }
   );
 
@@ -53,11 +51,11 @@ export class LoginComponent implements OnInit {
         )
       }
       else {
+
         // POST: Subscribing To Check Login Value
         this._loginService.loginUser(this.loginForm.value).subscribe(
           (response) => {
             if (response != null) {
-              // localStorage.removeItem('user');
               localStorage.setItem('user', JSON.stringify(response));
               var userdata = localStorage.getItem('user');
               var obj = JSON.parse(userdata);
@@ -66,7 +64,7 @@ export class LoginComponent implements OnInit {
                 () => {
                   window.location.reload();
                 }
-              )
+              );
               this.toast.success({ detail: "SUCCESS", summary: `Welcome ${obj.userName}!`, duration: 5000 });
             }
             else {
@@ -78,5 +76,4 @@ export class LoginComponent implements OnInit {
       }
     }
   }
-
 }

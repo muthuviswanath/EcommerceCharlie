@@ -9,6 +9,7 @@ import { ProductServices } from '../../../product-module/services/product.servic
   styleUrls: ['./search-result.component.css']
 })
 export class SearchResultComponent implements OnInit {
+
   flag: boolean = true;
   sub: any;
   id: any;
@@ -20,6 +21,7 @@ export class SearchResultComponent implements OnInit {
   }
 
   ngOnInit(): void {
+
     // Getting Search Value from the URL
     this.sub = this.activatedRoute.params.subscribe(
       (params) => {
@@ -35,7 +37,7 @@ export class SearchResultComponent implements OnInit {
           this.flag = false;
         }
       },
-    )
+    );
 
   }
 }

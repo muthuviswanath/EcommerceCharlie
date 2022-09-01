@@ -23,6 +23,8 @@ export class OrderServices implements OnInit {
   public getAllOrder(): Observable<IOrder[]> {
     return this.http.get<IOrder[]>(`${this.baseURL}api/Orders`);
   }
+
+  // GET: Service To Get Order List of User
   public getIndiviualOrderListById(): Observable<IOrder[]> {
     const userdata = localStorage.getItem('user');
     const obj = JSON.parse(userdata);
