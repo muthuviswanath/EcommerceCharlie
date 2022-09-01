@@ -1,6 +1,10 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { ICart } from 'src/app/cart-wishlist/interfaces/ICart';
+import { IWishList } from 'src/app/cart-wishlist/interfaces/IWishList';
+import { CartServices } from 'src/app/cart-wishlist/services/cart.services';
+import { WishListServices } from 'src/app/cart-wishlist/services/wishlist.services';
 
 @Component({
   selector: 'app-uppernav',
@@ -13,8 +17,12 @@ export class UppernavComponent implements OnInit {
   public isLoggedIn: boolean;
   user = localStorage.getItem('user');
   public isAdmin: boolean = false;
+  cartList: ICart[];
+  cartCount: number = 0;
+  wishList:IWishList[];
+  wishListCount:number=0;
 
-  constructor(private route: Router) {
+  constructor(private route: Router,private _cartService: CartServices,private _wishListService: WishListServices) {
 
   }
 
@@ -24,6 +32,21 @@ export class UppernavComponent implements OnInit {
       this.isAdmin = true;
       this.isLoggedIn = true;
     }
+    //to display cart item count in UpperNav.
+    this._cartService.getIndiviualCartId().subscribe(
+      (response) => {
+        this.cartList = response;
+        this.cartCount = this.cartList.length;
+      }
+    );
+
+    //to display wishlist item count in UpperNav.
+    this._wishListService.getIndiviualwishListById().subscribe(
+      (response) => {
+        this.wishList = response;
+        this.wishListCount=this.wishList.length;
+      }
+    );
   }
 
   // To Search Products

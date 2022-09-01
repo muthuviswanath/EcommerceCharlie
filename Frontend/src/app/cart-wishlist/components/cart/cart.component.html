@@ -28,7 +28,7 @@
                                       </p>
 
                                       <div class="m-t-sm">
-                                          <input type="button" value="Remove" (click)="removeItem(item.cartId)">
+                                          <input type="button" value="Remove" class=" btn btn-danger" (click)="removeItem(item.cartId)">
                                       </div>
                                   </td>
                                   <td>
@@ -36,12 +36,12 @@
                                     Rs:{{item.cartProductPrice}}
                                   </td>
                                   <td width="65">
-                                    <p class="small text-muted mb-4 pb-2 p1">Quantity</p>
-                                    {{item.cartTotal}}
+                                    <p class="small text-muted mb-4 pb-2 p1" >Quantity</p>
+                                       {{item.cartTotal}}
                                   </td>
                                   <td>
-                                    <input type="button" value="+" (click)="incrementItem(item.cartId)">
-                                    <input type="button" value="--" (click)="decrementItem(item.cartId)">
+                                    <input type="button" value="+" class="btn btn-outline-info btn-sm"  (click)="incrementItem(item.cartId)">
+                                    <input type="button" value="-" class="btn btn-outline-info btn-sm" (click)="decrementItem(item.cartId)">
                                   </td>
                               </tr>
                               </tbody>
