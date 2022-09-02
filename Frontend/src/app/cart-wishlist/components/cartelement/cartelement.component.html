@@ -1,0 +1,39 @@
+
+<div class="ibox-content">
+    <div class="table-responsive">
+        <table class="table shoping-cart-table">
+
+            <tbody>
+            <tr>
+                <td width="90">
+
+                      <img src={{item.imgURL}} style="height:69px;width:69px" alt="">
+
+                </td>
+                <td class="desc">
+                    <p class="small text-muted mb-4 pb-2 p1">Product Name</p>
+                    <p class="big">
+                      {{item.productName}}
+                    </p>
+
+                    <div class="m-t-sm">
+                        <input type="button" value="Remove" (click)="removeItem(item.cartId)">
+                    </div>
+                </td>
+                <td>
+                  <p class="small text-muted mb-4 pb-2 p1">Product Price</p>
+                  Rs:{{item.cartProductPrice}}
+                </td>
+                <td width="65">
+                  <p class="small text-muted mb-4 pb-2 p1">Quantity</p>
+                  {{this.quantity}}
+                </td>
+                <td>
+                  <input type="button" value="+" (click)="incrementItem(item.cartId)">
+                  <input type="button" value="--" (click)="decrementItem(item.cartId)">
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

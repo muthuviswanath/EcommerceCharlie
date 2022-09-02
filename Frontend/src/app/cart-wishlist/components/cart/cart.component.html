@@ -10,44 +10,12 @@
       <div class="row">
           <div class="col-md-9">
               <div class="ibox">
-                  <div class="ibox-content" *ngFor="let item of cartList">
-                      <div class="table-responsive">
-                          <table class="table shoping-cart-table">
 
-                              <tbody>
-                              <tr>
-                                  <td width="90">
+                <div *ngFor="let items of cartList">
+                    <app-cartelement (newItemEvent)="updateCarttotal($event)" [item]="items"></app-cartelement>
+                </div>
+                  
 
-                                        <img src={{item.imgURL}} style="height:69px;width:69px" alt="">
-
-                                  </td>
-                                  <td class="desc">
-                                      <p class="small text-muted mb-4 pb-2 p1">Product Name</p>
-                                      <p class="big">
-                                        {{item.productName}}
-                                      </p>
-
-                                      <div class="m-t-sm">
-                                          <input type="button" value="Remove" class=" btn btn-danger" (click)="removeItem(item.cartId)">
-                                      </div>
-                                  </td>
-                                  <td>
-                                    <p class="small text-muted mb-4 pb-2 p1">Product Price</p>
-                                    Rs:{{item.cartProductPrice}}
-                                  </td>
-                                  <td width="65">
-                                    <p class="small text-muted mb-4 pb-2 p1" >Quantity</p>
-                                       {{item.cartTotal}}
-                                  </td>
-                                  <td>
-                                    <input type="button" value="+" class="btn btn-outline-info btn-sm"  (click)="incrementItem(item.cartId)">
-                                    <input type="button" value="-" class="btn btn-outline-info btn-sm" (click)="decrementItem(item.cartId)">
-                                  </td>
-                              </tr>
-                              </tbody>
-                          </table>
-                      </div>
-                  </div>
                   <div class="ibox-content">
                       <button (click)="purchase()" routerLink="/order" class="btn btn-primary pull-right"><i class="fa fa fa-shopping-cart"></i> Checkout</button>
                       <a class="btn btn-white" routerLink="/allproducts"><i class="fa fa-arrow-left"></i> Continue shopping</a>

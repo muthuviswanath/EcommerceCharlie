@@ -1,50 +1,39 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { NgToastService } from 'ng-angular-popup';
 import { ProductServices } from 'src/app/product-module/services/product.services';
 import { ICart } from '../../interfaces/ICart';
-import { IOrder } from '../../interfaces/IOrder';
 import { CartServices } from '../../services/cart.services';
-import { OrderServices } from '../../services/order.services';
-
+import { Output, EventEmitter } from '@angular/core';
 @Component({
-  selector: 'app-cart',
-  templateUrl: './cart.component.html',
-  styleUrls: ['./cart.component.css'],
+  selector: 'app-cartelement',
+  templateUrl: './cartelement.component.html',
+  styleUrls: ['./cartelement.component.css']
 })
+export class CartelementComponent implements OnInit {
 
-export class CartComponent implements OnInit {
-
-  cartList: ICart[];
+  @Input() item:ICart;
+  @Output() newItemEvent = new EventEmitter<number>();
   cartData: any = {};
+  quantity:number=0;
   productData: any = {};
-  totalCartPrice: number = 0;
-  filteredList: ICart[];
-  // To get User ID at time of user Login using Local Storage
-  userdata = localStorage.getItem('user');
-  obj = JSON.parse(this.userdata);
-
-  constructor(private _cartService: CartServices, private _orderService: OrderServices, private _productService: ProductServices, private toast: NgToastService) {
-
-  }
+  constructor(private _cartService: CartServices, private _productService: ProductServices, private toast: NgToastService) { }
 
   ngOnInit(): void {
-    this.loadCartData();
+     this.quantity=this.item.cartTotal;
+
   }
 
-  // To Update Cart
-  public updateCart() {
-    // PUT: Subscribing To Update Cart Data
-    this._cartService.updateCartData(this.cartData.cartId, this.cartData).subscribe();
-    this.loadCartData();
-  }
-
-  // To Update Product
   public updateProduct() {
     // PUT: Subscribing To Update Product by Product ID
     this._productService.updateProduct(this.productData.productId, this.productData).subscribe();
   }
 
-  // To Increment Quantity of Cart Item
+  public updateCart() {
+    // PUT: Subscribing To Update Cart Data
+    this._cartService.updateCartData(this.cartData.cartId, this.cartData).subscribe();
+   //$$ this.loadCartData();
+  
+  }
   public incrementItem(cartid: any) {
     // GET: Subscribing To Get Cart Item by Cart ID
     this._cartService.getCartById(cartid).subscribe(
@@ -62,14 +51,18 @@ export class CartComponent implements OnInit {
               this.toast.warning({ detail: "WARN", summary: 'Not Enough Products!', duration: 5000 });
             }
             this.updateProduct();
+            this.newItemEvent.emit(this.item.cartProductPrice);
           }
         );
       }
     );
-    window.location.reload();
+    this.quantity++;
+   // window.location.reload();
   }
 
-  // To Decrement Quantity of Cart Item
+
+
+  
   public decrementItem(cartId: any) {
     let flag: Boolean = true;
     console.log(cartId);
@@ -99,12 +92,15 @@ export class CartComponent implements OnInit {
           }
         );
         this.updateCart();
+        this.newItemEvent.emit(-this.item.cartProductPrice);
       }
     );
-    window.location.reload();
+    if(this.quantity>0)
+    this.quantity--;
+    
   }
 
-  // To Remove Cart Item
+
   public removeItem(cartId: any) {
     // GET: Subscribing To Get Cart Item by Cart ID
     this._cartService.getCartById(cartId).subscribe(
@@ -124,41 +120,8 @@ export class CartComponent implements OnInit {
     // DELETE: Subscribing To Delete Cart Item
     this._cartService.deleteCartData(cartId).subscribe();
     this.toast.success({ detail: "SUCCESS", summary: 'Cart Item Removed Successfully!', duration: 5000 });
-    window.location.reload();
-  }
-  
-  // Load Cart Data 
-  public updateCarttotal(price:number){
-    this.totalCartPrice+=price;
-
-  }
-  public loadCartData() {
-    this.totalCartPrice = 0;
-    // GET: Subscribing To Get All Cart Items By User ID
-    this._cartService.getIndiviualCartId().subscribe(
-      (response) => {
-        this.cartList = response;
-        for (let item of this.cartList) {
-          this.totalCartPrice += (item.cartTotal * item.cartProductPrice);
-        }
-      }
-    );
+    
   }
 
-  public purchase() {
-    for (let item of this.cartList) {
-      var orderData = {
-        userId: this.obj.userId,
-        productId: item.productId,
-        orderDate: new Date(),
-        productName: item.productName,
-        productOfferPrice: item.cartProductPrice,
-        imgURL: item.imgURL,
-      };
-      this._orderService.addToOrderHistory(orderData).subscribe();
-      // DELETE: Subscribing To Delete Cart Item
-      this._cartService.deleteCartData(item.cartId).subscribe();
-    }
-  }
+
 }
-
