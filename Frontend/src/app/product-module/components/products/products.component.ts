@@ -102,11 +102,8 @@ export class ProductsComponent implements OnInit {
       // PUT: Subscribing To Update Product By Product ID
       this._productServices.updateProduct(this.prodData.productId, this.prodData).subscribe();
       this.toast.success({ detail: "SUCCESS", summary: 'Added To Cart Successfully', duration: 5000 });
-      this.route.navigateByUrl('/cart').then(
-        () => {
-          window.location.reload();
-        }
-      );
+      
+      
     };
   }
 
