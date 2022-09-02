@@ -364,6 +364,15 @@
 
 .btnspc {
   margin-left: 15px;
+  background-color: #70c5c0;
+  color: white;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+  border-radius: 7px;
+  height: 40px;
+  padding: 10px;
+  margin-top: 20px;
 }
 
 .btnspc:hover {
@@ -371,11 +380,15 @@
 }
 
 .dropbtn {
-  background-color: #04AA6D;
-  color: white;
-  padding: 16px;
-  font-size: 16px;
-  border: none;
+  background-color: #70c5c0;
+    color: white;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+    border-radius: 7px;
+    height: 40px;
+    padding: 10px;
+    margin-top: 10px;
 }
 
 .dropdown {
