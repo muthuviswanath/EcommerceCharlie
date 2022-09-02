@@ -24,4 +24,17 @@ export class OrderhistoryComponent implements OnInit {
       }
     );
   }
+  public  sortByRecent() {
+    return this.orderList.sort((a: any, b: any) => {
+      return <any>new Date(b.orderDate) - <any>new Date(a.orderDate);
+    });
+  }
+
+  public  sortByPrevious() {
+    return this.orderList.sort((a: any, b: any) => {
+      return <any>new Date(a.orderDate) - <any>new Date(b.orderDate);
+    });
+  }
+
+
 }

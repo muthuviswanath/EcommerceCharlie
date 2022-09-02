@@ -9,6 +9,17 @@
 </div>
 <div class="container-fluid">
   <div class="row">
+    <div class="dropdown">
+      <button class="dropbtn">Sort by Price</button>
+      <div class="dropdown-content">
+        <a (click)="sortasc()">Low to High </a>
+        <a (click)="sortdesc()">High to Low</a>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="container-fluid">
+  <div class="row">
     <div class="col-sm-2"></div>
     <div class="col-sm-8">
       <div class="row">

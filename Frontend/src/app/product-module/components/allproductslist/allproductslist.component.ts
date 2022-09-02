@@ -12,11 +12,16 @@ export class AllproductslistComponent implements OnInit {
   IProduct: Array<any> = [];
   allproductsList: IProduct[];
   start: any = 0;
-
+  sortedProductsList: IProduct[];
   constructor(private _productServices: ProductServices) {
 
   }
-
+  sortasc() {
+    this.sortedProductsList = this.allproductsList.sort((a, b) => (a.productOfferPrice < b.productOfferPrice ? -1 : 1));
+  }
+  sortdesc() {
+    this.sortedProductsList = this.allproductsList.sort((a, b) => (a.productOfferPrice > b.productOfferPrice ? -1 : 1));
+  }
   ngOnInit(): void {
 
     // GET: Subscribing To Get All Products
