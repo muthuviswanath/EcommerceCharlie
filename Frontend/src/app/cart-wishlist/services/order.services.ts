@@ -11,6 +11,9 @@ export class OrderServices implements OnInit {
 
   baseURL: string = "http://localhost:33037/";
 
+  // To Get User ID At The Time Of User Login Using Session Storage
+  userID = sessionStorage.getItem('userID');
+
   constructor(private http: HttpClient) {
 
   }
@@ -19,20 +22,18 @@ export class OrderServices implements OnInit {
 
   }
 
-  // GET: Service To Get All Order History Data from Database
-  public getAllOrder(): Observable<IOrder[]> {
+  // GET: Service To Get All Order History Data From Database
+  getAllOrder(): Observable<IOrder[]> {
     return this.http.get<IOrder[]>(`${this.baseURL}api/Orders`);
   }
 
-  // GET: Service To Get Order List of User
-  public getIndiviualOrderListById(): Observable<IOrder[]> {
-    const userdata = localStorage.getItem('user');
-    const obj = JSON.parse(userdata);
-    return this.http.get<IOrder[]>(`${this.baseURL}api/Orders/user/${obj.userId}`);
+  // GET: Service To Get Order List Of User
+  getIndiviualOrderListById(): Observable<IOrder[]> {
+    return this.http.get<IOrder[]>(`${this.baseURL}api/Orders/user/${this.userID}`);
   }
 
-  // POST: Service To Post Order in Database
-  public addToOrderHistory(orderData: any) {
+  // POST: Service To Post Order In Database
+  addToOrderHistory(orderData: any) {
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json; charset=utf-8'

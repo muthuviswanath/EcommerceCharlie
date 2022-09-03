@@ -3,7 +3,7 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 import { Router } from '@angular/router';
 import { NgToastService } from 'ng-angular-popup';
 import { LoginServices } from 'src/app/login-register/services/login.services';
-import { navchangeservice } from 'src/app/shared/services/navchange.service';
+import { AuthserviceService } from '../../services/authservice.service';
 
 @Component({
   selector: 'app-login',
@@ -12,13 +12,15 @@ import { navchangeservice } from 'src/app/shared/services/navchange.service';
 })
 export class LoginComponent implements OnInit {
 
-  public formData: any = {};
-  public showMessage: boolean = false;
+  formData: any = {};
+  showMessage: boolean = false;
+  invalidLogin: boolean;
+  userData: any;
   @Output() isLogged: boolean;
   username = new FormControl('', [Validators.required, Validators.minLength(3)]);
   password = new FormControl('', [Validators.required, Validators.minLength(3)]);
 
-  constructor(private _loginService: LoginServices, private builder: FormBuilder, private route: Router, private toast: NgToastService,private appService: navchangeservice) {
+  constructor(private _loginService: LoginServices, private builder: FormBuilder, private route: Router, private toast: NgToastService, private _authService: AuthserviceService) {
 
   }
 
@@ -27,6 +29,7 @@ export class LoginComponent implements OnInit {
     this.isLogged;
   }
 
+  // Form Group
   loginForm: FormGroup = this.builder.group(
     {
       username: this.username,
@@ -34,41 +37,42 @@ export class LoginComponent implements OnInit {
     }
   );
 
-  // To Check User Credentials
-  public login() {
+  // To Check User Credentials By JWT
+  loginAuth() {
     this.formData = this.loginForm.value;
-    this.showMessage = true;
-
-    // Changes For API Logic
     if (this.loginForm.valid) {
-      if (this.formData.username == "admin" && this.formData.password == "admin") {
-        localStorage.setItem('user', 'admin');
-        localStorage.setItem('auth', JSON.stringify(true));
-        this.toast.success({ detail: "SUCCESS", summary: 'Admin Login Successful!', duration: 5000 });
-        this.appService.updateApprovalMessage({loginfo:true,loguser:"admin"});
-        this.route.navigateByUrl('/admin');
-      }
-      else {
-
-        // POST: Subscribing To Check Login Value
-        this._loginService.loginUser(this.loginForm.value).subscribe(
-          (response) => {
-            if (response != null) {
-              localStorage.setItem('user', JSON.stringify(response));
-              var userdata = localStorage.getItem('user');
-              var obj = JSON.parse(userdata);
-              localStorage.setItem('auth', JSON.stringify(true));
-              this.appService.updateApprovalMessage({loginfo:true,loguser:"user"});
-              this.route.navigateByUrl('/');
-              this.toast.success({ detail: "SUCCESS", summary: `Welcome ${obj.userName}!`, duration: 5000 });
+      // POST: Subscribing To Check User Credentials And Get JWT
+      this._authService.loginUserByJWT(this.formData).subscribe(
+        (response) => {
+          if (response != null) {
+            const token = (<any>response).token;
+            sessionStorage.setItem("JWT", token);
+            // POST: Subscribing To Check Login Value And Get User
+            this._loginService.loginUser(this.formData).subscribe(
+              (response) => {
+                this.userData = response;
+                sessionStorage.setItem('userID', JSON.stringify(this.userData.userId));
+                sessionStorage.setItem('auth', JSON.stringify(true));
+              }
+            );
+            this.toast.success({ detail: "SUCCESS", summary: `Welcome ${this.formData.username}!`, duration: 5000 });
+            if (this.formData.username == "admin") {
+              this.route.navigate(["/admin"]).then(
+                () => { window.location.reload(); }
+              );
             }
             else {
-              this.toast.info({ detail: "INFO", summary: 'Please Register before Sign In', sticky: true });
-              this.route.navigateByUrl('/register');
+              this.route.navigate(["/"]).then(
+                () => { window.location.reload(); }
+              );
             }
           }
-        );
-      }
+          else {
+            this.toast.info({ detail: "INFO", summary: 'Please Register before Sign In', duration: 5000 });
+            this.route.navigate(["/register"]);
+          }
+        }
+      );
     }
   }
 }

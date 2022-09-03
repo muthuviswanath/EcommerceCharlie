@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { IProduct } from "../../interfaces/IProduct";
 import { ProductServices } from '../../services/product.services';
+import jwtDecode from 'jwt-decode';
 @Component({
   selector: 'app-allproducts',
   templateUrl: './allproducts.component.html',
@@ -21,6 +22,7 @@ export class AllproductsComponent implements OnInit {
     this._productServices.getAllProducts().subscribe(
       (response) => {
         this.productsList = response;
+
       }
     );
   }

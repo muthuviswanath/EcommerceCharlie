@@ -12,15 +12,14 @@ export class LoginServices implements OnInit {
   baseURL: string = "http://localhost:33037/";
   public data: any = {};
 
-  // To get User ID at time of user Login using Local Storage
-  userdata = localStorage.getItem('user');
-  obj = JSON.parse(this.userdata);
+  // To Get User ID At The time Of User Login Using Session Storage
+  userID = sessionStorage.getItem('userID');
 
   constructor(private http: HttpClient) {
 
   }
 
-  // GET: Service To Get Details of All Users
+  // GET: Service To Get Details Of All Users
   getLoginInfo(): Observable<ILogin[]> {
     return this.http.get<ILogin[]>(`${this.baseURL}api/Users`);
   }
@@ -37,14 +36,14 @@ export class LoginServices implements OnInit {
     return this.data;
   }
 
-  // GET: Service To Get User Data by User ID
+  // GET: Service To Get User Data By User ID
   public getUserById(userId: any) {
     return this.http.get(`${this.baseURL}api/Users/${userId}`);
   }
 
-  // GET: Service To Get Local User Data by User ID
+  // GET: Service To Get Local User Data By User ID
   public getUserByIdLocal() {
-    return this.http.get(`${this.baseURL}api/Users/${this.obj.userId}`);
+    return this.http.get(`${this.baseURL}api/Users/${this.userID}`);
   }
 
   // POST: Service To Register User

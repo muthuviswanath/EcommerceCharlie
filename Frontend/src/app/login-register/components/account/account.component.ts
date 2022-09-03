@@ -16,7 +16,6 @@ export class AccountComponent implements OnInit {
   }
 
   ngOnInit(): void {
-
     // GET: Subscribing To Get User Data From Local
     this._loginService.getUserByIdLocal().subscribe(
       (response) => {
@@ -26,7 +25,7 @@ export class AccountComponent implements OnInit {
   }
 
   // To Edit User
-  public editUser() {
+  editUser() {
     this.route.navigateByUrl('/user')
   }
 

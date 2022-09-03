@@ -11,9 +11,8 @@ export class WishListServices implements OnInit {
 
   baseURL: string = "http://localhost:33037/";
 
-  // To get User ID at time of user Login using Local Storage
-  userdata = localStorage.getItem('user');
-  obj = JSON.parse(this.userdata);
+  // To Get User ID At The Time Of User Login Using Session Storage
+  userID = sessionStorage.getItem('userID');
 
 
   constructor(private http: HttpClient) {
@@ -24,21 +23,18 @@ export class WishListServices implements OnInit {
 
   }
 
-  // GET: Service To Get All Wishlist Data from Database
-  public getAllWishList(): Observable<IWishList[]> {
+  // GET: Service To Get All Wishlist Data From Database
+  getAllWishList(): Observable<IWishList[]> {
     return this.http.get<IWishList[]>(`${this.baseURL}api/WishLists`);
   }
 
   // GET: Service To Get Wishlist Of The User
-  public getIndiviualwishListById(): Observable<IWishList[]> {
-    const userdata = localStorage.getItem('user');
-    const obj = JSON.parse(userdata);
-    return this.http.get<IWishList[]>(`${this.baseURL}api/WishLists/user/${obj.userId}`);
+  getIndiviualwishListById(): Observable<IWishList[]> {
+    return this.http.get<IWishList[]>(`${this.baseURL}api/WishLists/user/${this.userID}`);
   }
 
-  // POST: Service To Add Wishlist Data in Database
-  // Code Added By Apoorv
-  public addToWishList(data: any) {
+  // POST: Service To Add Wishlist Data In Database
+  addToWishList(data: any) {
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json; charset=utf-8'
@@ -47,13 +43,13 @@ export class WishListServices implements OnInit {
     return this.http.post(`${this.baseURL}api/WishLists`, data, httpOptions);
   }
 
-  // DELETE: Service To Delete Wishlist Data from Database
-  public deleteWishListData(wishListId: any) {
+  // DELETE: Service To Delete Wishlist Data From Database
+  deleteWishListData(wishListId: any) {
     return this.http.delete(`${this.baseURL}api/WishLists/${wishListId}`, wishListId);
   }
 
   // GET: Service To Get Wishlist By Wishlist ID
-  public getWishlistItemById(wishlistid: any) {
+  getWishlistItemById(wishlistid: any) {
     return this.http.get(`${this.baseURL}api/WishLists/${wishlistid}`)
   }
 }

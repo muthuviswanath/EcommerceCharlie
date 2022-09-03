@@ -1,5 +1,5 @@
 <div class="login-form">
-  <form [formGroup]="loginForm" (ngSubmit)="login()">
+  <form [formGroup]="loginForm" (ngSubmit)="loginAuth()">
     <div class="avatar">
       <img src="https://cdn2.iconfinder.com/data/icons/essenstial-ultimate-ui/64/avatar-512.png" alt="Avatar">
     </div>
@@ -42,12 +42,12 @@
 
     <div class="form-group btnspc">
       <button type="submit" class="btn btn-primary btn-lg btn-block btnlong" [disabled]="!loginForm.valid"
-        (click)="login()">Login</button>
+        (click)="loginAuth()">Login</button>
     </div>
 
-    <div class="clearfix">
+    <!-- <div class="clearfix">
       <a href="#" class="pull-right">Forgot Password?</a>
-    </div>
+    </div> -->
     <div class="form-group btnspc">
       <a class="btn btn-primary btn-lg btn-block spc" routerLink="/register">Sign Up</a>
     </div>

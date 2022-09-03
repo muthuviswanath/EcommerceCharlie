@@ -1,4 +1,3 @@
-import { HttpClient } from '@angular/common/http';
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ICart } from 'src/app/cart-wishlist/interfaces/ICart';
@@ -14,49 +13,45 @@ import { navchangeservice } from 'src/app/shared/services/navchange.service';
 })
 export class UppernavComponent implements OnInit {
 
-  public searchString: string = "";
-  public isLoggedIn: boolean;
-  user = localStorage.getItem('user');
-  public isAdmin: boolean = false;
+  searchString: string = "";
+  isLoggedIn: boolean = false;
+  isAdmin: boolean = false;
   cartList: ICart[];
+  wishList: IWishList[];
   cartCount: number = 0;
-  wishList:IWishList[];
-  wishListCount:number=0;
-  public userLoggedIn:any={};
-  constructor(private route: Router,private _cartService: CartServices,private _wishListService: WishListServices,private appService: navchangeservice) {
+  wishListCount: number = 0;
+
+  // To get User ID at time of user Login Using Session Storage
+  userID = sessionStorage.getItem('userID');
+
+  constructor(private route: Router, private _cartService: CartServices, private _wishListService: WishListServices) {
 
   }
 
   ngOnInit(): void {
-
-    this.appService.currentApprovalStageMessage.subscribe(msg => this.userLoggedIn = msg);
-   // console.log(this.user.userName);
-  /**  if(this.user!=null){ 
-   if (this.user =='admin' ) {
-      this.userLoggedIn.loginfo=true;
-      this.userLoggedIn.loguser=this.user;
+    this.isLoggedIn = JSON.parse(sessionStorage.getItem('auth'));
+    if (this.userID === "17") {
+      this.isAdmin = true;
     }
-    else
-    {
-      this.userLoggedIn.loginfo=true;
-      this.userLoggedIn.loguser=this.user.userName;
-    }
-  }*/
-    
-
-    //to display cart item count in UpperNav.
+    // GET: To display Cart Item Count In UpperNav.
     this._cartService.getIndiviualCartId().subscribe(
       (response) => {
         this.cartList = response;
         this.cartCount = this.cartList.length;
+      },
+      (error) => {
+        console.log(error);
       }
     );
 
-    //to display wishlist item count in UpperNav.
+    // GET: To Display Wishlist Item Count In UpperNav.
     this._wishListService.getIndiviualwishListById().subscribe(
       (response) => {
         this.wishList = response;
-        this.wishListCount=this.wishList.length;
+        this.wishListCount = this.wishList.length;
+      },
+      (error) => {
+        console.log(error);
       }
     );
   }
@@ -71,13 +66,14 @@ export class UppernavComponent implements OnInit {
     )
   }
 
-  // To Remove User From Local Storage
+  // To Logout User
   logout() {
-    localStorage.setItem('user', JSON.stringify(null));
-    localStorage.setItem('auth', JSON.stringify(false));
-    this.appService.updateApprovalMessage({loginfo:false,loguser:null});
-    this.route.navigateByUrl("/login")
-    
+    sessionStorage.removeItem("JWT");
+    sessionStorage.setItem('userID', JSON.stringify(null));
+    sessionStorage.setItem('auth', JSON.stringify(false));
+    this.route.navigate(["/login"]).then(
+      () => { window.location.reload(); }
+    );
   }
 }
 

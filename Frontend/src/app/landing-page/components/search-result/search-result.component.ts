@@ -21,15 +21,14 @@ export class SearchResultComponent implements OnInit {
   }
 
   ngOnInit(): void {
-
-    // Getting Search Value from the URL
+    // Getting Search Value From The URL
     this.sub = this.activatedRoute.params.subscribe(
       (params) => {
         this.id = params['id'];
       }
     );
 
-    // GET: Subscribing To Get All the Products that matches Search Value
+    // GET: Subscribing To Get All The Products That Matches Search Value
     this._productService.searchProducts(this.id).subscribe(
       (response) => {
         this.searchList = response;
@@ -38,6 +37,5 @@ export class SearchResultComponent implements OnInit {
         }
       },
     );
-
   }
 }

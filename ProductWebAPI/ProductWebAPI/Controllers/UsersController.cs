@@ -1,10 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
+using System.Security.Claims;
+using System.Text;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
 using ProductWebAPI.Models;
 
 namespace ProductWebAPI.Controllers
@@ -22,6 +27,7 @@ namespace ProductWebAPI.Controllers
 
         // GET: api/Users
         [HttpGet]
+        [Authorize]
         public async Task<ActionResult<IEnumerable<User>>> GetUsers()
         {
             return await _context.Users.ToListAsync();
@@ -50,9 +56,52 @@ namespace ProductWebAPI.Controllers
             var dbUser = await currentUser.FirstOrDefaultAsync();
             return dbUser;
         }
-        // PUT: api/Users/5
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        [HttpPut("{id}")]
+
+        [HttpPost, Route("authLogin")]
+        public IActionResult Login(User user)
+        {
+            if (user == null)
+                return BadRequest("Invalid Credentials to access the records");
+            var userData = _context.Users.FirstOrDefault(u => u.UserName == user.UserName && u.Password == user.Password);
+            if (userData != null)
+            {
+                var secretKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("symmetricsecretkey$567"));
+                var signingCredentials = new SigningCredentials(secretKey, SecurityAlgorithms.HmacSha256);
+                var claims = new List<Claim>();
+                if(userData.UserName == "admin" && userData.Password == "admin")
+                {
+                    claims = new List<Claim>
+                    {
+                        new Claim(ClaimTypes.Name,user.UserName),
+                        new Claim(ClaimTypes.Role,"Admin")
+                    };
+                }
+                else
+                {
+                    claims = new List<Claim>
+                    {
+                        new Claim(ClaimTypes.Name,user.UserName),
+                    };
+                }
+                var tokenOptions = new JwtSecurityToken(
+
+                    issuer: "http://localhost:33037",
+                    audience: "http://localhost:33037",
+                    claims: claims,
+                    expires: DateTime.Now.AddMinutes(10),
+                    signingCredentials: signingCredentials
+                );
+                var tokenString = new JwtSecurityTokenHandler().WriteToken(tokenOptions);
+                return Ok(new { Token = tokenString });
+            }
+            return Unauthorized();
+        }
+
+
+
+    // PUT: api/Users/5
+    // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
+    [HttpPut("{id}")]
         public async Task<IActionResult> PutUser(int id, User user)
         {
             if (id != user.UserId)

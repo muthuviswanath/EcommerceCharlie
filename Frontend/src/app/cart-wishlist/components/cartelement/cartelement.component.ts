@@ -9,32 +9,37 @@ import { Output, EventEmitter } from '@angular/core';
   templateUrl: './cartelement.component.html',
   styleUrls: ['./cartelement.component.css']
 })
+
 export class CartelementComponent implements OnInit {
 
-  @Input() item:ICart;
+  @Input() item: ICart;
   @Output() newItemEvent = new EventEmitter<number>();
   cartData: any = {};
-  quantity:number=0;
   productData: any = {};
-  constructor(private _cartService: CartServices, private _productService: ProductServices, private toast: NgToastService) { }
+  quantity: number = 0;
 
-  ngOnInit(): void {
-     this.quantity=this.item.cartTotal;
+  constructor(private _cartService: CartServices, private _productService: ProductServices, private toast: NgToastService) {
 
   }
 
-  public updateProduct() {
+  ngOnInit(): void {
+    this.quantity = this.item.cartTotal;
+
+  }
+
+  // To Update Product
+  updateProduct() {
     // PUT: Subscribing To Update Product by Product ID
     this._productService.updateProduct(this.productData.productId, this.productData).subscribe();
   }
 
-  public updateCart() {
+  // To Update Cart
+  updateCart() {
     // PUT: Subscribing To Update Cart Data
     this._cartService.updateCartData(this.cartData.cartId, this.cartData).subscribe();
-   //$$ this.loadCartData();
-  
   }
-  public incrementItem(cartid: any) {
+  // To Increment Quantity Of Cart Item
+  incrementItem(cartid: any) {
     // GET: Subscribing To Get Cart Item by Cart ID
     this._cartService.getCartById(cartid).subscribe(
       (response) => {
@@ -57,32 +62,22 @@ export class CartelementComponent implements OnInit {
       }
     );
     this.quantity++;
-   // window.location.reload();
   }
-
-
-
-  
-  public decrementItem(cartId: any) {
+  // To Decrement Quantity Of Cart Item
+  decrementItem(cartId: any) {
     let flag: Boolean = true;
-    console.log(cartId);
-    console.log("hello");
-    
     // GET: Subscribing To Get Cart Item by Cart ID
-     this._cartService.getCartById(cartId).subscribe(
+    this._cartService.getCartById(cartId).subscribe(
       (response) => {
-        console.log(response);
-        
-        
-         this.cartData = response;
+        this.cartData = response;
         this.cartData.cartTotal--;
         if (this.cartData.cartTotal < 0) {
-           this.cartData.cartTotal = 0;
-           this.toast.warning({ detail: "WARN", summary: "Cart Quantity can't be Negative!", duration: 5000 });
-           flag = false;
-         }
+          this.cartData.cartTotal = 0;
+          this.toast.warning({ detail: "WARN", summary: "Cart Quantity can't be Negative!", duration: 5000 });
+          flag = false;
+        }
         // GET: Subscribing To Get Product by Product ID
-         this._productService.getProductById(this.cartData.productId).subscribe(
+        this._productService.getProductById(this.cartData.productId).subscribe(
           (response) => {
             this.productData = response;
             this.productData.quantity++;
@@ -95,13 +90,12 @@ export class CartelementComponent implements OnInit {
         this.newItemEvent.emit(-this.item.cartProductPrice);
       }
     );
-    if(this.quantity>0)
-    this.quantity--;
-    
+    if (this.quantity > 0)
+      this.quantity--;
   }
 
-
-  public removeItem(cartId: any) {
+  // To Remove Cart Item
+  removeItem(cartId: any) {
     // GET: Subscribing To Get Cart Item by Cart ID
     this._cartService.getCartById(cartId).subscribe(
       (response) => {
@@ -116,12 +110,8 @@ export class CartelementComponent implements OnInit {
         );
       }
     );
-
     // DELETE: Subscribing To Delete Cart Item
     this._cartService.deleteCartData(cartId).subscribe();
     this.toast.success({ detail: "SUCCESS", summary: 'Cart Item Removed Successfully!', duration: 5000 });
-    
   }
-
-
 }

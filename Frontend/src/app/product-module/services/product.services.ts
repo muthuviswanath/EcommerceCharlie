@@ -10,7 +10,7 @@ import { HttpHeaders } from "@angular/common/http";
 export class ProductServices implements OnInit {
 
   baseURL: string = "http://localhost:33037/";
-  public data: any = {};
+  data: any = {};
 
   constructor(private http: HttpClient) {
 
@@ -30,17 +30,17 @@ export class ProductServices implements OnInit {
   }
 
   // GET: Service To Get All Products from Database
-  public getAllProducts(): Observable<IProduct[]> {
+  getAllProducts(): Observable<IProduct[]> {
     return this.http.get<IProduct[]>(`${this.baseURL}api/Products`);
   }
 
   // GET: Service To Get Product Item by Product ID
-  public getProductById(productId: any) {
+  getProductById(productId: any) {
     return this.http.get(`${this.baseURL}api/Products/${productId}`);
   }
 
-  // POST: Service To get Products that matches Search Value
-  public searchProducts(searchString: any) {
+  // POST: Service To get Products that Matches Search Value
+  searchProducts(searchString: any) {
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json; charset=utf-8'
@@ -49,8 +49,8 @@ export class ProductServices implements OnInit {
     return this.http.post(`${this.baseURL}api/Products/search`, JSON.stringify(searchString), httpOptions);
   }
 
-  // POST: Service To add Product in Database
-  public addProduct(productData: any) {
+  // POST: Service To add Product In Database
+  addProduct(productData: any) {
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json; charset=utf-8'
@@ -60,7 +60,7 @@ export class ProductServices implements OnInit {
   }
 
   // PUT: Service To Update Product Data
-  public updateProduct(productId: any, productData: any) {
+  updateProduct(productId: any, productData: any) {
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json; charset=utf-8'
@@ -69,8 +69,8 @@ export class ProductServices implements OnInit {
     return this.http.put(`${this.baseURL}api/Products/${productId}`, productData, httpOptions);
   }
 
-  // DELETE: Service To Delete Product from Database
-  public deleteProduct(productId: any) {
+  // DELETE: Service To Delete Product From Database
+  deleteProduct(productId: any) {
     return this.http.delete(`${this.baseURL}api/Products/${productId}`, productId);
   }
 }

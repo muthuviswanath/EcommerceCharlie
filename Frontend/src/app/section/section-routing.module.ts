@@ -17,30 +17,48 @@ import { AccountComponent } from '../login-register/components/account/account.c
 import { UserComponent } from '../login-register/components/user/user.component';
 import { AllproductslistComponent } from '../product-module/components/allproductslist/allproductslist.component';
 import { AboutComponent } from '../shared/components/about/about.component';
+import { HttpClientModule } from '@angular/common/http';
+import { JwtModule } from '@auth0/angular-jwt';
+import { AuthserviceService } from '../login-register/services/authservice.service';
 
 const routes: Routes = [
   { path: '', redirectTo: '/allproducts', pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
   { path: 'topproducts', component: TopProductsComponent },
   { path: 'product/:id', component: ProductsComponent },
-  { path: 'cart', component: CartComponent },
+  { path: 'cart', component: CartComponent, canActivate: [AuthserviceService] },
   { path: 'allproducts', component: AllproductsComponent },
   { path: 'alllistproducts', component: AllproductslistComponent },
   { path: 'register', component: RegisterComponent },
-  { path: 'wishlist', component: WishlistComponent },
+  { path: 'wishlist', component: WishlistComponent, canActivate: [AuthserviceService] },
   { path: 'search/:id', component: SearchResultComponent },
-  { path: 'order', component: OrderhistoryComponent },
-  { path: 'admin', component: AdminComponent },
-  { path: 'addproduct', component: AddproductComponent },
-  { path: 'editproduct', component: EditproductComponent },
-  { path: 'listproducts', component: ListproductsComponent },
-  { path: 'account', component: AccountComponent },
-  { path: 'user', component: UserComponent },
+  { path: 'order', component: OrderhistoryComponent, canActivate: [AuthserviceService] },
+  { path: 'admin', component: AdminComponent, canActivate: [AuthserviceService] },
+  { path: 'addproduct', component: AddproductComponent, canActivate: [AuthserviceService] },
+  { path: 'editproduct', component: EditproductComponent, canActivate: [AuthserviceService] },
+  { path: 'listproducts', component: ListproductsComponent, canActivate: [AuthserviceService] },
+  { path: 'account', component: AccountComponent, canActivate: [AuthserviceService] },
+  { path: 'user', component: UserComponent, canActivate: [AuthserviceService] },
   { path: 'about', component: AboutComponent }
 ];
 
+export function tokenGetter() {
+  return sessionStorage.getItem("JWT");
+}
+
 @NgModule({
-  imports: [RouterModule.forChild(routes)],
+  imports: [
+    HttpClientModule,
+    RouterModule.forChild(routes),
+    JwtModule.forRoot({
+      config: {
+        tokenGetter: tokenGetter,
+        allowedDomains: ['localhost:33037'],
+        disallowedRoutes: []
+      }
+    })
+  ],
+  providers: [AuthserviceService],
   exports: [RouterModule]
 })
 export class SectionRoutingModule { }

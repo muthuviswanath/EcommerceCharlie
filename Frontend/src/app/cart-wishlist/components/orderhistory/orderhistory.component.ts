@@ -16,25 +16,25 @@ export class OrderhistoryComponent implements OnInit {
   }
 
   ngOnInit(): void {
-
-    // GET: Subscribing To Get Order History of User
+    // GET: Subscribing To Get Order History Of User
     this._orderService.getIndiviualOrderListById().subscribe(
       (response) => {
         this.orderList = response;
       }
     );
   }
-  public  sortByRecent() {
+
+  // To Sort By Recent Order
+  sortByRecent() {
     return this.orderList.sort((a: any, b: any) => {
       return <any>new Date(b.orderDate) - <any>new Date(a.orderDate);
     });
   }
 
-  public  sortByPrevious() {
+  // To Sort By Previous Order
+  sortByPrevious() {
     return this.orderList.sort((a: any, b: any) => {
       return <any>new Date(a.orderDate) - <any>new Date(b.orderDate);
     });
   }
-
-
 }

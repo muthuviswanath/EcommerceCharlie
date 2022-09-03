@@ -18,7 +18,6 @@ export class ListproductsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-
     // GET: Subscribing To Get All Products
     this._productServices.getAllProducts().subscribe(
       (response) => {
@@ -28,13 +27,12 @@ export class ListproductsComponent implements OnInit {
   }
 
   // To Update Product Data
-  public onUpdate(prodData: any) {
+  onUpdate(prodData: any) {
     this._productServices.setOptions('productId', prodData);
   }
 
   // To Delete Product
-  public onDelete(prodData: any) {
-
+  onDelete(prodData: any) {
     // DELETE: Subscribing To Delete Product
     this._productServices.deleteProduct(prodData).subscribe();
     this.toast.success({ detail: "SUCCESS", summary: 'Product Deleted Successfully!', duration: 5000 });

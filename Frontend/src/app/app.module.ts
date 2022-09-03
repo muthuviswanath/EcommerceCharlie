@@ -8,7 +8,8 @@ import { LandingPageModule } from './landing-page/landing-page.module';
 import { LoginRegisterModule } from './login-register/login-register.module';
 import { CartWishlistModule } from './cart-wishlist/cart-wishlist.module';
 import { NgToastModule } from 'ng-angular-popup';
-
+import { HttpClientModule } from '@angular/common/http';
+import { AuthserviceService } from './login-register/services/authservice.service';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,7 @@ import { NgToastModule } from 'ng-angular-popup';
     SharedModule,
     LandingPageModule,
     LoginRegisterModule,
-    CartWishlistModule
+    CartWishlistModule,
   ],
   bootstrap: [AppComponent],
   schemas: [NO_ERRORS_SCHEMA]

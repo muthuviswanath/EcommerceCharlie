@@ -16,14 +16,18 @@ export class AllproductslistComponent implements OnInit {
   constructor(private _productServices: ProductServices) {
 
   }
+
+  // To Sort By Ascending Price
   sortasc() {
     this.sortedProductsList = this.allproductsList.sort((a, b) => (a.productOfferPrice < b.productOfferPrice ? -1 : 1));
   }
+
+  // To Sort By Descending Price
   sortdesc() {
     this.sortedProductsList = this.allproductsList.sort((a, b) => (a.productOfferPrice > b.productOfferPrice ? -1 : 1));
   }
-  ngOnInit(): void {
 
+  ngOnInit(): void {
     // GET: Subscribing To Get All Products
     this._productServices.getAllProducts().subscribe(
       (response) => {

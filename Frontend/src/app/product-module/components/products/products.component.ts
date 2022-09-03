@@ -26,9 +26,8 @@ export class ProductsComponent implements OnInit {
   fakeArray = new Array(5);
   discountprice: any;
 
-  // To get User ID at time of user Login using Local Storage
-  userdata = localStorage.getItem('user');
-  obj = JSON.parse(this.userdata);
+  // To get User ID at time of user Login Using Session Storage
+  userID = sessionStorage.getItem('userID');
 
   isBigEnough(element): any {
     return (element >= 10);
@@ -55,7 +54,7 @@ export class ProductsComponent implements OnInit {
       }
     );
 
-    // GET: Subscribing To Get All Products then Filtering them using Product Description to Get Related Products
+    // GET: Subscribing To Get All Products then Filtering Them Using Product Description To Get Related Products
     this._productServices.getAllProducts().subscribe(
       response =>
         this.productsList = response.filter(
@@ -66,8 +65,8 @@ export class ProductsComponent implements OnInit {
   }
 
   // To Add Product To Cart
-  public submitToCart(): void {
-    if (this.obj == null) {
+  submitToCart(): void {
+    if (this.userID == null) {
       this.toast.error({ detail: "ERROR", summary: 'Please Login First!', duration: 5000 });
       this.route.navigateByUrl('/login');
     }
@@ -84,7 +83,7 @@ export class ProductsComponent implements OnInit {
           }
           else {
             this.cartDTOData = {
-              userId: this.obj.userId,
+              userId: this.userID,
               productId: this.prodData.productId,
               cartTotal: 1,
               productName: this.prodData.productName,
@@ -102,23 +101,22 @@ export class ProductsComponent implements OnInit {
       // PUT: Subscribing To Update Product By Product ID
       this._productServices.updateProduct(this.prodData.productId, this.prodData).subscribe();
       this.toast.success({ detail: "SUCCESS", summary: 'Added To Cart Successfully', duration: 5000 });
-      
-      
+
+
     };
   }
 
   // To Add Product To Wishlist
-  // Code Added By Apoorv
-  public submitToWishList(): void {
-    if (this.obj == null) {
+  submitToWishList(): void {
+    if (this.userID == null) {
       this.toast.error({ detail: "ERROR", summary: 'Please Login First!', duration: 5000 });
       this.route.navigateByUrl('/login');
     }
     else {
       this.wishListData.productId = this.prodData.productId;
-      this.wishListData.userId = this.obj.userId;
+      this.wishListData.userId = this.userID;
 
-      // GET: Subscribing To Get Wishlist Data of User
+      // GET: Subscribing To Get Wishlist Data Of User
       this._wishListService.getIndiviualwishListById().subscribe((res) => {
         this.ListData = res;
         console.log(res);

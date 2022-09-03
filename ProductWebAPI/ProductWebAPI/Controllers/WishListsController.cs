@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -23,6 +24,7 @@ namespace ProductWebAPI.Controllers
 
         // GET: api/WishLists
         [HttpGet]
+        [Authorize]
         public async Task<ActionResult<IEnumerable<WishListDTO>>> GetWishLists()
         {
             //return await _context.WishLists.Include(u => u.User).Include(p => p.Product).ToListAsync();

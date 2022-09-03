@@ -14,6 +14,7 @@ export class TopProductsComponent implements OnInit {
   productsList: IProduct[];
   sortedProductsList: IProduct[];
   start: number = 0;
+
   constructor(private _productServices: ProductServices) {
 
   }
@@ -29,16 +30,24 @@ export class TopProductsComponent implements OnInit {
       }
     );
   }
+
+  // To Sort By Ascending Price
   sortasc() {
     this.sortedProductsList = this.productsList.sort((a, b) => (a.productOfferPrice < b.productOfferPrice ? -1 : 1));
   }
+
+  // To Sort By Descending Price
   sortdesc() {
     this.sortedProductsList = this.productsList.sort((a, b) => (a.productOfferPrice > b.productOfferPrice ? -1 : 1));
   }
+
+  // To Get Next List Of Products
   forward(): void {
     if (this.start < this.productsList.length - 4)
       this.start += 4;
   }
+
+  // To Get Previous List Of Produicts
   backward(): void {
     if (this.start > 0)
       this.start -= 4;

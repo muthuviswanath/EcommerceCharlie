@@ -18,8 +18,7 @@ export class WishlistComponent implements OnInit {
   }
 
   ngOnInit(): void {
-
-    // GET: Subscribing To Get All Wishlist Data of User
+    // GET: Subscribing To Get All Wishlist Data Of User
     this._wishListService.getIndiviualwishListById().subscribe(
       (response) => {
         this.wishList = response;
@@ -28,8 +27,7 @@ export class WishlistComponent implements OnInit {
   }
 
   // To Remove Wishlist Data
-  public removeItem(wishListId: any) {
-
+  removeItem(wishListId: any) {
     // DELETE: Subscribing To Delete Wishlist Item
     this._wishListService.deleteWishListData(wishListId).subscribe();
     this.toast.success({ detail: "SUCCESS", summary: 'Wishlist Item Removed Successfully!', duration: 5000 });

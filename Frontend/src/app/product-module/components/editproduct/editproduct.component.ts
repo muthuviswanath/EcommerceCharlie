@@ -14,7 +14,6 @@ export class EditproductComponent implements OnInit {
 
   constructor(private _productServices: ProductServices, private route: Router, private toast: NgToastService) {
     let prodRecord = this._productServices.getOptions();
-
     // GET: Subscribing To Get Product By Product ID
     this._productServices.getProductById(prodRecord.productId).subscribe(
       (response) => {
@@ -28,8 +27,7 @@ export class EditproductComponent implements OnInit {
   }
 
   // To Edit Product
-  public editProductData() {
-
+  editProductData() {
     // PUT: Subscribing To Edit Product Data
     this._productServices.updateProduct(this.prodData.productId, this.prodData).subscribe();
     this.toast.success({ detail: "SUCCESS", summary: 'Product Updated Successfully', duration: 5000 });
