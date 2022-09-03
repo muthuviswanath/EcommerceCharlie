@@ -3,6 +3,7 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 import { Router } from '@angular/router';
 import { NgToastService } from 'ng-angular-popup';
 import { LoginServices } from 'src/app/login-register/services/login.services';
+import { navchangeservice } from 'src/app/shared/services/navchange.service';
 import { AuthserviceService } from '../../services/authservice.service';
 
 @Component({
@@ -20,7 +21,7 @@ export class LoginComponent implements OnInit {
   username = new FormControl('', [Validators.required, Validators.minLength(3)]);
   password = new FormControl('', [Validators.required, Validators.minLength(3)]);
 
-  constructor(private _loginService: LoginServices, private builder: FormBuilder, private route: Router, private toast: NgToastService, private _authService: AuthserviceService) {
+  constructor(private _loginService: LoginServices, private builder: FormBuilder, private route: Router, private toast: NgToastService, private _authService: AuthserviceService, private appService: navchangeservice) {
 
   }
 
@@ -52,19 +53,20 @@ export class LoginComponent implements OnInit {
               (response) => {
                 this.userData = response;
                 sessionStorage.setItem('userID', JSON.stringify(this.userData.userId));
+
                 sessionStorage.setItem('auth', JSON.stringify(true));
+                // console.log(sessionStorage.getItem('userID'));
+
               }
             );
             this.toast.success({ detail: "SUCCESS", summary: `Welcome ${this.formData.username}!`, duration: 5000 });
             if (this.formData.username == "admin") {
-              this.route.navigate(["/admin"]).then(
-                () => { window.location.reload(); }
-              );
+              this.appService.updateApprovalMessage({ loginfo: true, loguser: "admin" });
+              this.route.navigate(["/admin"])
             }
             else {
-              this.route.navigate(["/"]).then(
-                () => { window.location.reload(); }
-              );
+              this.appService.updateApprovalMessage({ loginfo: true, loguser: "user" });
+              this.route.navigate(["/"])
             }
           }
           else {

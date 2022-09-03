@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore;
 using ProductWebAPI.DTOs;
 using ProductWebAPI.Models;
 
-namespace ProductWebAPI.Controllers
+namespace ProductWebAPI.Controllers0
 {
     [Route("api/[controller]")]
     [ApiController]

@@ -15,6 +15,7 @@ export class UppernavComponent implements OnInit {
 
   searchString: string = "";
   isLoggedIn: boolean = false;
+  userLoggedIn: any = {};
   isAdmin: boolean = false;
   cartList: ICart[];
   wishList: IWishList[];
@@ -24,12 +25,13 @@ export class UppernavComponent implements OnInit {
   // To get User ID at time of user Login Using Session Storage
   userID = sessionStorage.getItem('userID');
 
-  constructor(private route: Router, private _cartService: CartServices, private _wishListService: WishListServices) {
+  constructor(private route: Router, private _cartService: CartServices, private _wishListService: WishListServices, private appService: navchangeservice) {
 
   }
 
   ngOnInit(): void {
     this.isLoggedIn = JSON.parse(sessionStorage.getItem('auth'));
+    this.appService.currentApprovalStageMessage.subscribe(msg => this.userLoggedIn = msg);
     if (this.userID === "17") {
       this.isAdmin = true;
     }
@@ -71,9 +73,10 @@ export class UppernavComponent implements OnInit {
     sessionStorage.removeItem("JWT");
     sessionStorage.setItem('userID', JSON.stringify(null));
     sessionStorage.setItem('auth', JSON.stringify(false));
+    this.appService.updateApprovalMessage({ loginfo: false, loguser: null });
     this.route.navigate(["/login"]).then(
       () => { window.location.reload(); }
-    );
+    )
   }
 }
 
