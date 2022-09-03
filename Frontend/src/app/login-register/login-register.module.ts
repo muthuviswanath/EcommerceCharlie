@@ -8,6 +8,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RegisterComponent } from './components/register/register.component';
 import { UserComponent } from './components/user/user.component';
 import { AccountComponent } from './components/account/account.component';
+import { navchangeservice } from '../shared/services/navchange.service';
 
 const Components = [LoginComponent, RegisterComponent, UserComponent, AccountComponent]
 @NgModule({
@@ -18,7 +19,7 @@ const Components = [LoginComponent, RegisterComponent, UserComponent, AccountCom
     ReactiveFormsModule,
     FormsModule
   ],
-  providers: [LoginServices],
+  providers: [LoginServices,navchangeservice],
   exports: Components
 })
 export class LoginRegisterModule { }

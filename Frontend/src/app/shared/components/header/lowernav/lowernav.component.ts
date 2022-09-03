@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { navchangeservice } from 'src/app/shared/services/navchange.service';
 
 @Component({
   selector: 'app-lowernav',
@@ -6,13 +7,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./lowernav.component.css']
 })
 export class LowernavComponent implements OnInit {
-
-  constructor() {
+  public userLoggedIn:any={};
+  constructor(private appService:navchangeservice) {
 
   }
 
   ngOnInit(): void {
-
+    this.appService.currentApprovalStageMessage.subscribe(msg => this.userLoggedIn = msg);
   }
 
 }

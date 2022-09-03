@@ -3,6 +3,7 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 import { Router } from '@angular/router';
 import { NgToastService } from 'ng-angular-popup';
 import { LoginServices } from 'src/app/login-register/services/login.services';
+import { navchangeservice } from 'src/app/shared/services/navchange.service';
 
 @Component({
   selector: 'app-login',
@@ -17,7 +18,7 @@ export class LoginComponent implements OnInit {
   username = new FormControl('', [Validators.required, Validators.minLength(3)]);
   password = new FormControl('', [Validators.required, Validators.minLength(3)]);
 
-  constructor(private _loginService: LoginServices, private builder: FormBuilder, private route: Router, private toast: NgToastService) {
+  constructor(private _loginService: LoginServices, private builder: FormBuilder, private route: Router, private toast: NgToastService,private appService: navchangeservice) {
 
   }
 
@@ -44,11 +45,8 @@ export class LoginComponent implements OnInit {
         localStorage.setItem('user', 'admin');
         localStorage.setItem('auth', JSON.stringify(true));
         this.toast.success({ detail: "SUCCESS", summary: 'Admin Login Successful!', duration: 5000 });
-        this.route.navigateByUrl('/admin').then(
-          () => {
-            window.location.reload();
-          }
-        )
+        this.appService.updateApprovalMessage({loginfo:true,loguser:"admin"});
+        this.route.navigateByUrl('/admin');
       }
       else {
 
@@ -60,11 +58,8 @@ export class LoginComponent implements OnInit {
               var userdata = localStorage.getItem('user');
               var obj = JSON.parse(userdata);
               localStorage.setItem('auth', JSON.stringify(true));
-              this.route.navigateByUrl('/').then(
-                () => {
-                  window.location.reload();
-                }
-              );
+              this.appService.updateApprovalMessage({loginfo:true,loguser:"user"});
+              this.route.navigateByUrl('/');
               this.toast.success({ detail: "SUCCESS", summary: `Welcome ${obj.userName}!`, duration: 5000 });
             }
             else {

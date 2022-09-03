@@ -5,6 +5,7 @@ import { ICart } from 'src/app/cart-wishlist/interfaces/ICart';
 import { IWishList } from 'src/app/cart-wishlist/interfaces/IWishList';
 import { CartServices } from 'src/app/cart-wishlist/services/cart.services';
 import { WishListServices } from 'src/app/cart-wishlist/services/wishlist.services';
+import { navchangeservice } from 'src/app/shared/services/navchange.service';
 
 @Component({
   selector: 'app-uppernav',
@@ -21,17 +22,28 @@ export class UppernavComponent implements OnInit {
   cartCount: number = 0;
   wishList:IWishList[];
   wishListCount:number=0;
-
-  constructor(private route: Router,private _cartService: CartServices,private _wishListService: WishListServices) {
+  public userLoggedIn:any={};
+  constructor(private route: Router,private _cartService: CartServices,private _wishListService: WishListServices,private appService: navchangeservice) {
 
   }
 
   ngOnInit(): void {
-    this.isLoggedIn = JSON.parse(localStorage.getItem('auth'));
-    if (this.user == 'admin') {
-      this.isAdmin = true;
-      this.isLoggedIn = true;
+
+    this.appService.currentApprovalStageMessage.subscribe(msg => this.userLoggedIn = msg);
+   // console.log(this.user.userName);
+  /**  if(this.user!=null){ 
+   if (this.user =='admin' ) {
+      this.userLoggedIn.loginfo=true;
+      this.userLoggedIn.loguser=this.user;
     }
+    else
+    {
+      this.userLoggedIn.loginfo=true;
+      this.userLoggedIn.loguser=this.user.userName;
+    }
+  }*/
+    
+
     //to display cart item count in UpperNav.
     this._cartService.getIndiviualCartId().subscribe(
       (response) => {
@@ -63,11 +75,9 @@ export class UppernavComponent implements OnInit {
   logout() {
     localStorage.setItem('user', JSON.stringify(null));
     localStorage.setItem('auth', JSON.stringify(false));
-    this.route.navigateByUrl("/login").then(
-      () => {
-        window.location.reload();
-      }
-    );
+    this.appService.updateApprovalMessage({loginfo:false,loguser:null});
+    this.route.navigateByUrl("/login")
+    
   }
 }
 

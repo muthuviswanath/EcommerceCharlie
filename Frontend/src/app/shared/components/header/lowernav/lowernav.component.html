@@ -17,7 +17,7 @@
     </li>
     
     <li class="nav-item small_block">
-      <a class="nav-link" routerLink="/order">Order History</a>
+      <a class="nav-link" *ngIf="userLoggedIn.loginfo && userLoggedIn.loguser=='user'"  routerLink="/order">Order History</a>
     </li>
     <li class="nav-item lnk">
       <a class="nav-link h6" routerLink="/about">About</a>
