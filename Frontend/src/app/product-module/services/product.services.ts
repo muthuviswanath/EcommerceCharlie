@@ -3,6 +3,8 @@ import { HttpClient } from "@angular/common/http";
 import { Observable } from "rxjs";
 import { IProduct } from "../interfaces/IProduct";
 import { HttpHeaders } from "@angular/common/http";
+import { ICart } from "src/app/cart-wishlist/interfaces/ICart";
+import { IWishList } from "src/app/cart-wishlist/interfaces/IWishList";
 @Injectable({
   providedIn: 'root'
 })
@@ -73,4 +75,15 @@ export class ProductServices implements OnInit {
   deleteProduct(productId: any) {
     return this.http.delete(`${this.baseURL}api/Products/${productId}`, productId);
   }
+//added method to display badge count for cart items
+  getCartCount(): Observable<ICart[]> {
+    const userID = sessionStorage.getItem('userID');
+    return this.http.get<ICart[]>(`${this.baseURL}api/carts/user/${userID}`);
+  }
+  
+  //added method to display badge count for wishlist items
+  // getWishListCount(): Observable<IWishList[]> {
+  //   const userID = sessionStorage.getItem('userID');
+  //   return this.http.get<IWishList[]>(`${this.baseURL}api/WishLists/user/${userID}`);
+  // }
 }

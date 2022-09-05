@@ -56,14 +56,16 @@ export class ProductsComponent implements OnInit {
 
     // GET: Subscribing To Get All Products then Filtering Them Using Product Description To Get Related Products
     this._productServices.getAllProducts().subscribe(
-      response =>
+      /**(response) =>{
         this.productsList = response.filter(
           element => element.productDescription == this.prodData.productDescription
         )
 
-    );
+        }*/
+        (response)=>{this.productsList=response}
+        );
   }
-
+ 
   // To Add Product To Cart
   submitToCart(): void {
     if (this.userID == null) {
@@ -93,16 +95,18 @@ export class ProductsComponent implements OnInit {
 
             // POST: Subscribing To Add Product To Cart
             this._cartService.addToCart(this.cartDTOData).subscribe();
+            
           }
         }
       );
       this.prodData.quantity--;
 
       // PUT: Subscribing To Update Product By Product ID
-      this._productServices.updateProduct(this.prodData.productId, this.prodData).subscribe();
-      this.toast.success({ detail: "SUCCESS", summary: 'Added To Cart Successfully', duration: 5000 });
-
-
+      this._productServices.updateProduct(this.prodData.productId, this.prodData).subscribe(()=>{
+        this.toast.success({ detail: "SUCCESS", summary: 'Added To Cart Successfully', duration: 5000 });
+        this.route.navigate(["/cart"]);
+    });
+    
     };
   }
 

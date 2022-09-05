@@ -9,6 +9,8 @@ import { FooterComponent } from './components/footer/footer.component';
 import { CardsComponent } from './components/cards/cards.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { navchangeservice } from './services/navchange.service';
+import { BadgeServices } from './services/badge.services';
+
 
 
 
@@ -22,7 +24,7 @@ const Components = [HeaderComponent, FooterComponent, UppernavComponent, Lowerna
     FormsModule,
     ReactiveFormsModule
   ],
-  providers: [navchangeservice],
+  providers: [navchangeservice, BadgeServices ],
   exports: Components
 })
 export class SharedModule { }

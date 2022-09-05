@@ -12,7 +12,7 @@ export class WishListServices implements OnInit {
   baseURL: string = "http://localhost:33037/";
 
   // To Get User ID At The Time Of User Login Using Session Storage
-  userID = sessionStorage.getItem('userID');
+ 
 
 
   constructor(private http: HttpClient) {
@@ -30,7 +30,8 @@ export class WishListServices implements OnInit {
 
   // GET: Service To Get Wishlist Of The User
   getIndiviualwishListById(): Observable<IWishList[]> {
-    return this.http.get<IWishList[]>(`${this.baseURL}api/WishLists/user/${this.userID}`);
+    const userID = sessionStorage.getItem('userID');
+    return this.http.get<IWishList[]>(`${this.baseURL}api/WishLists/user/${userID}`);
   }
 
   // POST: Service To Add Wishlist Data In Database

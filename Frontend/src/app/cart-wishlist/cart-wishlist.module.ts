@@ -11,6 +11,7 @@ import { WishListServices } from './services/wishlist.services';
 import { OrderServices } from './services/order.services';
 import { CartelementComponent } from './components/cartelement/cartelement.component';
 
+
 const Components = [CartComponent, OrderhistoryComponent, WishlistComponent,CartelementComponent]
 @NgModule({
   declarations: Components,

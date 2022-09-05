@@ -38,8 +38,9 @@
         <div class="row heading">
           <p>Related Products</p>
         </div>
-        <div class="col-sm-3" *ngFor="let prod of productsList">
-          <app-cards [items]="prod"></app-cards>
+        <div class="col-sm-3" *ngFor="let prod of productsList" >
+          <div *ngIf="prod.productDescription == this.prodData.productDescription"><app-cards [items]="prod"></app-cards></div>
+          
         </div>
       </div>
     </div>

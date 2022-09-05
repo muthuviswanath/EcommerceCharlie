@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgToastService } from 'ng-angular-popup';
 import { ProductServices } from 'src/app/product-module/services/product.services';
+import { BadgeServices } from 'src/app/shared/services/badge.services';
 import { ICart } from '../../interfaces/ICart';
 import { CartServices } from '../../services/cart.services';
 import { OrderServices } from '../../services/order.services';
@@ -12,17 +13,18 @@ import { OrderServices } from '../../services/order.services';
 })
 
 export class CartComponent implements OnInit {
-
+  
   cartList: ICart[];
   filteredList: ICart[];
   cartData: any = {};
   productData: any = {};
   totalCartPrice: number = 0;
+  cartcount:number=0;
 
   // To get User ID At The Time Of User Login Using Session Storage
   userID = sessionStorage.getItem('userID');
 
-  constructor(private _cartService: CartServices, private _orderService: OrderServices, private _productService: ProductServices, private toast: NgToastService) {
+  constructor(private _cartService: CartServices, private _orderService: OrderServices, private _productService: ProductServices, private toast: NgToastService, private _badgeService: BadgeServices) {
 
   }
 
@@ -102,23 +104,13 @@ export class CartComponent implements OnInit {
   // To Remove Cart Item
   removeItem(cartId: any) {
     // GET: Subscribing To Get Cart Item By Cart ID
-    this._cartService.getCartById(cartId).subscribe(
-      (response) => {
-        this.cartData = response;
-        // GET: Subscribing To Product By Product ID
-        this._productService.getProductById(this.cartData.productId).subscribe(
-          (response) => {
-            this.productData = response;
-            this.productData.quantity += this.cartData.cartTotal;
-            this.updateProduct();
-          }
-        );
+    for (let i = 0; i < this.cartList.length; i++) {
+      if(this.cartList[i].cartId==cartId){
+        this.cartList.splice(i,1);
+      console.log ("Block statement execution no." + i);
       }
-    );
-    // DELETE: Subscribing To Delete Cart Item
-    this._cartService.deleteCartData(cartId).subscribe();
-    this.toast.success({ detail: "SUCCESS", summary: 'Cart Item Removed Successfully!', duration: 5000 });
-    window.location.reload();
+    }
+    this._badgeService.updateApprovalMessage(this.cartList.length);
   }
 
   // To Update Cart Total
@@ -132,6 +124,8 @@ export class CartComponent implements OnInit {
     this._cartService.getIndiviualCartId().subscribe(
       (response) => {
         this.cartList = response;
+        this.cartcount=this.cartList.length;
+        this._badgeService.updateApprovalMessage(this.cartcount);
         for (let item of this.cartList) {
           this.totalCartPrice += (item.cartTotal * item.cartProductPrice);
         }

@@ -14,9 +14,11 @@ export class CartelementComponent implements OnInit {
 
   @Input() item: ICart;
   @Output() newItemEvent = new EventEmitter<number>();
+  @Output() removiedId= new EventEmitter<number>();
   cartData: any = {};
   productData: any = {};
   quantity: number = 0;
+
 
   constructor(private _cartService: CartServices, private _productService: ProductServices, private toast: NgToastService) {
 
@@ -24,7 +26,7 @@ export class CartelementComponent implements OnInit {
 
   ngOnInit(): void {
     this.quantity = this.item.cartTotal;
-
+  
   }
 
   // To Update Product
@@ -111,7 +113,11 @@ export class CartelementComponent implements OnInit {
       }
     );
     // DELETE: Subscribing To Delete Cart Item
-    this._cartService.deleteCartData(cartId).subscribe();
-    this.toast.success({ detail: "SUCCESS", summary: 'Cart Item Removed Successfully!', duration: 5000 });
+    
+    this._cartService.deleteCartData(cartId).subscribe(()=>{
+      this.removiedId.emit(cartId);
+      this.toast.success({ detail: "SUCCESS", summary: 'Cart Item Removed Successfully!', duration: 5000 });
+    });
+   
   }
 }

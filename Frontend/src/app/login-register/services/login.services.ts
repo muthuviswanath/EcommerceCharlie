@@ -13,7 +13,7 @@ export class LoginServices implements OnInit {
   public data: any = {};
 
   // To Get User ID At The time Of User Login Using Session Storage
-  userID = sessionStorage.getItem('userID');
+  
 
   constructor(private http: HttpClient) {
 
@@ -43,7 +43,8 @@ export class LoginServices implements OnInit {
 
   // GET: Service To Get Local User Data By User ID
   public getUserByIdLocal() {
-    return this.http.get(`${this.baseURL}api/Users/${this.userID}`);
+   const userID = sessionStorage.getItem('userID');
+    return this.http.get(`${this.baseURL}api/Users/${userID}`);
   }
 
   // POST: Service To Register User

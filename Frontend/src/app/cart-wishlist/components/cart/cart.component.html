@@ -12,7 +12,7 @@
               <div class="ibox">
 
                 <div *ngFor="let items of cartList">
-                    <app-cartelement (newItemEvent)="updateCarttotal($event)" [item]="items"></app-cartelement>
+                    <app-cartelement (newItemEvent)="updateCarttotal($event)" [item]="items" (removiedId)="removeItem($event)"></app-cartelement>
                 </div>
                   
 

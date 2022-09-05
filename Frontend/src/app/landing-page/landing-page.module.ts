@@ -10,6 +10,7 @@ import { SectionModule } from '../section/section.module';
 import { SearchResultComponent } from './components/search-result/search-result.component';
 import { AdminComponent } from './components/admin/admin.component';
 import { ProductModuleModule } from '../product-module/product-module.module';
+import { BadgeServices } from '../shared/services/badge.services';
 
 const Components = [HomeComponent, SearchResultComponent, AdminComponent,];
 @NgModule({
@@ -22,7 +23,7 @@ const Components = [HomeComponent, SearchResultComponent, AdminComponent,];
     SharedModule,
     ProductModuleModule,
   ],
-  providers: [ProductServices],
+  providers: [ProductServices,BadgeServices],
   exports: Components,
   schemas: [NO_ERRORS_SCHEMA]
 })

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { BadgeServices } from 'src/app/shared/services/badge.services';
 import { IProduct } from "../../interfaces/IProduct";
 import { ProductServices } from '../../services/product.services';
 
@@ -32,6 +33,7 @@ export class AllproductslistComponent implements OnInit {
     this._productServices.getAllProducts().subscribe(
       (response) => {
         this.allproductsList = response;
+      
       }
     );
   }

@@ -1,9 +1,11 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Subject } from 'rxjs';
 import { ICart } from 'src/app/cart-wishlist/interfaces/ICart';
 import { IWishList } from 'src/app/cart-wishlist/interfaces/IWishList';
 import { CartServices } from 'src/app/cart-wishlist/services/cart.services';
 import { WishListServices } from 'src/app/cart-wishlist/services/wishlist.services';
+import { BadgeServices } from 'src/app/shared/services/badge.services';
 import { navchangeservice } from 'src/app/shared/services/navchange.service';
 
 @Component({
@@ -25,7 +27,7 @@ export class UppernavComponent implements OnInit {
   // To get User ID at time of user Login Using Session Storage
   userID = sessionStorage.getItem('userID');
 
-  constructor(private route: Router, private _cartService: CartServices, private _wishListService: WishListServices, private appService: navchangeservice) {
+  constructor(private route: Router, private _cartService: CartServices, private _wishListService: WishListServices, private appService: navchangeservice, private _badgeService: BadgeServices){
 
   }
 
@@ -36,26 +38,11 @@ export class UppernavComponent implements OnInit {
       this.isAdmin = true;
     }
     // GET: To display Cart Item Count In UpperNav.
-    this._cartService.getIndiviualCartId().subscribe(
-      (response) => {
-        this.cartList = response;
-        this.cartCount = this.cartList.length;
-      },
-      (error) => {
-        console.log(error);
-      }
-    );
+    this._badgeService.approvalStageMessage.subscribe(msg => this.cartCount = msg);
 
     // GET: To Display Wishlist Item Count In UpperNav.
-    this._wishListService.getIndiviualwishListById().subscribe(
-      (response) => {
-        this.wishList = response;
-        this.wishListCount = this.wishList.length;
-      },
-      (error) => {
-        console.log(error);
-      }
-    );
+    this._badgeService.approvalStageMessage.subscribe(msg=>this.wishListCount=msg);
+   
   }
 
   // To Search Products

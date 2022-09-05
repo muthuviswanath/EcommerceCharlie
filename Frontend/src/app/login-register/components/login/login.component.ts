@@ -45,6 +45,7 @@ export class LoginComponent implements OnInit {
       // POST: Subscribing To Check User Credentials And Get JWT
       this._authService.loginUserByJWT(this.formData).subscribe(
         (response) => {
+
           if (response != null) {
             const token = (<any>response).token;
             sessionStorage.setItem("JWT", token);
@@ -59,7 +60,7 @@ export class LoginComponent implements OnInit {
 
               }
             );
-            this.toast.success({ detail: "SUCCESS", summary: `Welcome ${this.formData.username}!`, duration: 5000 });
+            this.toast.success({ detail: "SUCCESS", summary: `Welcome ${this.formData.username}!`, duration: 2000 });
             if (this.formData.username == "admin") {
               this.appService.updateApprovalMessage({ loginfo: true, loguser: "admin" });
               this.route.navigate(["/admin"])
@@ -69,10 +70,10 @@ export class LoginComponent implements OnInit {
               this.route.navigate(["/"])
             }
           }
-          else {
-            this.toast.info({ detail: "INFO", summary: 'Please Register before Sign In', duration: 5000 });
+        },
+        (error) => {
+            this.toast.info({ detail: "INFO", summary: 'Please Register before Sign In', duration: 2000 });
             this.route.navigate(["/register"]);
-          }
         }
       );
     }
