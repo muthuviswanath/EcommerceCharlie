@@ -84,7 +84,7 @@ about {
 .navbar-contfirst {
   background-color: #E72E62;
   display: flex;
-  justify-content: end;
+  justify-content: flex-end;
 }
 
 .mainhead {
@@ -423,3 +423,5 @@ padding: 10px 15px;
 .spcbtn{
   margin:2px;
 }
+
+

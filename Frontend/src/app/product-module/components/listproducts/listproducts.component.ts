@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { NgToastService } from 'ng-angular-popup';
 import { IProduct } from '../../interfaces/IProduct';
 import { ProductServices } from '../../services/product.services';
@@ -13,7 +14,7 @@ export class ListproductsComponent implements OnInit {
   productList: IProduct[];
   exportData: any;
 
-  constructor(private _productServices: ProductServices, private toast: NgToastService) {
+  constructor(private _productServices: ProductServices, private toast: NgToastService, private route: Router) {
 
   }
 
@@ -29,6 +30,7 @@ export class ListproductsComponent implements OnInit {
   // To Update Product Data
   onUpdate(prodData: any) {
     this._productServices.setOptions('productId', prodData);
+    this.route.navigate(['/editproduct']);
   }
 
   // To Delete Product

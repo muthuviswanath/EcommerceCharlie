@@ -1,4 +1,3 @@
-import { formatCurrency } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NgToastService } from 'ng-angular-popup';
@@ -6,7 +5,6 @@ import { CartServices } from 'src/app/cart-wishlist/services/cart.services';
 import { WishListServices } from 'src/app/cart-wishlist/services/wishlist.services';
 import { IProduct } from "../../interfaces/IProduct";
 import { ProductServices } from '../../services/product.services';
-import { filter } from 'rxjs';
 @Component({
   selector: 'app-products',
   templateUrl: './products.component.html',
@@ -61,9 +59,7 @@ export class ProductsComponent implements OnInit {
           .subscribe(
             (response) => {
               this.productsList = response.filter(element => element.productDescription == this.prodData.productDescription);
-
             }
-            /**(response)=>{this.productsList=response}*/
           );
       }
     );
@@ -110,8 +106,7 @@ export class ProductsComponent implements OnInit {
 
       // PUT: Subscribing To Update Product By Product ID
       this._productServices.updateProduct(this.prodData.productId, this.prodData).subscribe(() => {
-        // this.toast.success({ detail: "SUCCESS", summary: 'Added To Cart Successfully', duration: 5000 });
-        // this.route.navigate(["/cart"]);
+
       });
 
     };
@@ -130,7 +125,6 @@ export class ProductsComponent implements OnInit {
       // GET: Subscribing To Get Wishlist Data Of User
       this._wishListService.getIndiviualwishListById().subscribe((res) => {
         this.ListData = res;
-        console.log(res);
         let flag = 0;
         for (let i = 0; i < this.ListData.length; i++) {
           if (this.wishListData.productId == this.ListData[i].productId) {
