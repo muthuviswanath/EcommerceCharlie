@@ -5,6 +5,7 @@ import { BadgeServices } from 'src/app/shared/services/badge.services';
 import { ICart } from '../../interfaces/ICart';
 import { CartServices } from '../../services/cart.services';
 import { OrderServices } from '../../services/order.services';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-cart',
@@ -23,8 +24,9 @@ export class CartComponent implements OnInit {
 
   // To get User ID At The Time Of User Login Using Session Storage
   userID = sessionStorage.getItem('userID');
+ 
 
-  constructor(private _cartService: CartServices, private _orderService: OrderServices, private _productService: ProductServices, private toast: NgToastService, private _badgeService: BadgeServices) {
+  constructor(private _cartService: CartServices,private route: Router, private _orderService: OrderServices, private _productService: ProductServices, private toast: NgToastService, private _badgeService: BadgeServices) {
 
   }
 
@@ -147,7 +149,9 @@ export class CartComponent implements OnInit {
       // POST: Subscribing To Add Cart Item To Order History
       this._orderService.addToOrderHistory(orderData).subscribe();
       // DELETE: Subscribing To Delete Cart Item
-      this._cartService.deleteCartData(item.cartId).subscribe();
+      this._cartService.deleteCartData(item.cartId).subscribe(()=>{
+        this.route.navigate(["/order"]);
+      });
     }
   }
 }

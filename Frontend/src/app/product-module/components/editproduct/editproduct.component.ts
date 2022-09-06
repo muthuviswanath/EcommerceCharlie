@@ -29,9 +29,11 @@ export class EditproductComponent implements OnInit {
   // To Edit Product
   editProductData() {
     // PUT: Subscribing To Edit Product Data
-    this._productServices.updateProduct(this.prodData.productId, this.prodData).subscribe();
-    this.toast.success({ detail: "SUCCESS", summary: 'Product Updated Successfully', duration: 5000 });
-    this.route.navigateByUrl('/listproducts');
+    this._productServices.updateProduct(this.prodData.productId, this.prodData).subscribe(()=>{
+      this.toast.success({ detail: "SUCCESS", summary: 'Product Updated Successfully', duration: 5000 });
+      this.route.navigateByUrl('/listproducts');
+    });
+   
   }
 
 }

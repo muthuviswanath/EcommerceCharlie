@@ -1,115 +1,77 @@
-<!--<div class="login-form">
-
-  <h2 class="text-center">Edit Product</h2>
-
-  <div class="form-group">
-    <input type="text" class="form-control" [(ngModel)]="prodData.productName" placeholder="Product Name"
-      [value]="prodData.productName">
-  </div>
-
-  <div class="form-group">
-    <input type="text" class="form-control" [(ngModel)]="prodData.productDescription" placeholder="Product Description"
-      [value]="prodData.productDescription">
-  </div>
-
-  <div class="form-group">
-    <input type="number" class="form-control" [(ngModel)]="prodData.price" placeholder="Product Price"
-      [value]="prodData.price">
-  </div>
-
-  <div class="form-group">
-    <input type="number" class="form-control" [(ngModel)]="prodData.productOfferPrice" placeholder="Product Offer Price"
-      [value]="prodData.productOfferPrice">
-  </div>
-
-  <div class="form-group">
-    <input type="number" class="form-control" [(ngModel)]="prodData.productRating" placeholder="Product Rating"
-      [value]="prodData.productRating">
-  </div>
-
-  <div class="form-group">
-    <input type="number" class="form-control" [(ngModel)]="prodData.quantity" placeholder="Product Quantity"
-      [value]="prodData.quantity">
-  </div>
-
-  <div class="form-group">
-    <input type="text" class="form-control" [(ngModel)]="prodData.imagePath" placeholder="Product ImageURL"
-      [value]="prodData.imagePath">
-  </div>
-
-  <div class="form-group">
-    <button type="submit" class="btn btn-primary btn-lg btn-block" (click)="editProductData()">Update</button>
-  </div>
-</div>-->
-
-
-
-
 <div class="container-fluid mt-3 container-fullscreen-cont">
   <div class="custome-head-cnt">
-    <div class="row c1 bdywidth" >
+    <div class="row c1 bdywidth">
       <div class="page-head h4">Edit Products</div>
     </div>
     <div class="row" style="width:100%;margin-top: 20px;">
       <div class="col-sm-3"></div>
       <div class="col-sm-6">
-      <div class="login-form">
+        <div class="login-form">
 
 
-        <div class="form-group inpspc">
-          <label for="User name"><h4 class="lblspc"><b>Product Name</b></h4></label><br>
-          <input type="text" class="form-control" [(ngModel)]="prodData.productName" placeholder="Product Name"
-      [value]="prodData.productName">
+          <div class="form-group inpspc">
+            <label for="User name">
+              <h4 class="lblspc"><b>Product Name</b></h4>
+            </label><br>
+            <input type="text" class="form-control" [(ngModel)]="prodData.productName" placeholder="Product Name"
+              [value]="prodData.productName">
+          </div>
+
+          <div class="form-group inpspc">
+            <label for="First Name">
+              <h4 class="lblspc"><b>Product Description</b></h4>
+            </label><br>
+            <input type="text" class="form-control" [(ngModel)]="prodData.productDescription"
+              placeholder="Product Description" [value]="prodData.productDescription">
+          </div>
+
+          <div class="form-group inpspc">
+            <label for="Last Name">
+              <h4 class="lblspc"><b>Product Price</b></h4>
+            </label><br>
+            <input type="number" class="form-control" [(ngModel)]="prodData.price" placeholder="Product Price"
+              [value]="prodData.price">
+          </div>
+
+          <div class="form-group inpspc">
+            <label for="Address">
+              <h4 class="lblspc"><b>Offer Price</b></h4>
+            </label><br>
+            <input type="number" class="form-control" [(ngModel)]="prodData.productOfferPrice"
+              placeholder="Product Offer Price" [value]="prodData.productOfferPrice">
+          </div>
+
+          <div class="form-group inpspc">
+            <label for="Phone Number">
+              <h4 class="lblspc"><b>Product Rating</b></h4>
+            </label><br>
+            <input type="number" class="form-control" [(ngModel)]="prodData.productRating" placeholder="Product Rating"
+              [value]="prodData.productRating">
+          </div>
+
+          <div class="form-group inpspc">
+            <label for="User Email">
+              <h4 class="lblspc"><b>Product Quantity</b></h4>
+            </label><br>
+            <input type="number" class="form-control" [(ngModel)]="prodData.quantity" placeholder="Product Quantity"
+              [value]="prodData.quantity">
+          </div>
+
+          <div class="form-group inpspc">
+            <label for="User Password">
+              <h4 class="lblspc"><b>Product ImageURL</b></h4>
+            </label><br>
+            <input type="text" class="form-control" [(ngModel)]="prodData.imagePath" placeholder="Product ImageURL"
+              [value]="prodData.imagePath">
+          </div>
+
+          <div class="form-group">
+            <button type="submit" class="btn btn-primary btn-lg btn-block" (click)="editProductData()">Update</button>
+          </div>
         </div>
-
-        <div class="form-group inpspc">
-          <label for="First Name"><h4 class="lblspc"><b>Product Description</b></h4></label><br>
-          <input type="text" class="form-control" [(ngModel)]="prodData.productDescription" placeholder="Product Description"
-      [value]="prodData.productDescription">
-        </div>
-
-        <div class="form-group inpspc">
-          <label for="Last Name"><h4 class="lblspc"><b>Product Price</b></h4></label><br>
-          <input type="number" class="form-control" [(ngModel)]="prodData.price" placeholder="Product Price"
-      [value]="prodData.price">
-        </div>
-
-        <div class="form-group inpspc">
-          <label for="Address"><h4 class="lblspc"><b>Offer Price</b></h4></label><br>
-          <input type="number" class="form-control" [(ngModel)]="prodData.productOfferPrice" placeholder="Product Offer Price"
-      [value]="prodData.productOfferPrice">
-        </div>
-
-        <div class="form-group inpspc">
-          <label for="Phone Number"><h4 class="lblspc"><b>Product Rating</b></h4></label><br>
-          <input type="number" class="form-control" [(ngModel)]="prodData.productRating" placeholder="Product Rating"
-      [value]="prodData.productRating">
-        </div>
-
-        <div class="form-group inpspc">
-          <label for="User Email"><h4 class="lblspc"><b>Product Quantity</b></h4></label><br>
-          <input type="number" class="form-control" [(ngModel)]="prodData.quantity" placeholder="Product Quantity"
-          [value]="prodData.quantity">
-        </div>
-
-        <div class="form-group inpspc">
-          <label for="User Password"><h4 class="lblspc"><b>Product ImageURL</b></h4></label><br>
-          <input type="text" class="form-control" [(ngModel)]="prodData.imagePath" placeholder="Product ImageURL"
-      [value]="prodData.imagePath">
-        </div>
-
-        <div class="form-group">
-          <button type="submit" class="btn btn-primary btn-lg btn-block" (click)="editProductData()">Update</button>
-        </div>
+        <div class="col-sm-3"></div>
       </div>
-      <div class="col-sm-3"></div>
+
     </div>
-
+  </div>
 </div>
-</div>
-</div>
-
-
-
-
-

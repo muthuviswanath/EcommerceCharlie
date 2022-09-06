@@ -24,9 +24,11 @@ export class AddproductComponent implements OnInit {
   submitProduct() {
 
     // GET: Subscrbing to Add Product In Database
-    this._productServices.addProduct(this.model).subscribe();
-    this.toast.success({ detail: "SUCCESS", summary: 'Product Added Successfully!', duration: 5000 });
-    this.route.navigateByUrl('/listproducts');
+    this._productServices.addProduct(this.model).subscribe(()=>{
+      this.toast.success({ detail: "SUCCESS", summary: 'Product Added Successfully!', duration: 5000 });
+      this.route.navigateByUrl('/listproducts');
+    });
+    
   }
 
 }
