@@ -8,6 +8,7 @@ import { WishListServices } from 'src/app/cart-wishlist/services/wishlist.servic
 import { BadgeServices } from 'src/app/shared/services/badge.services';
 import { navchangeservice } from 'src/app/shared/services/navchange.service';
 
+
 @Component({
   selector: 'app-uppernav',
   templateUrl: './uppernav.component.html',
@@ -38,10 +39,9 @@ export class UppernavComponent implements OnInit {
       this.isAdmin = true;
     }
     // GET: To display Cart Item Count In UpperNav.
-    this._badgeService.approvalStageMessage.subscribe(msg => this.cartCount = msg);
+    this._badgeService.cartBadgeDisplayMessage.subscribe(msg => this.cartCount = msg);
 
-    // GET: To Display Wishlist Item Count In UpperNav.
-    this._badgeService.approvalStageMessage.subscribe(msg=>this.wishListCount=msg);
+   
    
   }
 

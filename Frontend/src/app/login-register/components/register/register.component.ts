@@ -23,8 +23,12 @@ export class RegisterComponent implements OnInit {
   // To Register User
   submit(): void {
     // POST: Subscribing To Add User Data In Database
-    this._loginService.registerUser(this.model).subscribe();
-    this.toast.success({ detail: "SUCCESS", summary: 'Registration Successful!', duration: 5000 });
-    this.route.navigateByUrl('/login')
+    this._loginService.registerUser(this.model).subscribe(
+      () => {
+        this.toast.success({ detail: "SUCCESS", summary: 'Registration Successful!', duration: 5000 });
+        this.route.navigateByUrl('/login')
+      }
+    );
+
   }
 }

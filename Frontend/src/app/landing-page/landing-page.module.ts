@@ -12,6 +12,7 @@ import { AdminComponent } from './components/admin/admin.component';
 import { ProductModuleModule } from '../product-module/product-module.module';
 import { BadgeServices } from '../shared/services/badge.services';
 
+
 const Components = [HomeComponent, SearchResultComponent, AdminComponent,];
 @NgModule({
   declarations: Components,

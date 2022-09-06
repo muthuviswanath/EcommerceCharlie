@@ -14,6 +14,7 @@ import { BadgeServices } from './services/badge.services';
 
 
 
+
 const Components = [HeaderComponent, FooterComponent, UppernavComponent, LowernavComponent, CardsComponent];
 
 @NgModule({
@@ -24,7 +25,7 @@ const Components = [HeaderComponent, FooterComponent, UppernavComponent, Lowerna
     FormsModule,
     ReactiveFormsModule
   ],
-  providers: [navchangeservice, BadgeServices ],
+  providers: [navchangeservice, BadgeServices],
   exports: Components
 })
 export class SharedModule { }

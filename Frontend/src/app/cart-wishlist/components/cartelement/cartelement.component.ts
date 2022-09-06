@@ -14,7 +14,7 @@ export class CartelementComponent implements OnInit {
 
   @Input() item: ICart;
   @Output() newItemEvent = new EventEmitter<number>();
-  @Output() removiedId= new EventEmitter<number>();
+  @Output() removiedId = new EventEmitter<number>();
   cartData: any = {};
   productData: any = {};
   quantity: number = 0;
@@ -26,7 +26,7 @@ export class CartelementComponent implements OnInit {
 
   ngOnInit(): void {
     this.quantity = this.item.cartTotal;
-  
+
   }
 
   // To Update Product
@@ -46,8 +46,6 @@ export class CartelementComponent implements OnInit {
     this._cartService.getCartById(cartid).subscribe(
       (response) => {
         this.cartData = response;
-        this.cartData.cartTotal++;
-        this.updateCart();
         // GET: Subscribing To Get Product by Product ID
         this._productService.getProductById(this.cartData.productId).subscribe(
           (response) => {
@@ -57,13 +55,18 @@ export class CartelementComponent implements OnInit {
               this.productData.quantity = 0;
               this.toast.warning({ detail: "WARN", summary: 'Not Enough Products!', duration: 5000 });
             }
-            this.updateProduct();
-            this.newItemEvent.emit(this.item.cartProductPrice);
+            else {
+              this.cartData.cartTotal++;
+              this.updateCart();
+              this.updateProduct();
+              this.newItemEvent.emit(this.item.cartProductPrice);
+              this.quantity++;
+            }
           }
         );
       }
     );
-    this.quantity++;
+    
   }
   // To Decrement Quantity Of Cart Item
   decrementItem(cartId: any) {
@@ -73,23 +76,28 @@ export class CartelementComponent implements OnInit {
       (response) => {
         this.cartData = response;
         this.cartData.cartTotal--;
-        if (this.cartData.cartTotal < 0) {
+        if (this.cartData.cartTotal == 0) {
           this.cartData.cartTotal = 0;
           this.toast.warning({ detail: "WARN", summary: "Cart Quantity can't be Negative!", duration: 5000 });
           flag = false;
+          this.removeItem(this.cartData.cartId);
+          this.newItemEvent.emit(-this.item.cartProductPrice);
         }
-        // GET: Subscribing To Get Product by Product ID
-        this._productService.getProductById(this.cartData.productId).subscribe(
-          (response) => {
-            this.productData = response;
-            this.productData.quantity++;
-            if (flag) {
-              this.updateProduct();
+
+        else {
+          // GET: Subscribing To Get Product by Product ID
+          this._productService.getProductById(this.cartData.productId).subscribe(
+            (response) => {
+              this.productData = response;
+              this.productData.quantity++;
+              if (flag) {
+                this.updateProduct();
+              }
             }
-          }
-        );
-        this.updateCart();
-        this.newItemEvent.emit(-this.item.cartProductPrice);
+          );
+          this.updateCart();
+          this.newItemEvent.emit(-this.item.cartProductPrice);
+        }
       }
     );
     if (this.quantity > 0)
@@ -113,11 +121,11 @@ export class CartelementComponent implements OnInit {
       }
     );
     // DELETE: Subscribing To Delete Cart Item
-    
-    this._cartService.deleteCartData(cartId).subscribe(()=>{
+    this.newItemEvent.emit(-(this.item.cartProductPrice*(this.cartData.cartTotal)));
+    this._cartService.deleteCartData(cartId).subscribe(() => {
       this.removiedId.emit(cartId);
       this.toast.success({ detail: "SUCCESS", summary: 'Cart Item Removed Successfully!', duration: 5000 });
     });
-   
+    
   }
 }

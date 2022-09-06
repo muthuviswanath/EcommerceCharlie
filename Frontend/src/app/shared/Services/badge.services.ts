@@ -5,13 +5,16 @@ import { BehaviorSubject, Subject } from 'rxjs';
   providedIn: 'root'
 })
 export class BadgeServices {
-  public approvalStageMessage = new Subject<number>();
+  public cartBadgeDisplayMessage = new Subject<number>();
+ 
 
   constructor() {
 
   }
   
-  updateApprovalMessage(message: number) {
-    this.approvalStageMessage.next(message)
+  cartBadgeCount(message: number) {
+    this.cartBadgeDisplayMessage.next(message)
   }
+
+  
 }

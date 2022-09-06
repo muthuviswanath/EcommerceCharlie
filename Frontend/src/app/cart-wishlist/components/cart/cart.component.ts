@@ -110,7 +110,7 @@ export class CartComponent implements OnInit {
       console.log ("Block statement execution no." + i);
       }
     }
-    this._badgeService.updateApprovalMessage(this.cartList.length);
+    this._badgeService.cartBadgeCount(this.cartList.length);
   }
 
   // To Update Cart Total
@@ -125,7 +125,7 @@ export class CartComponent implements OnInit {
       (response) => {
         this.cartList = response;
         this.cartcount=this.cartList.length;
-        this._badgeService.updateApprovalMessage(this.cartcount);
+        this._badgeService.cartBadgeCount(this.cartcount);
         for (let item of this.cartList) {
           this.totalCartPrice += (item.cartTotal * item.cartProductPrice);
         }

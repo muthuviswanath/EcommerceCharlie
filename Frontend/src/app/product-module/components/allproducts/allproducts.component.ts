@@ -3,6 +3,7 @@ import { IProduct } from "../../interfaces/IProduct";
 import { ProductServices } from '../../services/product.services';
 import jwtDecode from 'jwt-decode';
 import { BadgeServices } from 'src/app/shared/services/badge.services';
+
 @Component({
   selector: 'app-allproducts',
   templateUrl: './allproducts.component.html',
@@ -24,9 +25,11 @@ export class AllproductsComponent implements OnInit {
         this.productsList = response;
         this._productServices.getCartCount().subscribe(
           (badgeresponse) => {
-            this._badgeService.updateApprovalMessage(badgeresponse?.length);
+            this._badgeService.cartBadgeCount(badgeresponse?.length);
           }
         );
+        
+    
       }
     );
   }

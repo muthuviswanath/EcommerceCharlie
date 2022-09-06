@@ -81,9 +81,5 @@ export class ProductServices implements OnInit {
     return this.http.get<ICart[]>(`${this.baseURL}api/carts/user/${userID}`);
   }
   
-  //added method to display badge count for wishlist items
-  // getWishListCount(): Observable<IWishList[]> {
-  //   const userID = sessionStorage.getItem('userID');
-  //   return this.http.get<IWishList[]>(`${this.baseURL}api/WishLists/user/${userID}`);
-  // }
+ 
 }
