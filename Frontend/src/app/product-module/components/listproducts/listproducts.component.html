@@ -1,86 +1,86 @@
-
-
 <div class="container-fluid mt-3 container-fullscreen-cont">
   <div class="custome-head-cnt">
     <div class="row c1">
       <div class="page-head h4">Inventory</div>
     </div>
-    
 
-<div class="container">
-  <div class="wrapper wrapper-content animated fadeInRight">
-      <div class="row">
-        <div class="col-md-1"></div>
+
+    <div class="container">
+      <div class="wrapper wrapper-content animated fadeInRight">
+        <div class="row">
+          <div class="col-md-1"></div>
           <div class="col-md-10">
-              <div class="ibox">
+            <div class="ibox">
 
-                  
-                  
-                  
-                  
-                  <div class="ibox-content" *ngFor="let item of productList">
-                      <div class="table-responsive">
-                          <table class="table shoping-cart-table">
-  
-                              <tbody>
-                              <tr>
-                                  <td width="90">
-                                      
-                                        <img src={{item.imagePath}} style="height:69px;width:69px">
-                                
-                                  </td>
-                                  <td class="desc">
-                                      <p class="small text-muted mb-4 pb-2 p1">Product Name</p>
-                                      <p class="big">
-                                        {{item.productName}}
-                                      </p>
-                                      <dl class="small m-b-none">
-                                        <dt>Description</dt>
-                                        <dd>{{item.productDescription}}</dd>
-                                    </dl>
-                                      
-                                      <div class="m-t-sm">
-                                        <input class="spcbtn" type="button" value="Remove" (click)="onDelete(item.productId)">
-                                        <input class="spcbtn" type="button" value="Edit" (click)="onUpdate(item.productId)">
-                                      </div>
-              
-                                  </td>
-                                  <td>
-                                    <p class="small text-muted mb-4 pb-2 p1">Product ID</p>
+
+
+
+
+              <div class="ibox-content" *ngFor="let item of productList">
+                <div class="table-responsive">
+                  <table class="table shoping-cart-table">
+
+                    <tbody>
+                      <tr>
+                        <td width="90">
+
+                          <img src={{item.imagePath}} style="height:69px;width:69px">
+
+                        </td>
+                        <td class="desc">
+                          <p class="small text-muted mb-4 pb-2 p1">Product Name</p>
+                          <p class="big">
+                            {{item.productName}}
+                          </p>
+                          <dl class="small m-b-none">
+                            <dt>Description</dt>
+                            <dd>{{item.productDescription}}</dd>
+                          </dl>
+
+                          <div class="m-t-sm">
+                            <input class="spcbtn" type="button" value="Remove" style="height:40px;width:80px;"
+                              class="btn btn-danger btn-md " (click)="onDelete(item.productId)">
+                            <input class="spcbtn" type="button" value="Edit"
+                              style="height:40px;width:80px; margin-left: 10px;" class="btn btn-warning btn-md "
+                              (click)="onUpdate(item.productId)">
+                          </div>
+
+                        </td>
+                        <td>
+                          <p class="small text-muted mb-4 pb-2 p1">Product ID</p>
                           <p class="lead fw-normal mb-0 p2">{{item.productId}}</p>
-                                  </td>
-                                  <td>
-                                    <p class="small text-muted mb-4 pb-2 p1">Product Rating</p>
+                        </td>
+                        <td>
+                          <p class="small text-muted mb-4 pb-2 p1">Product Rating</p>
                           <p class="lead fw-normal mb-0">{{item.productRating}}</p>
-                                  </td>
-                                  <td>
-                                    <p class="small text-muted mb-4 pb-2 p1">Product Price</p>
-                                    Rs:{{item.price}}
-                                  </td>
-                                  <td>
-                                    <p class="small text-muted mb-4 pb-2 p1">Discount Price</p>
-                                    Rs:{{item.productOfferPrice}}
-                                  </td>
-                                  <td width="65">
-                                    <p class="small text-muted mb-4 pb-2 p1">Quantity</p>
-                                    {{item.quantity}}
-                                  </td>
-                              </tr>
-                              </tbody>
-                          </table>
-                      </div>
-                  </div>
-                  <div class="ibox-content">
-                      <button class="btn btn-primary pull-right" routerLink="/addproduct">Add Products</button>
-                    </div>
+                        </td>
+                        <td>
+                          <p class="small text-muted mb-4 pb-2 p1">Product Price</p>
+                          Rs:{{item.price}}
+                        </td>
+                        <td>
+                          <p class="small text-muted mb-4 pb-2 p1">Discount Price</p>
+                          Rs:{{item.productOfferPrice}}
+                        </td>
+                        <td width="65">
+                          <p class="small text-muted mb-4 pb-2 p1">Quantity</p>
+                          {{item.quantity}}
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
               </div>
-  
+              <div class="ibox-content">
+                <button class="btn btn-primary pull-right" routerLink="/addproduct">Add Products</button>
+              </div>
+            </div>
+
           </div>
           <div class="col-md-1"></div>
+        </div>
       </div>
-  </div>
-  </div>
+    </div>
 
+  </div>
 </div>
-</div>
-

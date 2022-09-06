@@ -307,23 +307,30 @@
 }
 
 .search_btn {
-  height: 35px;
+  height: 35.6px;
   width: 50px !important;
   border: none;
   background-color: #70c5c0;
   color: white;
+  border-radius: 0px 5px 5px 0px !important
 }
-.search_btn:hover{
+
+.search_btn:hover {
   border: solid black 1px;
 }
+
 .search_bar {
   height: 35px;
   width: 80%;
   display: inline-block;
-  
+  border-radius: 5px 0px 0px 5px !important;
 }
 
 .crt_img {
   height: 30px !important;
   width: 40px !important;
+}
+
+.power_cont {
+  font-size: 18px;
 }

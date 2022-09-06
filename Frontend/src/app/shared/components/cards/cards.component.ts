@@ -10,7 +10,7 @@ export class CardsComponent implements OnInit {
 
   @Input() items: any = {};
   discountprice: any;
-
+  fakeArray = new Array(5);
   constructor() {
 
   }

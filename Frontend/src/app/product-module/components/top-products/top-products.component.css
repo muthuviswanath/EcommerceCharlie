@@ -95,6 +95,7 @@
 .container-fullscreen-cont {
   padding-left: 0px !important;
   padding-right: 0px !important;
+  width: 102%;
 }
 
 .backgroundimage-cont {
@@ -381,14 +382,14 @@
 
 .dropbtn {
   background-color: #70c5c0;
-    color: white;
-    padding: 16px;
-    font-size: 16px;
-    border: none;
-    border-radius: 7px;
-    height: 40px;
-    padding: 10px;
-    margin-top: 10px;
+  color: white;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+  border-radius: 7px;
+  height: 40px;
+  padding: 10px;
+  margin-top: 10px;
 }
 
 .dropdown {

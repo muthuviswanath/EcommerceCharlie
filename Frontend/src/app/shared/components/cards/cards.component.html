@@ -1,4 +1,4 @@
-<div class="card">
+<!--<div class="card">
   <img src={{items.imagePath}} alt="Avatar">
   <div class="container">
     <a class="btn btn-white-view" [routerLink]="[ '/product',items.productId]">
@@ -7,4 +7,61 @@
       <p> MRP:<s>{{items.price}} INR</s></p>
     </a>
   </div>
+</div>-->
+
+
+<div class="card" style="margin-top:10px">
+  <a [routerLink]="['/product',items.productId]" style="text-decoration: none;">
+    <div class="image-container">
+
+      <div class="first">
+
+        <div class="d-flex justify-content-between align-items-center">
+
+          <span class="discount"><span class="disc">-{{this.discountprice}}%</span></span>
+         <!-- <span class="wishlist"><i class="fa fa-heart-o"></i></span>-->
+
+
+        </div>
+      </div>
+
+      <img src={{items.imagePath}} class="img-fluid rounded thumbnail-image img_cnt">
+
+
+    </div>
+
+
+    <div class="product-detail-container p-2 p_cont">
+
+      <div class="d-flex justify-content-between align-items-center">
+
+        <h5 class="dress-name" style="color:black">{{items.productName}}</h5>
+
+        <div class="d-flex flex-column mb-2">
+
+          <span class="new-price">{{items.productOfferPrice}} INR</span>
+          <small class="old-price text-right">MRP:<s>{{items.price}} INR</s></small>
+        </div>
+
+      </div>
+
+
+
+
+
+      <div class="d-flex justify-content-between align-items-center pt-1">
+        <div>
+          <i class="fa fa-star-o rating-star"></i>
+          <span class="rating-number"><span *ngFor="let n of fakeArray ;let i=index">
+              <i *ngIf="i<items.productRating" class='fa fa-star ratting-stars'></i>
+            </span></span>
+        </div>
+
+
+      </div>
+
+
+
+    </div>
+  </a>
 </div>

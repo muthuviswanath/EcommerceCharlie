@@ -12,11 +12,11 @@
 
     </li>
     <li class="nav-item small_block">
-      <a class="nav-link h6" *ngIf="(userLoggedIn.loginfo && userLoggedIn.loguser=='user')||(isLoggedIn)" routerLink="/wishlist">WishList </a>
+      <a class="nav-link h6" *ngIf="(userLoggedIn.loginfo && userLoggedIn.loguser=='user')||(isLoggedIn)" routerLink="/wishlist"><i class="fa fa-heart" aria-hidden="true"></i> WishList </a>
     </li>
     <li class="nav-item small_block">
       <a class="nav-link h6" *ngIf="(userLoggedIn.loginfo && userLoggedIn.loguser=='user')||(isLoggedIn)" routerLink="/cart"><i class="fa fa-shopping-cart "
-          style="font-size:22px"></i> Cart {{cartCount}}</a>
+          style="font-size:22px"></i> Cart <sup class="power_cont">{{cartCount}}</sup></a>
     </li>
     <li class="nav-item small_block">
       <a class="nav-link h6" *ngIf="(userLoggedIn.loginfo && userLoggedIn.loguser=='user')||(isLoggedIn)" routerLink="/account"><i style='font-size:24px'

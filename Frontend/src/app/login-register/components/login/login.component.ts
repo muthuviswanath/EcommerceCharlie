@@ -45,7 +45,6 @@ export class LoginComponent implements OnInit {
       // POST: Subscribing To Check User Credentials And Get JWT
       this._authService.loginUserByJWT(this.formData).subscribe(
         (response) => {
-
           if (response != null) {
             const token = (<any>response).token;
             sessionStorage.setItem("JWT", token);

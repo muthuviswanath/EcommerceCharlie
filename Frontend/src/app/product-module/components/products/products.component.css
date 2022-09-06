@@ -30,9 +30,11 @@
   color: #FFFFFF;
   border: none;
 }
-.addcart:hover{
+
+.addcart:hover {
   border: solid black 2px;
 }
+
 .dsc {
   padding-left: 25px;
   padding-right: 25px;
@@ -335,13 +337,20 @@
   }
 
 }
-.disc{
-  color:red;
+
+.disc {
+  color: red;
   font-size: 22px;
   margin-right: 10px;
 }
-.discprice{
+
+.discprice {
   color: black;
   font-size: 30px;
 
+}
+
+
+.ratting-stars {
+  color: #d48709;
 }

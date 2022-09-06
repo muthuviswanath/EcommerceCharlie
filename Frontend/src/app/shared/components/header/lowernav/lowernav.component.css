@@ -314,3 +314,8 @@
 .dropdown:hover .dropdown-content {
   display: block;
 }
+.flaglogo{
+  width: 130px;
+  height: 60px;
+}
+

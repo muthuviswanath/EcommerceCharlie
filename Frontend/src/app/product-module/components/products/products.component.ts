@@ -6,6 +6,7 @@ import { CartServices } from 'src/app/cart-wishlist/services/cart.services';
 import { WishListServices } from 'src/app/cart-wishlist/services/wishlist.services';
 import { IProduct } from "../../interfaces/IProduct";
 import { ProductServices } from '../../services/product.services';
+import { filter } from 'rxjs';
 @Component({
   selector: 'app-products',
   templateUrl: './products.component.html',
@@ -46,26 +47,29 @@ export class ProductsComponent implements OnInit {
       }
     );
 
+
+
+
+
+
     // GET: Subscribing To Get Product By Product ID
     this._productServices.getProductById(this.id).subscribe(
       (response) => {
         this.prodData = response;
         this.discountprice = 100 - Math.round((this.prodData.productOfferPrice / this.prodData.price) * 100);
+        this._productServices.getAllProducts()
+          .subscribe(
+            (response) => {
+              this.productsList = response.filter(element => element.productDescription == this.prodData.productDescription);
+
+            }
+            /**(response)=>{this.productsList=response}*/
+          );
       }
     );
 
-    // GET: Subscribing To Get All Products then Filtering Them Using Product Description To Get Related Products
-    this._productServices.getAllProducts().subscribe(
-      /**(response) =>{
-        this.productsList = response.filter(
-          element => element.productDescription == this.prodData.productDescription
-        )
-
-        }*/
-        (response)=>{this.productsList=response}
-        );
   }
- 
+
   // To Add Product To Cart
   submitToCart(): void {
     if (this.userID == null) {
@@ -94,19 +98,22 @@ export class ProductsComponent implements OnInit {
             };
 
             // POST: Subscribing To Add Product To Cart
-            this._cartService.addToCart(this.cartDTOData).subscribe();
-            
+            this._cartService.addToCart(this.cartDTOData).subscribe(() => {
+              this.toast.success({ detail: "SUCCESS", summary: 'Added To Cart Successfully', duration: 5000 });
+              this.route.navigate(["/cart"]);
+            });
+
           }
         }
       );
       this.prodData.quantity--;
 
       // PUT: Subscribing To Update Product By Product ID
-      this._productServices.updateProduct(this.prodData.productId, this.prodData).subscribe(()=>{
-        this.toast.success({ detail: "SUCCESS", summary: 'Added To Cart Successfully', duration: 5000 });
-        this.route.navigate(["/cart"]);
-    });
-    
+      this._productServices.updateProduct(this.prodData.productId, this.prodData).subscribe(() => {
+        // this.toast.success({ detail: "SUCCESS", summary: 'Added To Cart Successfully', duration: 5000 });
+        // this.route.navigate(["/cart"]);
+      });
+
     };
   }
 
@@ -135,13 +142,17 @@ export class ProductsComponent implements OnInit {
         if (flag == 0) {
 
           // POST: Subscrbing To Add Product To Wishlist
-          this._wishListService.addToWishList(this.wishListData).subscribe();
-          this.toast.success({ detail: "SUCCESS", summary: 'Added To WishList Successfully', duration: 5000 });
-          this.route.navigateByUrl('/wishlist');
+          this._wishListService.addToWishList(this.wishListData).subscribe(() => {
+            this.toast.success({ detail: "SUCCESS", summary: 'Added To WishList Successfully', duration: 5000 });
+            this.route.navigateByUrl('/wishlist');
+          });
+
         }
       });
     }
 
   }
+
+
 
 }

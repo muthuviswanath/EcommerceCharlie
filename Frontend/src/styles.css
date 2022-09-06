@@ -1,19 +1,30 @@
 /* You can add global styles to this file, and also import other style files */
 
-html, body { height: 100%;
-width:100% }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+html,
+body {
+    height: 100%;
+    width: 100%
+}
 
-.d1{
+body {
+    margin: 0;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+    overflow-x: hidden;
+}
+
+.d1 {
     margin: 0px;
     width: 100%;
 }
-.c1{
+
+.c1 {
     width: 100%;
     margin: 0px;
 }
 
 @media(min-width:700px) {
-    div{width: 100%;
-        padding: 0px;}
+    div {
+        width: 100%;
+        padding: 0px;
+    }
 }

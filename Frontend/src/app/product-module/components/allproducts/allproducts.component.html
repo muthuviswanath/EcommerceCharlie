@@ -13,11 +13,11 @@
         <p class="big-text ">products</p>
         <p class="big-text ">Now Yours...</p>
         <p class="big-text ">Best part,</p>
-        <p class="big-text">it's on 
+        <p class="big-text">it's on
         </p>
         <p class="big-text"> your WAY!!
         </p>
-        
+
         <p class="small-text">Years old legacy products are now in your hands..</p>
       </div>
     </div>
@@ -28,8 +28,8 @@
       <div class="col-sm-8">
         <div class="projecthead h4">Best Sellers</div>
         <div class="row">
-          <div class="col-sm-4 crd" *ngFor="let prod of productsList;let i=index">
-            <app-cards *ngIf="i<3" [items]="prod"></app-cards>
+          <div class="col-sm-3 crd" *ngFor="let prod of productsList;let i=index">
+            <app-cards *ngIf="i<4" [items]="prod"></app-cards>
           </div>
         </div>
       </div>
