@@ -2,13 +2,13 @@
 Ecommerce Application - Charlie  Team
 
 ## BuyMeLocal
-BuyMeLocal is an Online Ecommerce Web Application made using **Angular** & **.NET**. It provides an easy-to-handle and automated system. It also provides various features and an interface for selling and buying local handloom products for user. The admin can easily update, delete and insert data in the database with this application.
+BuyMeLocal is an Online Ecommerce Web Application made using **Angular** & **.NET**. It provides an easy-to-handle & automated system. It also provides various features & an interface for selling & buying local handloom products for user. The admin can easily update, delete & insert data in the database with this application.
 ### Features
 > For User
-* Can Register and Login.
-* Can View Products and Add them to Cart or Wishlist.
+* Can Register & Login.
+* Can View Products & Add them to Cart or Wishlist.
 * Can Purchase Items that are in Cart.
-* Can View his Cart, Order History, and, Wishlist
+* Can View his Cart, Order History, &, Wishlist
 > For Admin
  * Can perform *CRUD* operations on Products tables.
 
@@ -26,7 +26,7 @@ BuyMeLocal is an Online Ecommerce Web Application made using **Angular** & **.NE
 ![Screenshot (15)](https://user-images.githubusercontent.com/109417065/188799675-cfad432b-e3e5-4f52-b643-f68548883f2c.png)
 ## Getting Started
 ### Prerequisites
-Download and install the below mentioned softwares -
+Download & install the below mentioned softwares -
 * Microsoft Visual Studio Community 2022 (64-bit) Version **17.3.0**
 * Microsoft SQL Server Management Studio Version **18.2.1**
 * .NET Framework Version **5.0.17**
@@ -53,7 +53,7 @@ npm install ng-angular-popup
 ### Configuration
 * Run All the scripts that are present in [EcomDB Scripts](https://github.com/muthuviswanath/EcommerceCharlie/tree/master/EcomDB%20Scripts) inside your SQL Server Management Studio to create the Database.
 * Run the .NET Web API in [ProductWebAPI](https://github.com/muthuviswanath/EcommerceCharlie/tree/master/ProductWebAPI)
-* Enter the follwing command inside your Command Prompt in [Frontend](https://github.com/muthuviswanath/EcommerceCharlie/tree/master/Frontend)
+* Enter the following command inside your Command Prompt in [Frontend](https://github.com/muthuviswanath/EcommerceCharlie/tree/master/Frontend)
 ```sh
 ng serve --open
 ```
