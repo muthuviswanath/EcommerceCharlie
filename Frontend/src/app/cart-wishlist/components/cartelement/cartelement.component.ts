@@ -81,7 +81,7 @@ export class CartelementComponent implements OnInit {
           this.toast.warning({ detail: "WARN", summary: "Cart Quantity can't be Negative!", duration: 5000 });
           flag = false;
           this.removeItem(this.cartData.cartId);
-          this.newItemEvent.emit(-this.item.cartProductPrice);
+          // this.newItemEvent.emit(-this.item.cartProductPrice);
         }
 
         else {
@@ -118,10 +118,14 @@ export class CartelementComponent implements OnInit {
             this.updateProduct();
           }
         );
+        console.log(this.cartData.cartTotal);
+        console.log(this.item.cartProductPrice);
+        console.log(-(this.item.cartProductPrice*(this.cartData.cartTotal)));
+        this.newItemEvent.emit(-(this.item.cartProductPrice*(this.cartData.cartTotal)));
       }
     );
     // DELETE: Subscribing To Delete Cart Item
-    this.newItemEvent.emit(-(this.item.cartProductPrice*(this.cartData.cartTotal)));
+   
     this._cartService.deleteCartData(cartId).subscribe(() => {
       this.removiedId.emit(cartId);
       this.toast.success({ detail: "SUCCESS", summary: 'Cart Item Removed Successfully!', duration: 5000 });

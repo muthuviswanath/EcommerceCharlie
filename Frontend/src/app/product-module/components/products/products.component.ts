@@ -42,27 +42,23 @@ export class ProductsComponent implements OnInit {
     this.sub = this.activatedRoute.params.subscribe(
       (params) => {
         this.id = params['id'];
+        this._productServices.getProductById(this.id).subscribe(
+          (response) => {
+            this.prodData = response;
+            this.discountprice = 100 - Math.round((this.prodData.productOfferPrice / this.prodData.price) * 100);
+            this._productServices.getAllProducts()
+              .subscribe(
+                (response) => {
+                  this.productsList = response.filter(element => element.productDescription == this.prodData.productDescription);
+                }
+              );
+          }
+        );
       }
     );
-
-
-
-
-
 
     // GET: Subscribing To Get Product By Product ID
-    this._productServices.getProductById(this.id).subscribe(
-      (response) => {
-        this.prodData = response;
-        this.discountprice = 100 - Math.round((this.prodData.productOfferPrice / this.prodData.price) * 100);
-        this._productServices.getAllProducts()
-          .subscribe(
-            (response) => {
-              this.productsList = response.filter(element => element.productDescription == this.prodData.productDescription);
-            }
-          );
-      }
-    );
+  
 
   }
 
